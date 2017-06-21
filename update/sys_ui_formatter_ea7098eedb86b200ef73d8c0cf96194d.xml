@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_formatter">
+    <sys_ui_formatter action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <angular_module/>
+        <formatter>AMS Add Communication</formatter>
+        <name>AMS_Add_Communication</name>
+        <sys_class_name>sys_ui_formatter</sys_class_name>
+        <sys_created_by>madhav</sys_created_by>
+        <sys_created_on>2017-04-13 11:45:49</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>ea7098eedb86b200ef73d8c0cf96194d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>AMS_Add_Communication</sys_name>
+        <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+        <sys_update_name>sys_ui_formatter_ea7098eedb86b200ef73d8c0cf96194d</sys_update_name>
+        <sys_updated_by>madhav</sys_updated_by>
+        <sys_updated_on>2017-04-13 11:45:49</sys_updated_on>
+        <table>x_109369_ams_incidents</table>
+        <type>formatter</type>
+    </sys_ui_formatter>
+</record_update>

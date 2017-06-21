@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_policy">
+    <sys_ui_policy action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <conditions/>
+        <description/>
+        <global>false</global>
+        <inherit>false</inherit>
+        <model_id/>
+        <model_table/>
+        <on_load>true</on_load>
+        <order>200</order>
+        <reverse_if_false>true</reverse_if_false>
+        <run_scripts>false</run_scripts>
+        <script_false><![CDATA[function onCondition() {
+g_form.setSectionDisplay('start_time',false);
+	g_form.setSectionDisplay('parameters',false);
+	g_form.setSectionDisplay('rfc_description',false);
+}]]></script_false>
+        <script_true><![CDATA[function onCondition() {
+g_form.setSectionDisplay('start_time',true);
+	g_form.setSectionDisplay('parameters',true);
+	g_form.setSectionDisplay('rfc_description',true);
+}]]></script_true>
+        <set_values/>
+        <short_description>AMS Hide other Field</short_description>
+        <sys_class_name>sys_ui_policy</sys_class_name>
+        <sys_created_by>madhav</sys_created_by>
+        <sys_created_on>2017-04-20 11:10:39</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>35ab4c34db9ab600ef73d8c0cf9619ab</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>AMS Hide other Field</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+        <sys_update_name>sys_ui_policy_35ab4c34db9ab600ef73d8c0cf9619ab</sys_update_name>
+        <sys_updated_by>priyanka</sys_updated_by>
+        <sys_updated_on>2017-04-25 05:36:58</sys_updated_on>
+        <table>x_109369_ams_rfcs</table>
+        <ui_type>0</ui_type>
+        <view display_value="Create_a_request_for_change" name="Create_a_request_for_change">Create_a_request_for_change</view>
+    </sys_ui_policy>
+</record_update>

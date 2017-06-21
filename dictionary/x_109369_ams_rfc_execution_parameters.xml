@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="RFC Execution Parameters" max_length="40" name="x_109369_ams_rfc_execution_parameters" type="collection">
+        <element label="ExecutionParameters" max_length="100" name="u_rfc_execution_parameters" type="string"/>
+        <element label="RfcId" max_length="32" name="u_rfc_id" reference="x_109369_ams_rfcs" type="reference"/>
+        <index name="index">
+            <element name="u_rfc_id"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="sys_import_set_row" label="Import RFC Execution Parameters" max_length="40" name="x_109369_ams_import_rfc_execution_parameters" type="collection">
+        <element label="ExecutionParameters" max_length="100" name="u_rfc_execution_parameters" type="string"/>
+        <element label="RfcId" max_length="40" name="u_rfc_id" type="string"/>
+    </element>
+</database>

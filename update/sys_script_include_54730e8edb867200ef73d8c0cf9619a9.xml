@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_109369_ams.AMSApiUtil</api_name>
+        <client_callable>false</client_callable>
+        <description>Authenticating/Signing and  Calling API of AMS Console</description>
+        <name>AMSApiUtil</name>
+        <script><![CDATA[//Load AMSSignatureUtil library
+gs.include('AMSSignatureUtil');
+var AMSApiUtil = Class.create();
+AMSApiUtil.prototype = {
+	initialize: function() {
+	},
+	//common function to raise request and get response
+	getParsedResponseBody: function(serviceType,action,body)
+	{
+		//initialize/declare variables
+		var service;
+		var endpoint = 'https://';
+		var accessKeyId;
+		var secretAccessKey;
+		var logger = gs.getProperty('x_109369_ams.debug.AMSRestCalls');//get the property value of AMSRestCalls(Boolean Value)
+		//Query to get Active credentials of aws
+		var credentials = new GlideRecord('x_109369_ams_credentials');
+		credentials.addQuery('u_credentials_active',true);
+		credentials.query();
+		if(credentials.next()){
+			accessKeyId = credentials.u_credentials_access_key_id;
+			secretAccessKey = credentials.u_credentials_secret_access_key.getDecryptedValue(); //Assign the decrypted secretAccesskey
+		}
+		var creds = {//create credentials object
+			accessKeyId: accessKeyId,
+			secretAccessKey: secretAccessKey
+		};
+		//lookup service and create endpoint for ams using 'switch'
+		switch(serviceType)
+		{
+			case 'amsskms': service = 'SentinelProvisioningService.';
+			endpoint += serviceType +'.us-east-1.amazonaws.com/';
+			break;
+			case 'amscm'  :  service = 'AWSEnergonService.';
+			endpoint += serviceType +'.us-east-1.amazonaws.com/';
+			break;
+			case 'support':service = 'AWSSupport_20130415.';
+			endpoint += serviceType +'.us-east-1.amazonaws.com/';
+			break;
+			default: if (logger)
+			gs.info("Debug>>> AMSApiUtil ServiceType is unknown");
+			return;
+		}
+		var opts = {//create a request object
+			service : serviceType,
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-amz-json-1.1',
+				'X-Amz-Target': service +action,
+				'User-Agent':''
+			},
+			body: JSON.stringify(body)
+		};
+		//check for valid credentials
+		var amsCheckCredentials = new AMSCheckCredentials();
+		amsCheckCredentials = amsCheckCredentials.isValidCredential(creds);
+		if (!amsCheckCredentials)
+			{
+			gs.info("Debug>>> AMSApiUtil AMS_Check_Credentials >>> Could not initialize amsCheckCredentials\n" + "Keys with record Access Key Id : " + accessKeyId + " is incorrect.");
+				return false;
+			}
+	// Get Signature using sign function
+		var signature = AMSSignatureUtil.sign(opts, creds);
+		//Declaring variables for request and response
+		var restMessageV2;
+		var requestBody; // fix spelling
+		var status;
+		var responseBody;
+		var amazonRequestId;
+		var parsedResponse='';
+		// try catch Block to handle exceptions
+		try{
+			//Create Rest call  to fetch data and assign Headers
+			restMessageV2 = new sn_ws.RESTMessageV2();
+			restMessageV2.setHttpMethod(opts.method);
+			restMessageV2.setEndpoint(endpoint);
+			// A standard MIME type describing the format of the contents
+			restMessageV2.setRequestHeader('Content-Type', opts.headers['Content-Type']);
+			restMessageV2.setRequestHeader('X-Amz-Target', opts.headers['X-Amz-Target']);
+			//The information required for request authentication
+			restMessageV2.setRequestHeader('Authorization', signature.headers.Authorization);
+			//The date used to create the signature contained in the Authorization header
+			restMessageV2.setRequestHeader('X-Amz-Date', signature.headers['X-Amz-Date']);
+			restMessageV2.setRequestHeader('User-Agent', signature.headers['User-Agent']);
+			restMessageV2.setRequestBody(opts.body);
+			var response = restMessageV2.executeAsync();
+			response.waitForResponse(60);
+			responseBody = response.haveError() ? response.getErrorMessage() : response.getBody();
+			if(response.getStatusCode()!=200){
+				throw response.getStatusCode();
+			}
+			parsedResponse = JSON.parse(responseBody);//convert the responseBody to object
+			parsedResponse['requestId'] = response.getHeaders();//assign the response headers to parsedResponse object
+			if (logger)
+				gs.info("Debug>>> AMS Response Body: " + opts.headers['X-Amz-Target'] + " === " + responseBody );//log the response
+		}
+		catch(ex)
+		{//handling the exceptions
+			if (logger)
+				switch(ex){
+				case 400: gs.info("Debug>>> AMSApiUtil  AMS HTTP Status:"+ex+" The action or operation requested is invalid. Verify that the action is typed correctly."); break;
+				case 500: gs.info("Debug>>> AMSApiUtil  AMS HTTP Status:"+ex+" An internal server error has occurred.");break;
+				case 403: gs.info("Debug>>> AMSApiUtil  AMS HTTP Status:"+ex+" The X.509 certificate or AWS access key ID provided does not exist in our records.");break;
+				case 503: gs.info("Debug>>> AMSApiUtil  AMS HTTP Status:"+ex+"The request has failed due to a temporary failure of the server.");break;
+				default:  gs.info("Debug>>> AMSApiUtil  AMS HTTP Status:"+ex+ response.getErrorMessage());
+			}
+		}
+		finally
+		{
+			requestBody = restMessageV2 ? restMessageV2.getRequestBody():null;
+			if (logger){
+				gs.info("Debug>>> AMSApiUtil  AMS Request Body: " + requestBody);//log the request body
+			//gs.info("Debug>>> AMSApiUtil  AMS RequestId: " + parsedResponse.requestId ? parsedResponse.requestId["x-amzn-RequestId"] : null);//log requestId
+			}
+			return parsedResponse;
+		}
+	},
+	type: 'AMSApiUtil'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>saikrishna</sys_created_by>
+        <sys_created_on>2017-04-12 06:50:25</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>54730e8edb867200ef73d8c0cf9619a9</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>AMSApiUtil</sys_name>
+        <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+        <sys_update_name>sys_script_include_54730e8edb867200ef73d8c0cf9619a9</sys_update_name>
+        <sys_updated_by>priyanka</sys_updated_by>
+        <sys_updated_on>2017-04-17 14:18:41</sys_updated_on>
+    </sys_script_include>
+</record_update>

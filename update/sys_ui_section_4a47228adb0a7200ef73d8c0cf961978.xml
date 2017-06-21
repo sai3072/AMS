@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_section caption="" section_id="4a47228adb0a7200ef73d8c0cf961978" sys_domain="global" table="x_109369_ams_case" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number</element>
+            <position>0</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>1a47228adb0a7200ef73d8c0cf961979</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>assigned_to</element>
+            <position>1</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>9e47228adb0a7200ef73d8c0cf961979</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>cmdb_ci</element>
+            <position>2</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>1247228adb0a7200ef73d8c0cf96197a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>active</element>
+            <position>3</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>9247228adb0a7200ef73d8c0cf96197a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>4</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>1647228adb0a7200ef73d8c0cf96197a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>priority</element>
+            <position>5</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>9647228adb0a7200ef73d8c0cf96197a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>state</element>
+            <position>6</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>1a47228adb0a7200ef73d8c0cf96197a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>parent</element>
+            <position>7</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>9a47228adb0a7200ef73d8c0cf96197a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>8</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>1e47228adb0a7200ef73d8c0cf96197a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>short_description</element>
+            <position>9</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>9e47228adb0a7200ef73d8c0cf96197a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>description</element>
+            <position>10</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>1247228adb0a7200ef73d8c0cf96197b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>work_notes</element>
+            <position>11</position>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_id>9247228adb0a7200ef73d8c0cf96197b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_case_service_code</element>
+            <position>12</position>
+            <sys_created_by>priyanka</sys_created_by>
+            <sys_created_on>2017-04-13 10:02:11</sys_created_on>
+            <sys_id>e3e87712db86b200ef73d8c0cf96192f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>priyanka</sys_updated_by>
+            <sys_updated_on>2017-04-13 10:02:11</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_case_severity_code</element>
+            <position>13</position>
+            <sys_created_by>priyanka</sys_created_by>
+            <sys_created_on>2017-04-13 10:02:12</sys_created_on>
+            <sys_id>afe87712db86b200ef73d8c0cf96193c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>priyanka</sys_updated_by>
+            <sys_updated_on>2017-04-13 10:02:12</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_case_reply</element>
+            <position>14</position>
+            <sys_created_by>priyanka</sys_created_by>
+            <sys_created_on>2017-04-14 06:05:56</sys_created_on>
+            <sys_id>2c7cccf6db8eb200ef73d8c0cf9619e2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>priyanka</sys_updated_by>
+            <sys_updated_on>2017-04-14 06:05:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_case_reply_check</element>
+            <position>15</position>
+            <sys_created_by>priyanka</sys_created_by>
+            <sys_created_on>2017-04-14 06:44:52</sys_created_on>
+            <sys_id>a655507edb8eb200ef73d8c0cf9619e6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>priyanka</sys_updated_by>
+            <sys_updated_on>2017-04-14 06:44:52</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_case_state</element>
+            <position>16</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-04-17 17:02:56</sys_created_on>
+            <sys_id>f99f3d37db8e3600ef73d8c0cf9619ee</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_case" sys_domain="global" view="Default view">4a47228adb0a7200ef73d8c0cf961978</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-04-17 17:02:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_109369_ams_case</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>saikrishna</sys_created_by>
+            <sys_created_on>2017-04-12 09:27:00</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4a47228adb0a7200ef73d8c0cf961978</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_109369_ams_case</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+            <sys_update_name>sys_ui_section_4a47228adb0a7200ef73d8c0cf961978</sys_update_name>
+            <sys_updated_by>saikrishna</sys_updated_by>
+            <sys_updated_on>2017-04-12 09:27:00</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

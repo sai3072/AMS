@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_macro">
+    <sys_ui_macro action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category>general</category>
+        <description>nisos team</description>
+        <media_type/>
+        <name>AMSrfcform</name>
+        <scoped_name>x_109369_ams_AMSrfcform</scoped_name>
+        <sys_class_name>sys_ui_macro</sys_class_name>
+        <sys_created_by>madhav</sys_created_by>
+        <sys_created_on>2017-05-24 06:28:47</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>83f0dae7db767200ef73d8c0cf961987</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>AMSrfcform</sys_name>
+        <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+        <sys_update_name>sys_ui_macro_83f0dae7db767200ef73d8c0cf961987</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-05-25 04:24:19</sys_updated_on>
+        <xml><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<script>
+	function showUIMacro(changeTypeId){
+		var ga = new GlideAjax('Get_RFC_Form_Fields');
+		ga.addParam('sysparm_name', 'getFields');
+		ga.addParam('sysparm_changeTypeId', changeTypeId);
+		ga.getXMLWait();
+		var jsonResponse = ga.getAnswer();
+		var dynamicFields = JSON.parse(jsonResponse); <!-- The dynamicFields object contains all the fields, which you can use to create fields -->
+	}
+	
+	function buildHtmlTable() {
+		var formX = document.createElement("form");
+		document.body.appendChild(formX);
+
+		var startTimeContainer = document.createElement("div");
+		startTimeContainer.setAttribute("class", "container");
+		startTimeContainer.setAttribute("id", "startTimeContainer");
+		var startTimeContainerRow = document.createElement("div");
+		startTimeContainerRow.setAttribute("class", "row");
+		startTimeContainerRow.innerHTML='<h2>Start time</h2><hr/>';
+		startTimeContainer.appendChild(startTimeContainerRow);
+		var startTimeContainerRowDiv = document.createElement("div");
+		startTimeContainerRowDiv.setAttribute("class", "form-group");
+		startTimeContainerRowDiv.innerHTML = '<div class="radio">\
+		  <label>\
+			<input type="radio" name="asapOption" value="true" checked="true" data-toggle="collapse" data-target="#startTimDiv"></input>\
+			ASAP (10 minutes after RFC is submitted)\
+		  </label>\
+		</div>\
+		<div class="radio">\
+		  <label>\
+			<input type="radio" name="asapOption" 	value="false" data-toggle="collapse" data-target="#startTimDiv"></input>\
+			Scheduled\
+		  </label>\
+		  <div class="panel-collapse collapse" id="startTimDiv">\
+			<span style="display:flex; align-items:center;height: 40px;" class="col-sm-1 pull-left glyphicon glyphicon-calendar"></span>\
+			<span style="display:flex; align-items:center;height: 40px;" class="col-sm-1 pull-right glyphicon glyphicon-info-sign" data-toggle="tooltip" title="The start date must be at least 10 minutes after the time of RFC submission."></span>\
+		  </div>\
+		</div>';
+		startTimeContainer.appendChild(startTimeContainerRowDiv);
+		formX.appendChild(startTimeContainer);
+
+		var rfcDescriptionContainer = document.createElement("div");
+		rfcDescriptionContainer.setAttribute("class", "container");
+		rfcDescriptionContainer.setAttribute("id", "rfcDescriptionContainer");
+		var rfcDescriptionContainerRow = document.createElement("div");
+		rfcDescriptionContainerRow.setAttribute("class", "form-group");
+		rfcDescriptionContainerRow.innerHTML = '<div class="row">\
+			<div class="col-sm-5"><h2>RFC description</h2><hr/></div>\
+			<div class="col-sm-6">\
+				<label class="col-sm-2" for="md-switch-on" >Basic</label>\
+				<div class="switch col-sm-2">\
+					<input type="radio" data-toggle="collapse" data-target=".optionalID" onChange="advanceCheck()" name="md-switch" id="md-switch-off" checked="true"></input>\
+					<input type="radio" data-toggle="collapse" data-target=".optionalID" onChange="advanceCheck()" name="md-switch" id="md-switch-on"></input>\
+				<span class="switch-toggle"></span>\
+				</div>\
+				<label for="md-switch-off" class="col-sm-2">Advanced</label>\
+			</div>\
+			<span class="col-sm-1 glyphicon glyphicon-info-sign" data-toggle="tooltip" title="The port number on which the database accepts connections. Defaults vary per DB engine."></span>\
+		</div>\
+		<div class="row">\
+			<label class="col-sm-4 " for="subject">Subject*</label>\
+			<div class="col-sm-8">\
+				<input type="text" class="form-control" rows="5" name="subject" id="subject" placeholder=""></input>\
+			</div>\
+		</div>\
+		<div class="row bg-info optionalID collapse">\
+			<label class="col-sm-4 " for="description">Description</label>\
+			<div class="col-sm-8">\
+				<textarea class="form-control" rows="5" name="description" id="description" placeholder=""></textarea>\
+			</div>\
+		</div>\
+		<div class="row bg-info optionalID collapse">\
+			<label class="col-sm-4 " for="worst-case-scenario">Worst-case scenario</label>\
+			<div class="col-sm-8">\
+				<textarea class="form-control" rows="5" name="worst-case-scenario	"  id="worst-case-scenario" placeholder=""></textarea>\
+			</div>\
+		</div>\
+		<div class="row bg-info optionalID collapse">\
+			<label class="col-sm-4 " for="implementation-plan">Implementation plan</label>\
+			<div class="col-sm-8">\
+				<textarea class="form-control" rows="5" name="implementation-plan"  id="implementation-plan" placeholder=""></textarea>\
+			</div>\
+		</div>\
+		<div class="row bg-info optionalID collapse">\
+			<label class="col-sm-4 " for="rollback-plan">Rollback plan</label>\
+			<div class="col-sm-8">\
+				<textarea class="form-control" rows="5" name="rollback-plan"  id="rollback-plan" placeholder=""></textarea>\
+			</div>\
+		</div>\
+		<div class="row bg-info optionalID collapse">\
+			<label class="col-sm-4 " for="expected-outcome">Expected outcome</label>\
+			<div class="col-sm-8">\
+				<textarea class="form-control" rows="5" name="expected-outcome"  id="expected-outcome" placeholder=""></textarea>\
+			</div>\
+		</div>';
+		rfcDescriptionContainer.appendChild(rfcDescriptionContainerRow);
+		formX.appendChild(rfcDescriptionContainer);
+
+		var resourceInformationContainer = document.createElement("div");
+		resourceInformationContainer.setAttribute("class", "container");
+		resourceInformationContainer.setAttribute("id", "resourceInformationContainer");
+		var resourceInformationContainerRow = document.createElement("div");
+		resourceInformationContainerRow.setAttribute("class", "row form-group");
+		resourceInformationContainerRow.innerHTML='<h2>Resource information</h2><hr/>';
+		resourceInformationContainer.appendChild(resourceInformationContainerRow);
+		for (var i = 0; Object.keys(params).length > i; i++) {
+			var tmp = params[Object.keys(params)[i]];
+			//console.log(tmp);
+			var inputType;
+			switch (tmp.paramType) {
+				case "string":
+					if (tmp.snowParamType === "String" ){
+						inputType = "text"
+					} else if (tmp.snowParamType === "Choice" ){
+						inputType = "select"
+					} else if (tmp.snowParamType === "List" ){
+						inputType = "select-multiple" //TODO
+					}
+					break;
+				case "number":
+					inputType = "number"
+					break;
+				case "boolean":
+					inputType = "boolean";
+					break;
+				default:
+					inputType = ""
+
+			}
+			var divX = document.createElement("div");
+			var collapseOrNot = (tmp.mandatory != "true") ? "collapse" : "";
+			var optionalOrRequiredID = (tmp.mandatory != "true") ? "optionalID" : "requiredID";
+			var optionalFieldBG = (tmp.mandatory != "true") ? "bg-info " : "";
+			divX.setAttribute("class", "form-group row " + optionalFieldBG + " " + optionalOrRequiredID + " " + collapseOrNot);
+			//divX.style.background-color = "#006dcc";
+			//divX.setAttribute("id", optionalOrRequiredID);
+
+			var str = "";
+			var mand = (tmp.mandatory === "true") ? "*" : "";
+			var mandStr = (tmp.mandatory === "true") ? "required='true'" : "";
+			str += '<label class="col-sm-4 col-form-label" for="' + tmp.paramName + '">' + tmp.paramName + mand + '</label>';
+
+			if (inputType === 'text' || inputType === 'number') {             
+				str += '<div class="col-sm-7" id="' + tmp.paramName + '">';
+			    str += '<input type=' 
+					+ inputType + 
+					' class="form-control" name="' 
+					+ tmp.paramName + 
+					'" placeholder="' 
+					+ tmp.default + 
+					'"></input>';
+				str += '</div>';
+			}
+			
+
+			if (inputType === 'boolean') {            
+				if(tmp.snowParamType == 'True/False'){
+					console.log(tmp.default);
+					//var checkedStr = ((tmp.default === "true") ? "checked='true'": "");
+					str += '<div class="col-sm-7"><div class="radio"> <label><input type="radio" name="' + tmp.paramName + '" value="true" >true</input></label></div>';
+					str += '<div class="radio"> <label><input type="radio" name="' + tmp.paramName + '" value="false" >false</input></label></div></div>';
+					
+				}
+			}
+
+			if (inputType === 'select'){
+				var options = tmp.num.split(',');
+				var optionStr = '<option value="" selected="true" disabled="true">' + tmp.description + '</option>';
+				options.forEach( (option) => optionStr+= '<option value="' + option + '">' + option + '</option>' );
+				str += '<div class="col-sm-7" id="' 
+					+ tmp.paramName + 
+					'" ><select class="form-control" id="' 
+					+ tmp.paramName + 
+					'" name="' 
+					+ tmp.paramName + 
+					'"> ' 
+					+ optionStr + 
+					'</select></div>';        	
+
+
+			}
+			str += '<span style="display:flex; align-items:center;height: 40px;" class="col-sm-1 pull-right glyphicon glyphicon-info-sign" data-toggle="tooltip" title="' + tmp.description + '"></span>';
+
+			divX.innerHTML = str;
+			resourceInformationContainer.appendChild(divX);
+		}
+		var submitDiv = document.createElement("div");
+		submitDiv.setAttribute("class", "form-group row");
+		var submitDivInner = document.createElement("div");
+		submitDivInner.setAttribute("class", "col-sm-10 col-sm-offset-2");
+		submitDivInner.innerHTML = '<input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary"></input>';
+		submitDiv.appendChild(submitDivInner);
+		resourceInformationContainer.appendChild(submitDiv);
+
+		formX.appendChild(resourceInformationContainer);
+	}
+		
+	</script>
+</j:jelly>]]></xml>
+    </sys_ui_macro>
+</record_update>

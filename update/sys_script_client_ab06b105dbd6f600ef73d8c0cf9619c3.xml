@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>To get the Description fo the Change Type ID</description>
+        <field>u_rfcs_category</field>
+        <global>false</global>
+        <messages/>
+        <name>Get Operation Description</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	if (isLoading ||newValue === '') {
+		g_form.clearValue('u_rfc_operation_description');
+		return;
+	}
+	g_form.setValue('view','Basic','Basic');
+	var time = setInterval(getType, 1000);
+	var changeType = '';
+	function getType() {
+		changeType = g_form
+				.getValue('u_rfcs_category.u_rfc_change_type_classification_change_type_id');
+		var itemGA = new GlideAjax('Get_Operation_Description');
+		itemGA.addParam('sysparm_name', 'getDescription');
+		itemGA.addParam('sysparm_id', newValue);
+		itemGA.addParam('sysparm_changeTypeId', changeType);
+		itemGA.getXML(getDescription);
+		function getDescription(response) {
+			var description = response.responseXML.documentElement
+					.getAttribute("answer");
+			g_form.setValue('u_rfc_operation_description', description);
+					clearInterval(time);
+		}
+		changeType = g_form
+				.getValue('u_rfcs_category.u_rfc_change_type_classification_change_type_id');
+		var params = new GlideAjax('Get_Operation_Description');
+		params.addParam('sysparm_name', 'getParams');
+		params.addParam('sysparm_changeTypeId', changeType);
+		params.getXML(setParamFields);
+		//setChangeTypeId();
+		function setParamFields(response) {
+			var parameters = response.responseXML.documentElement
+					.getAttribute("answer");
+			var parsedParams = JSON.parse(parameters);
+			//var properties=parsedParams.properties;
+			var fields = g_form.getEditableFields();
+			var requiredList=parsedParams.required.toString();
+			var requiredFields=requiredList.split(',');
+			//g_form.setDisplay('u_rfcs_category.u_rfc_change_type_classification_change_type_id',true);
+			for(var count=0;count<=requiredFields.length;count++) {
+				g_form.elements.forEach(function (e, i) {
+					var field = e.fieldName.replace(/u_rfcs/g, "");
+					field = field.replace(/_/g, "");
+					if (field == requiredFields[count].toLowerCase()) {
+						g_form.setVisible(e.fieldName,true);
+						g_form.setMandatory(e.fieldName, true);
+					}
+					else{				
+						g_form.setDisplay(e.fieldName,false);
+						g_form.setDisplay('u_rfcs_category',true);
+						if(newValue=='Deployment'){
+						g_form.setDisplay('u_rfcs_description',true);
+						g_form.setMandatory('u_rfcs_description', true);
+						}else{
+							g_form.setSectionDisplay('resource_information',false);	
+						}
+						g_form.setDisplay('u_rfcs_start_time',true);
+						g_form.setDisplay('view',true);	
+						g_form.setDisplay('u_rfcs_category.u_rfc_change_type_classification_subcategory',true);
+						g_form.setDisplay('u_rfcs_category.u_rfc_change_type_classification_item',true);
+						g_form.setDisplay('u_rfc_operation_description',true);
+					g_form.setDisplay('u_rfcs_category.u_rfc_change_type_classification_operation',true);
+					}
+				});
+ 				setChangeTypeId(changeType);
+			}
+		}
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>madhav</sys_created_by>
+        <sys_created_on>2017-04-21 13:34:29</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>ab06b105dbd6f600ef73d8c0cf9619c3</sys_id>
+        <sys_mod_count>192</sys_mod_count>
+        <sys_name>Get Operation Description</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+        <sys_update_name>sys_script_client_ab06b105dbd6f600ef73d8c0cf9619c3</sys_update_name>
+        <sys_updated_by>madhav</sys_updated_by>
+        <sys_updated_on>2017-05-22 11:31:39</sys_updated_on>
+        <table>x_109369_ams_rfcs</table>
+        <type>onChange</type>
+        <ui_type>0</ui_type>
+        <view>Create_a_request_for_change</view>
+    </sys_script_client>
+</record_update>

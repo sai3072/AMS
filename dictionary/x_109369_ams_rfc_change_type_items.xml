@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Rfc Change Type Items" max_length="40" name="x_109369_ams_rfc_change_type_items" type="collection">
+        <element label="Category" max_length="32" name="u_rfc_change_type_items_category" reference="x_109369_ams_rfc_change_type_categories" type="reference"/>
+        <element display="true" label="Item" max_length="100" name="u_rfc_change_type_items_item" type="string"/>
+        <element label="SubCategory" max_length="32" name="u_rfc_change_type_items_subcategory" reference="x_109369_ams_rfc_change_type_subcategories" type="reference"/>
+        <index name="index">
+            <element name="u_rfc_change_type_items_item"/>
+        </index>
+        <index name="index2">
+            <element name="u_rfc_change_type_items_c6y"/>
+            <element name="u_rfc_change_type_items_s9y"/>
+            <element name="u_rfc_change_type_items_item"/>
+        </index>
+    </element>
+</database>

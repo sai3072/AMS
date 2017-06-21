@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>false</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_109369_ams_rfcs</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Create RFC static</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	var ex={"basicexecutionParameters":"{\"TimeoutInMinutes\":\"4\",\"VpcId\":\"vpc-f00e7a94\",\"ASGAmiId\":\"ami-f4808be3\",\"Name\":\"test\",\"ASGSubnetIds\":\"subnet-fdaf50a5\",\"Description\":\"despar\"}","advancedexecutionParameters":"{\"StackTemplateId\":\"stm-suw38u00000000000\",\"Description\":\"test des\",\"Worst-casescenario\":\"test wo\",\"Implementationplan\":\"test im pl\",\"Rollbackplan\":\"test pla\",\"Expectedoutcome\":\"test out\",\"ASGHealthCheckGracePeriod\":\"600\",\"ASGDesiredCapacity\":\"1\",\"ASGScaleDownMetricName\":\"CPUUtilization\",\"ASGInstanceRootVolumeName\":\"root\",\"ASGEBSOptimized\":\"true\",\"ASGInstanceRootVolumeType\":\"standard\",\"ASGScaleDownPolicyCooldown\":\"300\",\"ASGInstanceType\":\"m3.medium\",\"ASGScaleDownPolicyScalingAdjustment\":\"-1\",\"ASGScaleDownPolicyStatistic\":\"Average\",\"Tags\":\"xyz\",\"ASGScaleDownPolicyPeriod\":\"60\",\"ASGMinInstances\":\"1\",\"ASGInstanceRootVolumeSize\":\"9\",\"ASGScaleUpPolicyCooldown\":\"60\",\"ASGLoadBalancerNames\":\"load\",\"ASGScaleUpPolicyEvaluationPeriods\":\"2\",\"ASGMaxInstances\":\"1\",\"ASGInstanceRootVolumeIops\":\"0\",\"ASGUserData\":\"ud\",\"ASGScaleUpMetricName\":\"CPUUtilization\",\"ASGScaleUpPolicyThreshold\":\"75\",\"ASGScaleUpPolicyStatistic\":\"Average\",\"ASGInstanceDetailedMonitoring\":\"true\",\"ASGScaleDownPolicyThreshold\":\"35\",\"ASGScaleUpPolicyScalingAdjustment\":\"2\",\"ASGScaleDownPolicyEvaluationPeriods\":\"4\",\"ASGCooldown\":\"300\",\"ASGScaleUpPolicyPeriod\":\"60\",\"ASGIAMInstanceProfile\":\"customer-mc-ec2-instance-profile\"}","changeTypeId":"ct-2tylseo8rxfsc","Subject":"test subject","Description":"test redes"};
+		var executionParams=JSON.parse(current.u_rfcs_execution_parameters);
+		var basicexecutionParams=JSON.parse(executionParams.basicexecutionParameters);
+		var advacedexecutionParams=JSON.parse(executionParams.advancedexecutionParameters);
+		gs.info(basicexecutionParams.Description);
+		var changeTypeId=current.u_rfcs_change_type_id;
+		var changeTypeVersion;
+		var params;
+		var gr = new GlideRecord('x_109369_ams_changetype_version');
+		gr.addQuery('u_rfc_change_type_version_changetypeid',changeTypeId);
+		gr.query();
+		if(gr.next()){
+			params=JSON.parse(gr.u_rfc_change_type_version_parameters);
+			gs.info(gr.u_rfc_change_type_version_parameters);
+			changeTypeVersion= gr.u_rfc_change_type_version_version.toString();
+			Object.keys(params).forEach(function(key){
+				gs.info('key'+key);
+				if(key!="Tags"){
+					if(params[key]['type']=='object'){
+						gs.info('parameters object');//parameters
+						Object.keys(params[key]['properties']).forEach(function(key2) {//serch propetries in params
+							gs.info('key2'+key2);
+							if(params[key]['properties'][key2]['type']=='object'){
+							}
+							else{
+								//gs.info(advacedexecutionParams[key2]);
+								if(params[key]['properties'][key2]['type']=='number'||params[key]['properties'][key2]['type']=='integer'){
+									gs.info("num inside check"+basicexecutionParams[key2]);
+									if(basicexecutionParams[key2]!=undefined){
+										params[key]['properties'][key2]=parseInt(basicexecutionParams[key2]);
+										gs.info("num inside====="+params[key]['properties'][key2]);
+									}
+									else if(advacedexecutionParams[key2]!=undefined){
+										params[key]['properties'][key2]=parseInt(advacedexecutionParams[key2]);
+									}
+									else
+										delete params[key]['properties'][key2];
+								}
+								else if(params[key]['properties'][key2]['type']=='boolean'){
+									//gs.info("99999"+basicexecutionParams[key2]);
+									if(basicexecutionParams[key2]!=undefined){
+										params[key]['properties'][key2]=Boolean(basicexecutionParams[key2]);
+					gs.info("bool inside====="+params[key]['properties'][key2]+params[key]['properties'][key2]['type']+key2);
+									}
+									else if(advacedexecutionParams[key2]!=undefined){
+										params[key]['properties'][key2]=Boolean(advacedexecutionParams[key2]);
+									}
+									else
+										delete params[key]['properties'][key2];
+								}
+								else if(params[key]['properties'][key2]['type']=='array'){
+									if(basicexecutionParams[key2]!=undefined){
+										params[key]['properties'][key2]=basicexecutionParams[key2].split(',');
+										gs.info("array inside====="+params[key]['properties'][key2]);
+									}
+									else if(advacedexecutionParams[key2]!=undefined){
+										params[key]['properties'][key2]=advacedexecutionParams[key2].split(',');
+									}
+									else
+										delete params[key]['properties'][key2];
+								}
+								else{
+									if(basicexecutionParams[key2]!=undefined){
+										params[key]['properties'][key2]=basicexecutionParams[key2];
+										gs.info("string inside====="+params[key]['properties'][key2]);
+									}
+									else if(advacedexecutionParams[key2]!=undefined){
+										params[key]['properties'][key2]=advacedexecutionParams[key2];
+									}
+									else
+										delete params[key]['properties'][key2];
+								}
+								//gs.info(JSON.stringify(params[key]['properties']));
+								//gs.info(params[key]['properties'][key2]);
+							}
+						});
+						params[key]=params[key]['properties'];
+					}
+					else{
+						if(params[key]['type']=='number'||params[key]['type']=='integer'){
+							if(basicexecutionParams[key]!=undefined){
+								params[key]=parseInt(basicexecutionParams[key]);
+								gs.info(" num====="+params[key]);
+							}
+							else if(advacedexecutionParams[key]!=undefined){
+								params[key]=parseInt(advacedexecutionParams[key]);
+							}
+							else
+								delete params[key];
+						}
+						else if(params[key]['type']=='boolean'){
+							if(basicexecutionParams[key]!=undefined){
+								params[key]=Boolean(basicexecutionParams[key]);
+								gs.info("bool====="+params[key]);
+							}
+							else if(advacedexecutionParams[key]!=undefined){
+								params[key]=Boolean(advacedexecutionParams[key]);
+							}
+							else
+								delete params[key];
+						}
+						else if(params[key]['type']=='array'){
+							if(basicexecutionParams[key]!=undefined){
+								params[key]=basicexecutionParams[key].split(',');
+								gs.info("array ====="+params[key]);
+							}
+							else if(advacedexecutionParams[key]!=undefined){
+								params[key]=advacedexecutionParams[key].split(',');
+							}
+							else
+								delete params[key];
+						}
+						else{
+							if(basicexecutionParams[key]!=undefined){
+								params[key]=basicexecutionParams[key];
+								gs.info(" string====="+params[key]);
+							}
+							else if(advacedexecutionParams[key]!=undefined){
+								params[key]=advacedexecutionParams[key];
+							}
+							else
+								delete params[key];
+						}
+					}
+					gs.info(JSON.stringify(params[key]));
+					//params[key][key1]=basicexecutionParams[key1];
+					//gs.info(key+"==== "+params[key]);
+				}
+				else{
+					//params[key]=[{"Value":"test","Key":"test1"}];
+						delete params[key];
+					}
+				});
+				gs.info(params+"==============+++++"+JSON.stringify(params));
+			}
+			var jsonParam=JSON.stringify(params);
+			var amsRfc= new AMSRfcFetch();
+			var isRfcCreated=amsRfc.createRfc('test nisos no action7664','','','','','','test nisos no action7664','',changeTypeId.toString(),changeTypeVersion,jsonParam);
+			
+		})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>Dasthagiri</sys_created_by>
+        <sys_created_on>2017-05-23 12:00:26</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d4739a93db7e3200ef73d8c0cf96197f</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>Create RFC static</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+        <sys_update_name>sys_script_d4739a93db7e3200ef73d8c0cf96197f</sys_update_name>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-05-25 15:11:16</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=d4739a93db7e3200ef73d8c0cf96197f"/>
+</record_update>

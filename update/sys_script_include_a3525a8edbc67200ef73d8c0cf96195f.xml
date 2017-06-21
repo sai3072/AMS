@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_109369_ams.AMSCheckCredentials</api_name>
+        <client_callable>false</client_callable>
+        <description>A small utility to check credentials' validity. This checks the secret access key id and access key id combo to validate if they are working.</description>
+        <name>AMSCheckCredentials</name>
+        <script><![CDATA[//Load AMSSignatureUtil library
+gs.include('AMSSignatureUtil');
+var AMSCheckCredentials = Class.create();
+AMSCheckCredentials.prototype = {
+	initialize: function() {
+	},
+	isValidCredential: function (credentials)
+	{
+		var logger = gs.getProperty('debug.AMSRestCalls');
+		var returnValue = false; // intialize the return value
+		if(!credentials) {
+			gs.info("Debug AMSCheckCredentials >>> Received null credentials" + credentials);//log when parameter is null
+			return returnValue;
+		}
+		if (credentials.accessKeyId && credentials.secretAccessKey)//If both keys are availabe, its good to proceed
+		{
+			//declaring the variables
+			var response;
+			var restMessageV2;
+			var requestBody;
+			var status;
+			var responseBody;
+			var parsedResponse;
+			var opts = {//create request object
+				service : 'iam',
+				body : 'Action=GetUser&Version=2010-05-08'
+			};
+			var signature = AMSSignatureUtil.sign(opts, credentials);//generating signature
+			// try catch Block to handle exceptions
+			try
+			{
+				//Create Rest call  to fetch data and assign Headers
+				restMessageV2 = new sn_ws.RESTMessageV2();
+				restMessageV2.setHttpMethod(signature.method);
+				restMessageV2.setEndpoint('https://' + signature.headers.Host);
+				// A standard MIME type describing the format of the contents
+				restMessageV2.setRequestHeader('Content-Type', signature.headers['Content-Type']);
+				//The information required for request authentication
+				restMessageV2.setRequestHeader('Authorization', signature.headers.Authorization);
+				//The date used to create the signature contained in the Authorization header
+				restMessageV2.setRequestHeader('X-Amz-Date', signature.headers['X-Amz-Date']);
+				restMessageV2.setRequestBody(signature.body);
+				response = restMessageV2.executeAsync();
+				response.waitForResponse(60);
+				responseBody = response.haveError() ? response.getErrorMessage() : response.getBody();
+				gs.info('response.getStatusCode() = ' + response.getStatusCode());
+				if(response.getStatusCode() == 200)
+				{
+					// Parse the Received XML response for RequestId
+					parsedResponse = new XMLDocument2();
+					parsedResponse.parseXML(response.getBody());
+					if (logger)
+						//log the response and requestId
+						gs.info("Debug AMSCheckCredentials >>> AMS Response Body: " + responseBody + " \n --- requestId == " + parsedResponse.getNodeText("//RequestId"));
+					
+				}
+				 if(response.haveError()){//check for error
+					throw response.getStatusCode();
+				}
+				else
+				{
+					returnValue = true;
+				}
+			}
+			catch(ex)
+			{
+				//handle the errors
+				if (logger)
+					switch(ex)
+				{
+					case 400: gs.info("Debug AMSCheckCredentials >>> AMS HTTP Status:"+ex+" General authentication failure.");break;
+					case 500: gs.info("Debug AMSCheckCredentials >>> AMS HTTP Status:"+ex+" An internal server error has occurred.");break;
+					case 403: gs.info("Debug AMSCheckCredentials >>> AMS HTTP Status:"+ex+" The X.509 certificate or AWS access key ID provided does not exist in our records.");break;
+					case 503: gs.info("Debug AMSCheckCredentials >>> AMS HTTP Status:"+ex+"The request has failed due to a temporary failure of the server.");break;
+					default:  gs.info("Debug AMSCheckCredentials >>> AMS HTTP Status:"+ex+ response.getErrorMessage());
+				}
+			}
+			finally
+			{
+				requestBody = restMessageV2 ? restMessageV2.getRequestBody():null;
+				return returnValue;//return the result
+			}
+		}
+		else
+		{
+			if (logger)//log if credentials doest not contain accessKeyId and secretAccessKey
+				gs.info("Debug AMSCheckCredentials >>> No credentials Found");
+			return returnValue;
+		}
+	},
+	type: 'AMSCheckCredentials'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>priyanka</sys_created_by>
+        <sys_created_on>2017-04-12 07:56:46</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>a3525a8edbc67200ef73d8c0cf96195f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>AMSCheckCredentials</sys_name>
+        <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+        <sys_update_name>sys_script_include_a3525a8edbc67200ef73d8c0cf96195f</sys_update_name>
+        <sys_updated_by>Venu</sys_updated_by>
+        <sys_updated_on>2017-04-12 19:39:57</sys_updated_on>
+    </sys_script_include>
+</record_update>

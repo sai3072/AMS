@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_macro">
+    <sys_ui_macro action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category>general</category>
+        <description>To add communication to an existing Case.</description>
+        <media_type/>
+        <name>AMS Add Communication</name>
+        <scoped_name>x_109369_ams_AMS Add Communication</scoped_name>
+        <sys_class_name>sys_ui_macro</sys_class_name>
+        <sys_created_by>madhav</sys_created_by>
+        <sys_created_on>2017-04-13 11:38:24</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>6abe48aedb86b200ef73d8c0cf96198f</sys_id>
+        <sys_mod_count>55</sys_mod_count>
+        <sys_name>AMS Add Communication</sys_name>
+        <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+        <sys_update_name>sys_ui_macro_6abe48aedb86b200ef73d8c0cf96198f</sys_update_name>
+        <sys_updated_by>madhav</sys_updated_by>
+        <sys_updated_on>2017-04-13 14:17:02</sys_updated_on>
+        <xml><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<script>
+		function resolveCase(){alert("Case Resolved");};
+	</script>
+	<div class="section-content" id="buttons">
+	<div class="row">
+		<div class="col-xs-12">
+	<div align="right">
+	<button class="button" type="button" value="Reply" id ="replyBtn" onClick="showCommunication='false'">Reply</button>
+			<button class="form_action_button" value="Close Case" onClick="resolveCase()">Close Case</button></div></div></div></div>
+<div class="section-content" id="reply">
+	<div class="row" ng-init="showCommunication=false">
+		<div ng-hide="showCommunication">
+		<div class="col-xs-12">
+			<div style="" id="element.x_109369_ams_incidents.u_case_ccemail" class="form-group " ng-non-bindable="">
+				<div data-type="label" type="string">
+					<label class=" col-xs-12 col-md-1_5 col-lg-2 control-label">
+						<span  title="" class="required-marker" aria-label="" data-original-title=""></span>
+						<span title="" class="label-text" data-html="false" data-original-title="">CC email addresses</span></label></div>
+				<div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls" ng-non-bindable="">
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<span class=" label_right pull-right" style=""></span></div></div>
+					<input style="direction:ltr;" id="sys_readonly.x_109369_ams_incidents.u_case_ccemail" class="form-control" value=""></input>
+				</div></div></div></div></div></div>
+<div class="section-content" id="reply">
+	<div class="row" ng-init="showCommunication=false">
+		<div class="col-xs-12">
+			<div ng-hide="showCommunication">
+			<div style="" id="element.x_109369_ams_incidents.u_case_reply" class="form-group " ng-non-bindable="">
+				<div data-type="label" type="string">
+					<label class=" col-xs-12 col-md-1_5 col-lg-2 control-label">
+						<span  title="" class="required-marker" aria-label="" data-original-title=""></span>
+						<span title="" class="label-text" data-html="false" data-original-title="">Reply</span></label></div>
+				<div class="col-xs-10 col-md-9 col-lg-8 form-field input_controls" ng-non-bindable="">
+					<div class="row">
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+							<span class=" label_right pull-right" style=""></span></div></div>
+					<textarea spellcheck="true" name="x_109369_ams_incidents.u_case_reply" style="direction: ltr; width: 100%; overflow: hidden; word-wrap: break-word; resize: none; height: 64px;" id="x_109369_ams_incidents.u_case_reply" wrap="soft" specialtype="" class="form-control"></textarea>
+				</div></div><div align= "right"> <a href="">Cancel</a>
+			<button class="form_action_button" value="Close Case" onClick="resolveCase()">Submit</button></div></div>
+		</div>
+	</div></div>
+</j:jelly>]]></xml>
+    </sys_ui_macro>
+</record_update>

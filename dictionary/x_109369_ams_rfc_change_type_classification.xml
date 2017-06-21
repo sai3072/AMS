@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Rfc Change Type Classification" max_length="40" name="x_109369_ams_rfc_change_type_classification" type="collection">
+        <element display="true" label="Category" max_length="40" name="u_rfc_change_type_classification_category" type="string"/>
+        <element label="Change Type Id" max_length="40" name="u_rfc_change_type_classification_change_type_id" read_only="true" type="string" unique="true"/>
+        <element label="Item" max_length="100" name="u_rfc_change_type_classification_item" read_only="true" reference_qual="javascript:getItems()" type="string" use_reference_qualifier="advanced"/>
+        <element label="Operation" max_length="40" name="u_rfc_change_type_classification_operation" read_only="true" reference_qual="javascript:getOperations()" type="string" use_reference_qualifier="advanced"/>
+        <element label="Subcategory" max_length="40" name="u_rfc_change_type_classification_subcategory" read_only="true" reference_qual="javascript:getSubcategories()" type="string" use_reference_qualifier="advanced"/>
+    </element>
+</database>

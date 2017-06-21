@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>Managed Services GetVpcs</name>
+        <run_as display_value="">e75da407db213200ef73d8c0cf961959</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2017-04-12 12:58:29</run_start>
+        <run_time>1970-01-01 08:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[// Call AMSResourceFetch script
+var amsGetVpcApi = new AMSResourceFetch();
+//Fetch VpcId from VPC table
+var grVpcVpcId = new GlideRecord('x_109369_ams_vpcs');
+grVpcVpcId.query();
+while(grVpcVpcId.next())
+{
+	//Call getVpc API
+	var getVpcInsert = amsGetVpcApi.getVPCAndInsert(grVpcVpcId.u_vpc_id.toString());
+	if(!getVpcInsert){
+		if ('true' == gs.getProperty('debug.AMSRestCalls'))//No VPCs Found
+		gs.info("Debug >>>AMS GetVPC :"+grVpcVpcId.u_vpc_id+" is not inserted");	
+	}
+}
+]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>priyanka</sys_created_by>
+        <sys_created_on>2017-04-12 12:59:16</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>ccb7534edb8a7200ef73d8c0cf9619b6</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Managed Services GetVpcs</sys_name>
+        <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+        <sys_update_name>sysauto_script_ccb7534edb8a7200ef73d8c0cf9619b6</sys_update_name>
+        <sys_updated_by>saikrishna</sys_updated_by>
+        <sys_updated_on>2017-05-19 09:53:16</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

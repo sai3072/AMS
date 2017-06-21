@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_index">
+    <sys_index action="INSERT_OR_UPDATE">
+        <col_name_string>u_rfcs_id</col_name_string>
+        <index_col_name element="u_rfcs_id" name="x_109369_ams_rfcs">b352314edb467200ef73d8c0cf961974</index_col_name>
+        <logical_table_name>x_109369_ams_rfcs</logical_table_name>
+        <sys_class_name>sys_index</sys_class_name>
+        <sys_created_by>sahitya</sys_created_by>
+        <sys_created_on>2017-04-12 13:13:31</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>9c2b5742dbca7200ef73d8c0cf96191e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_109369_ams_rfcs</sys_name>
+        <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+        <sys_update_name>sys_index_x_109369_ams_rfcs_u_rfcs_id</sys_update_name>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-04-12 13:13:31</sys_updated_on>
+        <table display_value="RFCs" name="x_109369_ams_rfcs">d87cc442dbc27200ef73d8c0cf9619c1</table>
+        <unique_index>false</unique_index>
+    </sys_index>
+</record_update>

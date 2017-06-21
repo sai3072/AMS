@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_109369_ams_changetype_version</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>AMS POC Insert Into RFC_Form</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	var exeMap={};
+		var changeTypeId= current.u_rfc_change_type_version_changetypeid;
+		var obj = JSON.parse(current.u_rfc_change_type_version_parameters);
+		Object.keys(obj).forEach(function(key) {
+			if (obj[key].properties != undefined) {
+				var paramMap = obj[key].properties;
+				Object.keys(paramMap).forEach(function(propertyKey) {
+					var inMap = {};
+						inMap['propertyName'] = propertyKey;
+						Object.keys(paramMap[propertyKey]).forEach(function(propertyInsideKey) {
+							inMap['awsparam']='parameters';
+							if (propertyInsideKey == 'default') {
+								inMap["defaultValue"] = paramMap[propertyKey][propertyInsideKey].toString();
+							}
+							if (propertyInsideKey == 'type') {
+								inMap["type"] = paramMap[propertyKey][propertyInsideKey];
+							}
+							
+							if (propertyInsideKey == 'enum') {
+								inMap["num"] = paramMap[propertyKey][propertyInsideKey].toString();
+							}
+							if (propertyInsideKey == 'description') {
+								inMap["description"] = paramMap[propertyKey][propertyInsideKey];
+							}
+							if (propertyInsideKey == 'minimum') {
+								inMap["minimum"] =   paramMap[propertyKey][propertyInsideKey];
+						}
+						if (propertyInsideKey == 'maximum') {
+								inMap["maximum"] =   paramMap[propertyKey][propertyInsideKey];
+						}
+						if (propertyInsideKey == 'minItems') {
+								inMap["minItems"] =   paramMap[propertyKey][propertyInsideKey];
+						}
+						if (propertyInsideKey == 'maxItems') {
+								inMap["maxItems"] =   paramMap[propertyKey][propertyInsideKey];
+						}
+						if (propertyInsideKey == 'minLength') {
+								inMap["minLength"] =  paramMap[propertyKey][propertyInsideKey];
+						}
+						if (propertyInsideKey == 'maxLength') {
+								inMap["maxLength"] =  paramMap[propertyKey][propertyInsideKey];
+						}
+							if (propertyInsideKey=='pattern') {
+									
+									inMap["pattern"] = paramMap[propertyKey][propertyInsideKey];
+								}
+							if (propertyInsideKey == "items") {
+								if (paramMap[propertyKey][propertyInsideKey].pattern != undefined) {
+									
+									inMap["pattern"] = paramMap[propertyKey][propertyInsideKey].pattern;
+								}
+								if (paramMap[propertyKey][propertyInsideKey].type != undefined) {
+									inMap["patternType"] = paramMap[propertyKey][propertyInsideKey].type;
+								}
+							}
+						});
+						insertIntoRfcForm(inMap,changeTypeId);
+						exeMap[propertyKey] = inMap;
+					});
+				} else {var inMap = {};
+					inMap['propertyName'] = key;
+					Object.keys(obj[key]).forEach(function(propertyKey) {
+						inMap['awsparam']='properties';
+						if (propertyKey == 'default') {
+							inMap["defaultValue"] = obj[key][propertyKey].toString();
+						}
+						if (propertyKey == 'type') {
+							inMap["type"] = obj[key][propertyKey];
+						}
+						if (propertyKey == 'enum') {
+							inMap["num"] = obj[key][propertyKey].toString();
+						}
+						if (propertyKey == 'description') {
+							inMap["description"] = obj[key][propertyKey];
+						}
+						if (propertyKey == 'pattern') {
+							inMap["pattern"] = obj[key][propertyKey];
+						}
+						if (propertyKey == 'minimum') {
+								inMap["minimum"] =  obj[key][propertyKey];
+						}
+						if (propertyKey == 'maximum') {
+								inMap["maximum"] =  obj[key][propertyKey];
+						}
+						if (propertyKey == 'minItems') {
+								inMap["minItems"] =  obj[key][propertyKey];
+						}
+						if (propertyKey == 'maxItems') {
+								inMap["maxItems"] =  obj[key][propertyKey];
+						}
+						if (propertyKey == 'minLength') {
+								inMap["minLength"] =  obj[key][propertyKey];
+						}
+						if (propertyKey == 'maxLength') {
+								inMap["maxLength"] =  obj[key][propertyKey];
+						}
+							
+					});
+					insertIntoRfcForm(inMap,changeTypeId);
+					exeMap[key] = inMap;
+				}
+			});
+			
+		})(current, previous);
+		function insertIntoRfcForm(values,id){
+			var requiredList;
+			var snowfield;
+			var rfcFormGR= new GlideRecord('x_109369_ams_rfc_form');
+			rfcFormGR.addQuery('u_rfcs_form_change_type_id',id);
+			rfcFormGR.addQuery('u_rfcs_form_parameter_name',values.propertyName);
+			rfcFormGR.query();
+			if(rfcFormGR.next()){
+				rfcFormGR.u_rfcs_form_parameter_name = values.propertyName;
+				rfcFormGR.u_rfcs_form_change_type_id = id;
+				rfcFormGR.u_rfcs_form_enum = values.num;
+				rfcFormGR.u_rfcs_form_type = values.patternType;
+				rfcFormGR.u_rfcs_form_description = values.description;
+				rfcFormGR.u_rfcs_form_pattern = values.pattern;
+				rfcFormGR.u_rfcs_form_default_value = values.defaultValue;
+				rfcFormGR.u_rfcs_min_value=values.minimum;
+				rfcFormGR.u_rfcs_max_value=values.maximum;
+				rfcFormGR.u_rfcs_form_minlength=values.minLength;
+				rfcFormGR.u_rfcs_form_maxlength=values.maxLength;
+				rfcFormGR.u_rfcs_min_items=values.minItems;
+				rfcFormGR.u_rfcs_max_items=values.maxItems;
+				rfcFormGR.u_rfcs_form_aws_param_type=values.awsparam;
+				requiredList=current.u_rfc_change_type_version_required.split(',');
+				if(requiredList.indexOf(values.propertyName)>=0){
+					rfcFormGR.u_rfcs_form_ismandatory=true;
+				}else{
+					rfcFormGR.u_rfcs_form_ismandatory=false;
+				}
+				rfcFormGR.u_rfcs_form_parameter_type = values.type;
+				snowfield=getSnowFieldType(values.type,values.num,values.propertyName);
+				rfcFormGR.u_rfcs_form_snow_fieldtype =snowfield;
+				rfcFormGR.update();
+			}else{
+				rfcFormGR.initialize();
+				rfcFormGR.u_rfcs_form_parameter_name = values.propertyName;
+				rfcFormGR.u_rfcs_form_change_type_id = id;
+				rfcFormGR.u_rfcs_form_enum = values.num;
+				rfcFormGR.u_rfcs_form_type = values.patternType;
+				rfcFormGR.u_rfcs_form_description = values.description;
+				rfcFormGR.u_rfcs_form_pattern = values.pattern;
+				rfcFormGR.u_rfcs_min_value=values.minimum;
+				rfcFormGR.u_rfcs_max_value=values.maximum;
+				rfcFormGR.u_rfcs_form_minlength=values.minLength;
+				rfcFormGR.u_rfcs_form_maxlength=values.maxLength;
+				rfcFormGR.u_rfcs_min_items=values.minItems;
+				rfcFormGR.u_rfcs_max_items=values.maxItems;
+				rfcFormGR.u_rfcs_form_aws_param_type=values.awsparam;
+				rfcFormGR.u_rfcs_form_default_value = values.defaultValue;
+				requiredList=current.u_rfc_change_type_version_required.split(',');
+				if(requiredList.indexOf(values.propertyName)>=0){
+					rfcFormGR.u_rfcs_form_ismandatory=true;
+				}else{
+					rfcFormGR.u_rfcs_form_ismandatory=false;
+				}
+				rfcFormGR.u_rfcs_form_parameter_type = values.type;
+				snowfield=getSnowFieldType(values.type,values.num,values.propertyName);
+				rfcFormGR.u_rfcs_form_snow_fieldtype = snowfield;
+				rfcFormGR.insert();
+			}
+		}
+		function getSnowFieldType(type,num,paramName){
+			var snowType;
+			switch(type){
+				case "array":
+				if(paramName.includes("Subnet")){
+					snowType= "Reference";
+				}
+				else{
+					snowType= "List";
+				}
+				break;
+				case "boolean":snowType = "True/False";
+				break;
+				case "integer":snowType = "Integer";
+				break;
+				case "number": snowType = "Integer";
+				break;
+				case "string":
+				if(num!=undefined){
+					snowType = "Choice";
+				}
+				else if(paramName=='StackId'||paramName=='VpcId'||paramName=='AmiId'){
+					snowType= "Reference";
+				}
+				else{
+					snowType = "String";
+				}
+				break;
+				default: snowType = type;
+			}
+			return snowType;
+		}
+		]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>madhav</sys_created_by>
+        <sys_created_on>2017-05-09 09:28:12</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>835ae93edbea3200ef73d8c0cf961946</sys_id>
+        <sys_mod_count>46</sys_mod_count>
+        <sys_name>AMS POC Insert Into RFC_Form</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+        <sys_update_name>sys_script_835ae93edbea3200ef73d8c0cf961946</sys_update_name>
+        <sys_updated_by>madhav</sys_updated_by>
+        <sys_updated_on>2017-05-29 12:56:13</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=835ae93edbea3200ef73d8c0cf961946"/>
+</record_update>
