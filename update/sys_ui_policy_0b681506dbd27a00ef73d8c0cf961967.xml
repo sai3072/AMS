@@ -32,7 +32,7 @@ g_form.setSectionDisplay('start_time',true);
         <sys_class_name>sys_ui_policy</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-04-24 13:58:08</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>0b681506dbd27a00ef73d8c0cf961967</sys_id>

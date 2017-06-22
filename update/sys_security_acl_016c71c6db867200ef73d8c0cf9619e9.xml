@@ -12,7 +12,7 @@
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-12 06:19:35</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>016c71c6db867200ef73d8c0cf9619e9</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_109369_ams_case</sys_name>

@@ -4,7 +4,7 @@
         <sys_class_name>sys_security_acl_role</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-04-11 21:49:44</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>e4b7444edb827200ef73d8c0cf961937</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_109369_ams_import_set_case_severity_levels.x_109369_ams.import_set_case_severity_levels_user</sys_name>

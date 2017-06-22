@@ -7,7 +7,7 @@
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-04-14 10:03:57</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>94e285b6db02f200ef73d8c0cf96198a</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>u_case_cc_emails</sys_name>

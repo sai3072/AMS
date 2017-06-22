@@ -82,7 +82,7 @@
         <sys_class_name>sys_report</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-04-12 08:05:28</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>f7941a02db0a7200ef73d8c0cf9619c2</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_name>Active incidents</sys_name>

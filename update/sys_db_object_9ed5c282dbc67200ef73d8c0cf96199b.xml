@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-12 07:01:26</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>9ed5c282dbc67200ef73d8c0cf96199b</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Import Set Incidents</sys_name>

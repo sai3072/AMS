@@ -53,7 +53,7 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-04-11 21:02:59</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>b4ec7f31db827200ef73d8c0cf961913</sys_id>
+        <sys_id>a8191489db6b320067b1d190cf96190a</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Region</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -61,8 +61,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_dictionary_x_109369_ams_regions_u_region</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-05-30 09:08:28</sys_updated_on>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2017-06-22 10:07:20</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

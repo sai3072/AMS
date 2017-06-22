@@ -29,7 +29,7 @@ while(grSubcategory.next())
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-04-12 13:27:02</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>da3edbc2dbca7200ef73d8c0cf96190a</sys_id>
         <sys_mod_count>6</sys_mod_count>
         <sys_name>Managed Services ListChangeTypeItems</sys_name>

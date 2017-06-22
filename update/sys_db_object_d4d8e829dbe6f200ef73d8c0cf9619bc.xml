@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-05-05 07:32:08</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>d4d8e829dbe6f200ef73d8c0cf9619bc</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Import Set Rfc Items</sys_name>

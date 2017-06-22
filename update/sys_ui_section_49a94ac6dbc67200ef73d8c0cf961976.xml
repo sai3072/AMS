@@ -5,13 +5,27 @@
             <element>u_stack_description</element>
             <position>0</position>
             <sys_created_by>sahitya</sys_created_by>
-            <sys_created_on>2017-04-12 07:17:29</sys_created_on>
-            <sys_id>4da94ac6dbc67200ef73d8c0cf961989</sys_id>
+            <sys_created_on>2017-06-22 11:09:48</sys_created_on>
+            <sys_id>d8b76845dbab320067b1d190cf961908</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Description of Stack" display_value="Description of Stack" name="x_109369_ams_stacks" sys_domain="global" view="Default view">49a94ac6dbc67200ef73d8c0cf961976</sys_ui_section>
             <sys_updated_by>sahitya</sys_updated_by>
-            <sys_updated_on>2017-04-12 07:17:29</sys_updated_on>
+            <sys_updated_on>2017-06-22 11:09:48</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_stack_tags</element>
+            <position>1</position>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-22 11:09:48</sys_created_on>
+            <sys_id>5cb76845dbab320067b1d190cf961908</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Description of Stack" display_value="Description of Stack" name="x_109369_ams_stacks" sys_domain="global" view="Default view">49a94ac6dbc67200ef73d8c0cf961976</sys_ui_section>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 11:09:48</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -23,11 +37,11 @@
             <sys_class_name>sys_ui_section</sys_class_name>
             <sys_created_by>sahitya</sys_created_by>
             <sys_created_on>2017-04-12 07:17:29</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>49a94ac6dbc67200ef73d8c0cf961976</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>1</sys_mod_count>
             <sys_name>Description of Stack</sys_name>
             <sys_overrides/>
             <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -36,7 +50,7 @@
             <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
             <sys_update_name>sys_ui_section_49a94ac6dbc67200ef73d8c0cf961976</sys_update_name>
             <sys_updated_by>sahitya</sys_updated_by>
-            <sys_updated_on>2017-04-12 07:17:29</sys_updated_on>
+            <sys_updated_on>2017-06-22 11:09:48</sys_updated_on>
             <sys_user/>
             <title>false</title>
             <view display_value="Default view" name="NULL">Default view</view>

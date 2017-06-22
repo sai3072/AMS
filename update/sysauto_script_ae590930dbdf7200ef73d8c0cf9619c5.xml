@@ -34,7 +34,7 @@ while(grCaseId.next())
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-06-09 08:42:40</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>ae590930dbdf7200ef73d8c0cf9619c5</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>AMS_DescribeCommunications</sys_name>

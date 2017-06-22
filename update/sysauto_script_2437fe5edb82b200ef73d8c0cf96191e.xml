@@ -42,7 +42,7 @@ else
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-13 05:16:09</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>2437fe5edb82b200ef73d8c0cf96191e</sys_id>
         <sys_mod_count>17</sys_mod_count>
         <sys_name>AMS_FetchCasesAndCommunications</sys_name>

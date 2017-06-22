@@ -498,7 +498,7 @@ var body = {}; // initialize the request body
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-05-17 09:25:05</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>2776329ddbfab200ef73d8c0cf9619eb</sys_id>
         <sys_mod_count>45</sys_mod_count>
         <sys_name>AMS_RfcFetch</sys_name>

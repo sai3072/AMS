@@ -18,7 +18,7 @@
         <sys_update_name>sys_index_x_109369_ams_rfc_classification_u_rfc_classication_catsubcatitemoper</sys_update_name>
         <sys_updated_by>sahitya</sys_updated_by>
         <sys_updated_on>2017-05-05 11:22:16</sys_updated_on>
-        <table display_value="RFC Classification" name="x_109369_ams_rfc_classification">62a71961db2af200ef73d8c0cf96191c</table>
+        <table/>
         <unique_index>false</unique_index>
     </sys_index>
 </record_update>

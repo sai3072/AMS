@@ -12,7 +12,7 @@
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-05-05 12:51:49</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>32b2fd21dbaaf200ef73d8c0cf961977</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_109369_ams_import_set_change_type_version</sys_name>

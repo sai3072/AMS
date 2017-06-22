@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-04-11 21:02:23</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>fdccb3fddb427200ef73d8c0cf961992</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Regions</sys_name>

@@ -12,7 +12,7 @@
         <sys_class_name>sys_user_role</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-04-20 07:39:47</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>297b1f64db1ab600ef73d8c0cf96196c</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_109369_ams.rfc_change_type_approval_condition_user</sys_name>

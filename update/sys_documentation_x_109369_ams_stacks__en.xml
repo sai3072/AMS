@@ -12,7 +12,7 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>Tej</sys_created_by>
             <sys_created_on>2017-04-11 21:09:07</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_id>a16e73b1db827200ef73d8c0cf9619a8</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Stacks</sys_name>

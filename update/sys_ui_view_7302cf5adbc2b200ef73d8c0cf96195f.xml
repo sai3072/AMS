@@ -8,7 +8,7 @@
         <sys_class_name>sys_ui_view</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-04-13 06:02:28</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>7302cf5adbc2b200ef73d8c0cf96195f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Report an incident</sys_name>

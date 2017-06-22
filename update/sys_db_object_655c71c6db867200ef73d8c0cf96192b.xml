@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-12 06:19:35</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>655c71c6db867200ef73d8c0cf96192b</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_name>Case</sys_name>

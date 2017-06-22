@@ -18,7 +18,7 @@ m.focus());else{var u=a(":focus");u.click(),u.focus(),c.preventDefault(),a(docum
         <sys_class_name>sys_ui_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-06-01 20:23:35</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>92ecded6db0ff200ef73d8c0cf96194b</sys_id>
         <sys_mod_count>3</sys_mod_count>
         <sys_name>x_109369_ams.bootstrap-select.min.js</sys_name>

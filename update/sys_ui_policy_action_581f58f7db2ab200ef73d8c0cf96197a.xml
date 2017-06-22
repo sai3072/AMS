@@ -7,7 +7,7 @@
         <sys_class_name>sys_ui_policy_action</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-05-12 06:33:02</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>581f58f7db2ab200ef73d8c0cf96197a</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>u_rfc_operation_description</sys_name>

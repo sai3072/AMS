@@ -33,7 +33,7 @@ while(grSubcategory.next())
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-05-05 07:50:44</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>68dd60e9dbe6f200ef73d8c0cf96194b</sys_id>
         <sys_mod_count>18</sys_mod_count>
         <sys_name>AMS_ListChangeTypeItems</sys_name>

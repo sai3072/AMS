@@ -2,7 +2,7 @@
 <record_update table="sys_index">
     <sys_index action="INSERT_OR_UPDATE">
         <col_name_string>u_vpc_id</col_name_string>
-        <index_col_name element="u_vpc_id" name="x_109369_ams_vpcs">2b297dc2db867200ef73d8c0cf9619ef</index_col_name>
+        <index_col_name>2b297dc2db867200ef73d8c0cf9619ef</index_col_name>
         <logical_table_name>x_109369_ams_vpcs</logical_table_name>
         <sys_class_name>sys_index</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
@@ -18,7 +18,7 @@
         <sys_update_name>sys_index_x_109369_ams_vpcs_u_vpc_id</sys_update_name>
         <sys_updated_by>saikrishna</sys_updated_by>
         <sys_updated_on>2017-04-12 07:17:42</sys_updated_on>
-        <table display_value="VPCs" name="x_109369_ams_vpcs">966fb7f1db827200ef73d8c0cf9619dc</table>
+        <table/>
         <unique_index>false</unique_index>
     </sys_index>
 </record_update>

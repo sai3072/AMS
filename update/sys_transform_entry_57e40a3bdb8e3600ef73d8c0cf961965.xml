@@ -19,7 +19,7 @@
         <sys_class_name>sys_transform_entry</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-04-17 17:26:26</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>57e40a3bdb8e3600ef73d8c0cf961965</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>sys_import_state</sys_name>

@@ -20,7 +20,7 @@
         <sys_class_name>sys_metadata_link</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-18 07:22:24</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>a744494cdbd27600ef73d8c0cf961913</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Priority 2</sys_name>

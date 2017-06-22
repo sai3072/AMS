@@ -4,7 +4,7 @@
         <sys_class_name>sys_security_acl_role</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-05-05 07:01:56</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>2da2a825dbe6f200ef73d8c0cf9619da</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_109369_ams_rfc_categories.x_109369_ams.rfc_categories_user</sys_name>

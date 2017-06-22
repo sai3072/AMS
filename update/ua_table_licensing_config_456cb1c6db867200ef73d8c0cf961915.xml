@@ -13,7 +13,7 @@
         <sys_class_name>ua_table_licensing_config</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-12 06:19:36</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>456cb1c6db867200ef73d8c0cf961915</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_109369_ams_case</sys_name>

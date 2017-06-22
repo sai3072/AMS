@@ -257,7 +257,7 @@
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-05-09 09:28:12</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>835ae93edbea3200ef73d8c0cf961946</sys_id>

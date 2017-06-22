@@ -211,6 +211,34 @@
             <sys_user/>
             <type/>
         </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfc_last_modified_date</element>
+            <position>15</position>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-22 11:58:44</sys_created_on>
+            <sys_id>5de2bc4ddbab320067b1d190cf96198c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_import_set_rfcs" sys_domain="global" view="Default view">bc59745edb8e7200ef73d8c0cf9619fe</sys_ui_section>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 11:58:44</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfc_requested_start</element>
+            <position>16</position>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-22 11:58:45</sys_created_on>
+            <sys_id>91e2b48ddbab320067b1d190cf9619a8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_import_set_rfcs" sys_domain="global" view="Default view">bc59745edb8e7200ef73d8c0cf9619fe</sys_ui_section>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 11:58:45</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption/>
             <header>false</header>
@@ -219,11 +247,11 @@
             <sys_class_name>sys_ui_section</sys_class_name>
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2017-04-12 20:05:04</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>bc59745edb8e7200ef73d8c0cf9619fe</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>2</sys_mod_count>
             <sys_name>x_109369_ams_import_set_rfcs</sys_name>
             <sys_overrides/>
             <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -231,8 +259,8 @@
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
             <sys_update_name>sys_ui_section_bc59745edb8e7200ef73d8c0cf9619fe</sys_update_name>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-04-12 20:05:04</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 11:58:45</sys_updated_on>
             <sys_user/>
             <title>true</title>
             <view display_value="Default view" name="NULL">Default view</view>

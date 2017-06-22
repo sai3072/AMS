@@ -26,7 +26,7 @@ while(grOperation.next())
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-05-05 12:01:28</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>9137a929db6af200ef73d8c0cf961959</sys_id>
         <sys_mod_count>22</sys_mod_count>
         <sys_name>AMS_ListChangeTypeoperations</sys_name>

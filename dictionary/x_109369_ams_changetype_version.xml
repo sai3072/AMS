@@ -11,7 +11,7 @@
         <element label="Deprecation Time" max_length="40" name="u_rfc_change_type_version_deprecationtime" type="glide_date_time"/>
         <element label="Description" max_length="500" name="u_rfc_change_type_version_description" type="string"/>
         <element label="Execution Input Schema" max_length="5000" name="u_rfc_change_type_version_executioninputschema" type="string"/>
-        <element label="Expected Execution Duration In Minutes&#9;" max_length="40" name="u_rfc_change_type_version_expectedexecutiondurationinminutes" type="integer"/>
+        <element label="Expected Execution Duration In Minutes" max_length="40" name="u_rfc_change_type_version_expectedexecutiondurationinminutes" type="integer"/>
         <element label="Parameters" max_length="5000" name="u_rfc_change_type_version_parameters" type="string"/>
         <element label="Required" max_length="400" name="u_rfc_change_type_version_required" type="string"/>
         <element label="Version" max_length="40" name="u_rfc_change_type_version_version" type="string"/>

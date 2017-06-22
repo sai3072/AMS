@@ -56,7 +56,7 @@ var amsListRfcCorrespondenceApi = new AMSRfcFetch();
         <sys_class_name>sys_metadata_link</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-05-19 10:01:24</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>cff199c2db323600ef73d8c0cf961951</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Managed Services ListRfcCorrespondences</sys_name>

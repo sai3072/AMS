@@ -78,7 +78,7 @@ if(isCategory)
         <sys_class_name>sys_metadata_link</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-05-19 10:01:23</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>baf199c2db323600ef73d8c0cf961923</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Managed Services Rfc Operations Masterscript</sys_name>

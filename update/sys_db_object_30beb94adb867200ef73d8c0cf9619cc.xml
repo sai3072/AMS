@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-12 06:29:57</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>30beb94adb867200ef73d8c0cf9619cc</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_name>Service Requests</sys_name>

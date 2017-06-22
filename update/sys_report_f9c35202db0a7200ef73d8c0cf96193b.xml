@@ -82,7 +82,7 @@
         <sys_class_name>sys_report</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-04-12 08:01:46</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>f9c35202db0a7200ef73d8c0cf96193b</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_name>Active Stacks</sys_name>

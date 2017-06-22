@@ -160,7 +160,7 @@ else
         <sys_class_name>sys_metadata_link</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-18 07:23:01</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>24748940db167600ef73d8c0cf96197b</sys_id>
         <sys_mod_count>4</sys_mod_count>
         <sys_name>AMS_MasterScript</sys_name>

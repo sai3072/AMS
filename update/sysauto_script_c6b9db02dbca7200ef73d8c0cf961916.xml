@@ -28,7 +28,7 @@ if(!isStackInserted)
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-12 13:07:44</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>c6b9db02dbca7200ef73d8c0cf961916</sys_id>
         <sys_mod_count>16</sys_mod_count>
         <sys_name>AMS_ListStackSummaries</sys_name>

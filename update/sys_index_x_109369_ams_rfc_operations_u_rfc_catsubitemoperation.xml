@@ -2,7 +2,7 @@
 <record_update table="sys_index">
     <sys_index action="INSERT_OR_UPDATE">
         <col_name_string>u_rfc_catsubitemoperation</col_name_string>
-        <index_col_name element="u_rfc_catsubitemoperation" name="x_109369_ams_rfc_operations">4e0dddeddb2af200ef73d8c0cf961955</index_col_name>
+        <index_col_name>4e0dddeddb2af200ef73d8c0cf961955</index_col_name>
         <logical_table_name>x_109369_ams_rfc_operations</logical_table_name>
         <sys_class_name>sys_index</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
@@ -18,7 +18,7 @@
         <sys_update_name>sys_index_x_109369_ams_rfc_operations_u_rfc_catsubitemoperation</sys_update_name>
         <sys_updated_by>saikrishna</sys_updated_by>
         <sys_updated_on>2017-05-05 12:34:49</sys_updated_on>
-        <table display_value="Rfc Operations" name="x_109369_ams_rfc_operations">6aab3461db2af200ef73d8c0cf961934</table>
+        <table/>
         <unique_index>false</unique_index>
     </sys_index>
 </record_update>

@@ -21,7 +21,7 @@
         <sys_class_name>sys_db_object</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-05-05 11:02:31</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>62a71961db2af200ef73d8c0cf96191c</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>RFC Classification</sys_name>

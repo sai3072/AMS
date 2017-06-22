@@ -28,7 +28,7 @@ if(!isRfcsInserted)
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-12 13:21:57</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>953c9782dbca7200ef73d8c0cf9619ed</sys_id>
         <sys_mod_count>18</sys_mod_count>
         <sys_name>AMS_RfcSummaries</sys_name>

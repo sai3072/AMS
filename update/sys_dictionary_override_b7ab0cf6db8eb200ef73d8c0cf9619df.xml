@@ -28,7 +28,7 @@ Any additional details to help solve the incident:</default_value>
         <sys_class_name>sys_dictionary_override</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-14 06:02:48</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>b7ab0cf6db8eb200ef73d8c0cf9619df</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>u_case_details</sys_name>

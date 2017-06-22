@@ -12,7 +12,7 @@
         <sys_class_name>sys_user_role</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-05-05 07:20:06</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>67c6e8a5dbe6f200ef73d8c0cf9619cd</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_109369_ams.import_set_rfc_subcategories_user</sys_name>

@@ -17,7 +17,7 @@ else
         <sys_class_name>sys_security_acl</sys_class_name>
         <sys_created_by>Tej</sys_created_by>
         <sys_created_on>2017-04-11 22:11:03</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>349c4842dbc27200ef73d8c0cf96195d</sys_id>
         <sys_mod_count>3</sys_mod_count>
         <sys_name>x_109369_ams_rfcs</sys_name>

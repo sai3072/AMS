@@ -79,7 +79,7 @@ if(isCategory)
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-04-20 12:40:42</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>601918fcdb9ab600ef73d8c0cf96199f</sys_id>
         <sys_mod_count>23</sys_mod_count>
         <sys_name>AMS_RfcCatSubcatItemsOperMasterscript</sys_name>

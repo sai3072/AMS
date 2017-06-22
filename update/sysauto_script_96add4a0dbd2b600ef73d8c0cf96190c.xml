@@ -97,7 +97,7 @@ else
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-04-19 17:50:49</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>96add4a0dbd2b600ef73d8c0cf96190c</sys_id>
         <sys_mod_count>14</sys_mod_count>
         <sys_name>AMS_ ActionsMasterScript</sys_name>

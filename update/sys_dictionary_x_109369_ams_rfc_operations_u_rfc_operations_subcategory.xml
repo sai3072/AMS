@@ -53,7 +53,7 @@
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-05-05 10:50:40</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>12fb7461db2af200ef73d8c0cf961999</sys_id>
+        <sys_id>ddf85c49db6b320067b1d190cf9619f5</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Subcategory</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -61,8 +61,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_dictionary_x_109369_ams_rfc_operations_u_rfc_operations_subcategory</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-05-30 09:56:58</sys_updated_on>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2017-06-22 10:07:31</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

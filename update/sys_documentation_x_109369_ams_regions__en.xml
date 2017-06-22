@@ -12,7 +12,7 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2017-04-11 21:02:24</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_id>4fdc3b31db827200ef73d8c0cf9619a2</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Regions</sys_name>

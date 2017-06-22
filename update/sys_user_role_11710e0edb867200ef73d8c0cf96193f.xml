@@ -12,7 +12,7 @@
         <sys_class_name>sys_user_role</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-04-12 06:41:44</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>11710e0edb867200ef73d8c0cf96193f</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_109369_ams.import_set_rfc_change_type_items_user</sys_name>

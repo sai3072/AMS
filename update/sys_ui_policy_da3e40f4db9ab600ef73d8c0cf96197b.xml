@@ -31,7 +31,7 @@ g_form.setSectionDisplay('start_time',true);
         <sys_class_name>sys_ui_policy</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-04-20 11:21:33</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>da3e40f4db9ab600ef73d8c0cf96197b</sys_id>

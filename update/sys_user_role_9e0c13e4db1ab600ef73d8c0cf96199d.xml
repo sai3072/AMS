@@ -12,7 +12,7 @@
         <sys_class_name>sys_user_role</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-20 07:42:17</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>9e0c13e4db1ab600ef73d8c0cf96199d</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_109369_ams.rfc_change_type_classification_user</sys_name>

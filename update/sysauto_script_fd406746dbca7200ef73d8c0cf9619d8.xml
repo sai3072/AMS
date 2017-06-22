@@ -34,7 +34,7 @@ while(grSubnetId.next())
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-04-12 13:36:01</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>fd406746dbca7200ef73d8c0cf9619d8</sys_id>
         <sys_mod_count>13</sys_mod_count>
         <sys_name>AMS_GetSubnets</sys_name>

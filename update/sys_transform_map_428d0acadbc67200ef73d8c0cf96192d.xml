@@ -26,7 +26,7 @@
         <sys_class_name>sys_transform_map</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-04-12 07:35:00</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>428d0acadbc67200ef73d8c0cf96192d</sys_id>
         <sys_mod_count>13</sys_mod_count>
         <sys_name>AMS _AMIsTransformMap</sys_name>

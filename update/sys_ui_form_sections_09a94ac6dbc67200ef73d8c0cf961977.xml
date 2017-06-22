@@ -35,7 +35,7 @@
             <sys_class_name>sys_ui_form</sys_class_name>
             <sys_created_by>sahitya</sys_created_by>
             <sys_created_on>2017-04-12 07:17:29</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>09a94ac6dbc67200ef73d8c0cf961977</sys_id>

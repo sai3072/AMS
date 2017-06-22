@@ -71,7 +71,7 @@ AMS_GetResources.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-05-19 07:16:20</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>884be802dbfef200ef73d8c0cf9619ca</sys_id>
         <sys_mod_count>21</sys_mod_count>
         <sys_name>AMS_GetResources</sys_name>

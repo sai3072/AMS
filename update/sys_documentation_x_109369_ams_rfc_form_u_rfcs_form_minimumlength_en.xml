@@ -12,7 +12,7 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>madhav</sys_created_by>
             <sys_created_on>2017-05-31 10:49:22</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_id>6600133ddbcbb200ef73d8c0cf961994</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Minimum length</sys_name>

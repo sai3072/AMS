@@ -137,7 +137,7 @@ else
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-04-12 14:16:18</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>84892bcadbca7200ef73d8c0cf96192e</sys_id>
         <sys_mod_count>15</sys_mod_count>
         <sys_name>AMS_MasterScript</sys_name>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="u_case_category" table="x_109369_ams_incidents" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_case_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Access Issues</label>
+            <language>en</language>
+            <name>x_109369_ams_incidents</name>
+            <sequence>1</sequence>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-22 11:28:21</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>928ba409dbab320067b1d190cf96199d</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 11:29:02</sys_updated_on>
+            <value>access-issues</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_case_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Availability</label>
+            <language>en</language>
+            <name>x_109369_ams_incidents</name>
+            <sequence>2</sequence>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-22 11:29:29</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>631c2c09dbab320067b1d190cf961975</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 11:29:36</sys_updated_on>
+            <value>availability</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_case_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Performance Issue</label>
+            <language>en</language>
+            <name>x_109369_ams_incidents</name>
+            <sequence>3</sequence>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-22 11:30:00</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1c5c6c09dbab320067b1d190cf9619e7</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 11:31:10</sys_updated_on>
+            <value>performance-issue</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_case_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Security Related</label>
+            <language>en</language>
+            <name>x_109369_ams_incidents</name>
+            <sequence>4</sequence>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-22 11:30:16</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d86cac09dbab320067b1d190cf961938</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 11:30:26</sys_updated_on>
+            <value>security-related</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>u_case_category</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Other</label>
+            <language>en</language>
+            <name>x_109369_ams_incidents</name>
+            <sequence>5</sequence>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-22 11:30:53</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>498c2049dbab320067b1d190cf9619f6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 11:30:53</sys_updated_on>
+            <value>other</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>u_case_category</element>
+            <name>x_109369_ams_incidents</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-22 11:30:00</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>985c6c09dbab320067b1d190cf9619e9</sys_id>
+            <sys_mod_count>5</sys_mod_count>
+            <sys_name>u_case_category</sys_name>
+            <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
+            <sys_update_name>sys_choice_x_109369_ams_incidents_u_case_category</sys_update_name>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 11:31:10</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

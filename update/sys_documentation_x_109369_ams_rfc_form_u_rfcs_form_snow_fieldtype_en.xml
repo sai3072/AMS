@@ -12,7 +12,7 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>saikrishna</sys_created_by>
             <sys_created_on>2017-05-15 06:53:57</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_id>8ab048b8dbb67200ef73d8c0cf96192c</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Servicenow Field Type</sys_name>

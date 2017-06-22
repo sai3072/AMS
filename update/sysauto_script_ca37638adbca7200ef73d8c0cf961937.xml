@@ -24,7 +24,7 @@ if(!isInserted)
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-04-12 14:10:41</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>ca37638adbca7200ef73d8c0cf961937</sys_id>
         <sys_mod_count>3</sys_mod_count>
         <sys_name>Managed Services Change type Categories</sys_name>

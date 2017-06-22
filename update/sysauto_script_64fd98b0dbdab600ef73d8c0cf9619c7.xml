@@ -31,7 +31,7 @@ while(grOperations.next())
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-04-20 12:36:02</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>64fd98b0dbdab600ef73d8c0cf9619c7</sys_id>
         <sys_mod_count>6</sys_mod_count>
         <sys_name>Managed Services GetChangeTypeVersions</sys_name>

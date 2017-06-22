@@ -4,7 +4,7 @@
         <sys_class_name>sys_security_acl_role</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-04-20 07:44:44</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>129c5fe4db1ab600ef73d8c0cf96194d</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_109369_ams_rfc_change_type_automation_status.x_109369_ams.rfc_change_type_automation_status_user</sys_name>

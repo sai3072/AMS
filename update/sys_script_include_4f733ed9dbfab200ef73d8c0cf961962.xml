@@ -343,7 +343,7 @@ var body = {};
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-05-17 09:11:57</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>4f733ed9dbfab200ef73d8c0cf961962</sys_id>
         <sys_mod_count>23</sys_mod_count>
         <sys_name>AMS_CaseFetch</sys_name>

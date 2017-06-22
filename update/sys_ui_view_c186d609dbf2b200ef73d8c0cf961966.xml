@@ -8,7 +8,7 @@
         <sys_class_name>sys_ui_view</sys_class_name>
         <sys_created_by>Dasthi</sys_created_by>
         <sys_created_on>2017-05-16 12:26:54</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>c186d609dbf2b200ef73d8c0cf961966</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Server_overview</sys_name>

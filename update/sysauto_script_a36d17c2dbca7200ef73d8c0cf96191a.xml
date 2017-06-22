@@ -34,7 +34,7 @@ gs.info("AMIS insertion is completed");]]></script>
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-04-12 13:26:33</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>a36d17c2dbca7200ef73d8c0cf96191a</sys_id>
         <sys_mod_count>20</sys_mod_count>
         <sys_name>AMS_List AMIs</sys_name>

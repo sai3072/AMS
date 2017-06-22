@@ -12,7 +12,7 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>Venu</sys_created_by>
             <sys_created_on>2017-04-12 17:23:13</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_id>ca441cd2db4e7200ef73d8c0cf9619f5</sys_id>
             <sys_mod_count>1</sys_mod_count>
             <sys_name>Type</sys_name>

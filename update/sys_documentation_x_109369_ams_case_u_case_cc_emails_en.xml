@@ -12,7 +12,7 @@
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>priyanka</sys_created_by>
             <sys_created_on>2017-04-12 06:20:40</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_id>7cac75c6db867200ef73d8c0cf961951</sys_id>
             <sys_mod_count>5</sys_mod_count>
             <sys_name>CC Emails</sys_name>

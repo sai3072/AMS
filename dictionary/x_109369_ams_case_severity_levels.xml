@@ -6,5 +6,8 @@
         <index name="index">
             <element name="u_case_severity_levels_code"/>
         </index>
+        <index name="index2">
+            <element name="u_case_severity_levels_code"/>
+        </index>
     </element>
 </database>

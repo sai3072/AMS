@@ -21,7 +21,7 @@
             <sys_class_name>sys_ui_form</sys_class_name>
             <sys_created_by>admin</sys_created_by>
             <sys_created_on>2017-04-21 04:42:27</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>357cff78db52f600ef73d8c0cf961933</sys_id>

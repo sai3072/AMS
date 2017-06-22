@@ -50,7 +50,7 @@ AMS_GetRFCFormFields.prototype =  Object.extendsObject(global.AbstractAjaxProces
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-05-15 12:03:55</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>2e41cdf0db7a7200ef73d8c0cf96194b</sys_id>
         <sys_mod_count>22</sys_mod_count>
         <sys_name>AMS_GetRFCFormFields</sys_name>

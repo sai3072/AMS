@@ -2,7 +2,8 @@
 <record_update sys_domain="global" table="sys_ui_policy">
     <sys_ui_policy action="INSERT_OR_UPDATE">
         <active>true</active>
-        <conditions table="x_109369_ams_rfcs">u_rfcs_aws_create_status=failed^EQ<item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        <conditions table="x_109369_ams_rfcs">u_rfcs_aws_create_status=failed^EQ<item endquery="false" field="u_rfcs_aws_create_status" goto="false" newquery="false" operator="=" or="false" value="failed"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </conditions>
         <description/>
         <global>true</global>
@@ -24,7 +25,7 @@
         <sys_class_name>sys_ui_policy</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-05-31 14:58:50</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>dfd8440edb4fb200ef73d8c0cf96199b</sys_id>

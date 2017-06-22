@@ -12,7 +12,7 @@
         <sys_class_name>sys_user_role</sys_class_name>
         <sys_created_by>Venu</sys_created_by>
         <sys_created_on>2017-04-11 22:05:59</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>566b8002dbc27200ef73d8c0cf961943</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_109369_ams.accounts_user</sys_name>
