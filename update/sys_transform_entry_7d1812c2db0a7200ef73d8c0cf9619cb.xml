@@ -6,7 +6,7 @@
         <coalesce_case_sensitive>false</coalesce_case_sensitive>
         <coalesce_empty_fields>false</coalesce_empty_fields>
         <date_format>yyyy-MM-dd HH:mm:ss</date_format>
-        <map display_value="AMS Service Requests Transform Map">81e7d2c2db0a7200ef73d8c0cf9619c2</map>
+        <map display_value="AMS_ServiceRequestsTransformMap">81e7d2c2db0a7200ef73d8c0cf9619c2</map>
         <reference_value_field/>
         <source_field>u_case_category</source_field>
         <source_script><![CDATA[answer = (function transformEntry(source) {

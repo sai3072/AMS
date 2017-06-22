@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<database>
-    <element label="Rfc Change Type Subcategories" max_length="40" name="x_109369_ams_rfc_change_type_subcategories" type="collection">
-        <element label="Category" max_length="40" name="u_rfc_change_type_subcategories_category" reference="x_109369_ams_rfc_change_type_categories" type="reference"/>
-        <element display="true" label="Subcategory" max_length="40" name="u_rfc_change_type_subcategories_subcategory" type="string"/>
-    </element>
-</database>

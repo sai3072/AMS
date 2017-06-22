@@ -4,68 +4,92 @@
         <active>true</active>
         <condition/>
         <conditional>false</conditional>
-        <name>Managed Services Rfc Operations Masterscript</name>
+        <name>AMS_RfcCatSubcatItemsOperMasterscript</name>
         <run_as display_value="">3fadecc3db213200ef73d8c0cf9619e6</run_as>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
         <run_dayofweek>1</run_dayofweek>
-        <run_period/>
+        <run_period>1970-01-01 00:05:00</run_period>
         <run_start>2017-04-20 12:08:57</run_start>
-        <run_time>1970-01-01 08:00:00</run_time>
+        <run_time>1970-01-01 08:05:00</run_time>
         <run_type>on_demand</run_type>
-        <script><![CDATA[//Call AMSRfcFetch script
-var amsChangeTypeCategories = new AMSRfcFetch();
+        <script><![CDATA[//Call AMS_RfcFetch script
+var amsChangeTypeCategories = new AMS_RfcFetch();
+
 //Call ListChangetypeCategories API
 var isCategory = amsChangeTypeCategories.getRfcListChangeTypeCategoriesAndInsert();
+
 if(isCategory)
 	{
-	//Call AMSRfcFetch script
-	var amsGetSubCategoryApi = new AMSRfcFetch();
-	//Fetch VpcId from VPC table
-	var grCategory = new GlideRecord('x_109369_ams_rfc_change_type_categories');
+	//Call AMS_RfcFetch script
+	var amsGetSubCategoryApi = new AMS_RfcFetch();
+	
+	//Fetch Category from Category table
+	var grCategory = new GlideRecord('x_109369_ams_rfc_categories');
 	grCategory.query();
 	while(grCategory.next())
 		{
 		//Call getRfcListChangeTypeSubcategoriesAndInsert API
-		isCategory = amsGetSubCategoryApi.getRfcListChangeTypeSubcategoriesAndInsert(grCategory.u_rfc_change_type_categories_category.toString());
+		isCategory = amsGetSubCategoryApi.getRfcListChangeTypeSubcategoriesAndInsert(grCategory.u_rfc_categories_category.toString());
+	}
+	if(!isCategory)
+		{
+		// No categories Found
+		if ('true' == gs.getProperty('debug.AMSRestCalls'))
+			gs.info("Debug >>>AMS getRfcListChangeTypeSubcategoriesAndInsert : Subcategories were not inserted");
+	}
+	if(isCategory)
+		{
+		//Call AMS_RfcFetch script
+		var amsGetItemApi = new AMS_RfcFetch();
+		
+		//Fetch subcategory from changetypesubcategory table
+		var grSubCategory = new GlideRecord('x_109369_ams_rfc_subcategories');
+		grSubCategory.query();
+		while(grSubCategory.next()){
+			isCategory=amsGetItemApi.getRfcListChangeTypeItemsAndInsert(grSubCategory.u_rfc_subcategories_category.getDisplayValue(),grSubCategory.u_rfc_subcategories_subcategory.toString());
 		}
-		if(isCategory){
-			//Call AMSRfcFetch script
-	var amsGetItemApi = new AMSRfcFetch();
-	//Fetch subcategory from changetypesubcategory table
-	var grSubCategory = new GlideRecord('x_109369_ams_rfc_change_type_subcategories');
-	grSubCategory.query();
-			while(grSubCategory.next()){
-				isCategory=amsGetItemApi.getRfcListChangeTypeItemsAndInsert(grSubCategory.u_rfc_change_type_subcategories_category.getDisplayValue(),grSubCategory.u_rfc_change_type_subcategories_subcategory.toString());
+	}
+	if(!isCategory)
+		{
+		// No Subcategories Found
+		if ('true' == gs.getProperty('debug.AMSRestCalls'))
+			gs.info("Debug >>>AMS getRfcListChangeTypeItemsAndInsert : Items were not inserted");
+	}
+	if(isCategory)
+		{
+		//Call AMS_RfcFetch script
+		var amsGetOperationApi = new AMS_RfcFetch();
+		
+		//Fetch items from  items table
+		var grItem = new GlideRecord('x_109369_ams_rfc_items');
+		grItem.query();
+		while(grItem.next()){
+			var isOperationsInserted = amsGetOperationApi.getRfcListChangeTypeOperationsAndInsert(grItem.u_rfc_items_category.getDisplayValue(),grItem.u_rfc_items_item.toString(),grItem.u_rfc_items_subcategory.getDisplayValue());
+			if(!isOperationsInserted)
+				{
+				// No Subcategories Found
+				if ('true' == gs.getProperty('debug.AMSRestCalls'))
+					gs.info("Debug >>>AMS getRfcListChangeTypeOperationsAndInsert : Operations were not inserted");
 			}
-		}
-			if(isCategory){
-			//Call AMSRfcFetch script
-	var amsGetOperationApi = new AMSRfcFetch();
-	//Fetch items from changetype item table
-	var grItem = new GlideRecord('x_109369_ams_rfc_change_type_items');
-	grItem.query();
-			while(grItem.next()){
-				amsGetOperationApi.getRfcListChangeTypeOperationsAndInsert(grItem.u_rfc_change_type_items_category.getDisplayValue(),grItem.u_rfc_change_type_items_item.toString(),grItem.u_rfc_change_type_items_subcategory.getDisplayValue());
-			
 			
 		}
 	}
-	}]]></script>
+}]]></script>
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-04-20 12:40:42</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>601918fcdb9ab600ef73d8c0cf96199f</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_name>Managed Services Rfc Operations Masterscript</sys_name>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_name>AMS_RfcCatSubcatItemsOperMasterscript</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sysauto_script_601918fcdb9ab600ef73d8c0cf96199f</sys_update_name>
-        <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-05-17 09:59:54</sys_updated_on>
+        <sys_updated_by>madhav</sys_updated_by>
+        <sys_updated_on>2017-06-09 08:43:14</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>

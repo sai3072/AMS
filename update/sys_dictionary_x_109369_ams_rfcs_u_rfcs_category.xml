@@ -39,7 +39,7 @@
         <primary>false</primary>
         <read_only>false</read_only>
         <read_roles/>
-        <reference display_value="" name="x_109369_ams_rfc_change_type_classification">x_109369_ams_rfc_change_type_classification</reference>
+        <reference display_value="">x_109369_ams_rfc_change_type_classification</reference>
         <reference_cascade_rule/>
         <reference_floats>false</reference_floats>
         <reference_key/>

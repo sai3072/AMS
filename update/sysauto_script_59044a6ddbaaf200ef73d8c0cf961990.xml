@@ -4,27 +4,32 @@
         <active>true</active>
         <condition/>
         <conditional>false</conditional>
-        <name>AMS RFC POC Managed Services GetChangeTypeVersions</name>
+        <name>AMS_GetChangeTypeVersions</name>
         <run_as display_value="">c68d2407db213200ef73d8c0cf96195b</run_as>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
         <run_dayofweek>1</run_dayofweek>
-        <run_period/>
+        <run_period>1970-01-01 00:05:00</run_period>
         <run_start>2017-04-20 12:30:15</run_start>
         <run_time>1970-01-01 08:05:00</run_time>
         <run_type>on_demand</run_type>
-        <script><![CDATA[var grOperations = new GlideRecord('x_109369_ams_rfc_operations');
+        <script><![CDATA[//Fetch operations from operations table
+var grOperations = new GlideRecord('x_109369_ams_rfc_operations');
 grOperations.query();
 while(grOperations.next())
 {
-	var amsGetChangeTypeVersions= new RfcPOC();
+	//Call AMS_RfcFetch Script
+	var amsGetChangeTypeVersions= new AMS_RfcFetch ();
+	
 	// Call getCommunicationsAndInsert API
 	var rfc_operations_changetypeid = grOperations.u_rfc_operations_changetypeid.toString();
 	var amsGetChangeTypeVersionsInsert;
+	//Exception Handling while getting records
 	try {
-		gs.info('Managed Services GetChangeTypeVersions Fetching for RfcId >>>>' + rfc_operations_changetypeid);
 		amsGetChangeTypeVersionsInsert = amsGetChangeTypeVersions.getChangeTypeVersionAndInsert(rfc_operations_changetypeid);
-	} catch (err){
+	} 
+	catch (err)
+	{
 		gs.error('Managed Services GetChangeTypeVersions ERROR >>>>' + err);
 	}
 }]]></script>
@@ -33,15 +38,15 @@ while(grOperations.next())
         <sys_created_on>2017-05-05 14:07:22</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>59044a6ddbaaf200ef73d8c0cf961990</sys_id>
-        <sys_mod_count>1</sys_mod_count>
-        <sys_name>AMS RFC POC Managed Services GetChangeTypeVersions</sys_name>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>AMS_GetChangeTypeVersions</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sysauto_script_59044a6ddbaaf200ef73d8c0cf961990</sys_update_name>
-        <sys_updated_by>saikrishna</sys_updated_by>
-        <sys_updated_on>2017-05-19 08:01:18</sys_updated_on>
+        <sys_updated_by>madhav</sys_updated_by>
+        <sys_updated_on>2017-06-09 08:43:14</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>

@@ -21,7 +21,7 @@
         </filter_condition>
         <is_rest>false</is_rest>
         <message/>
-        <name>Managed Services Check Active Records</name>
+        <name>AMS_CheckActiveRecords</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -31,14 +31,19 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-  var gr=new GlideRecord('x_109369_ams_credentials');
+	
+	//check whether there are more than 2 active credentials
+	var gr = new GlideRecord('x_109369_ams_credentials');
 	gr.addQuery('u_credentials_active',true);
 	gr.query();
-	if(gr.getRowCount()>=2)
+	
+	if(gr.getRowCount() >= 2)
 		{
+		//print the error message if more than 2
 		gs.addErrorMessage('There should be only two active credentials');
-			current.setAbortAction(true);
-		}
+		current.setAbortAction(true);
+	}
+	
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
@@ -47,8 +52,8 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>cfe6d282db0a7200ef73d8c0cf961916</sys_id>
-        <sys_mod_count>7</sys_mod_count>
-        <sys_name>Managed Services Check Active Records</sys_name>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>AMS_CheckActiveRecords</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
@@ -56,7 +61,7 @@
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_cfe6d282db0a7200ef73d8c0cf961916</sys_update_name>
         <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-04-14 11:54:11</sys_updated_on>
+        <sys_updated_on>2017-06-02 06:15:01</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>

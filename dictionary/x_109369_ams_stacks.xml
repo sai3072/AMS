@@ -9,6 +9,7 @@
                 <element label="CreateCompleted" sequence="0" value="CreateCompleted"/>
                 <element label="DeleteCompleted" sequence="0" value="DeleteCompleted"/>
                 <element label="RollbackCompleted" sequence="0" value="RollbackCompleted"/>
+                <element label="UpdateCompleted" sequence="0" value="UpdateCompleted"/>
             </choice>
         </element>
         <element label="Template ID" max_length="40" name="u_stack_template_id" read_only="true" type="string"/>

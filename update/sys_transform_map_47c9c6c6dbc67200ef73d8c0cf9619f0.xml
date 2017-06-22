@@ -4,29 +4,35 @@
         <active>true</active>
         <copy_empty_fields>false</copy_empty_fields>
         <enforce_mandatory_fields>No</enforce_mandatory_fields>
-        <name>AMS Subnets Transform Map</name>
+        <name>AMS_SubnetsTransformMap</name>
         <order>100</order>
         <run_business_rules>true</run_business_rules>
         <run_script>true</run_script>
         <script><![CDATA[(function transformRow(source, target, map, log, isUpdate) {
-
+	//Formating Date and Time
 	if(source.u_subnet_created!=''){
-var date = source.u_subnet_created.split('T')[0];
-var formattedDate = date.substring(0,4)+"-"+ date.substring(4,6)+"-"+date.substring(6,8);
-// format time	of response
-var time=source.u_subnet_created.split('T')[1];
-var formattedtime = time.substring(0,2)+":"+time.substring(2,4)+":"+time.substring(4,6);
-var formattedDateTime=formattedDate+" "+formattedtime;
-target.u_subnet_created_date=formattedDateTime;// return the value to be put into the target field
+		//Get Date value
+		var date = source.u_subnet_created.split('T')[0];
+		// format time	of response
+		var formattedDate = date.substring(0,4)+"-"+ date.substring(4,6)+"-"+date.substring(6,8);
+		//Get Time value
+		var time=source.u_subnet_created.split('T')[1];
+		// format time	of response
+		var formattedtime = time.substring(0,2)+":"+time.substring(2,4)+":"+time.substring(4,6);
+		var formattedDateTime=formattedDate+" "+formattedtime;
+		// return the value to be put into the target field
+		target.u_subnet_created_date=formattedDateTime;
 	}
 	if(source.u_subnet_modified!=''){
-var modifiedDate = source.u_subnet_modified.split('T')[0];
-var formatDate = modifiedDate.substring(0,4)+"-"+ modifiedDate.substring(4,6)+"-"+modifiedDate.substring(6,8);
-// format time	of response
-var modifiedtime=source.u_subnet_modified.split('T')[1];
-var formattime = modifiedtime.substring(0,2)+":"+modifiedtime.substring(2,4)+":"+modifiedtime.substring(4,6);
-var formatDateTime=formatDate+" "+formattime;
-target.u_subnet_modified_date=formatDateTime;// return the value to be put into the target field
+		//Get Date value
+		var modifiedDate = source.u_subnet_modified.split('T')[0];
+		var formatDate = modifiedDate.substring(0,4)+"-"+ modifiedDate.substring(4,6)+"-"+modifiedDate.substring(6,8);
+		//Get Time value
+		var modifiedtime=source.u_subnet_modified.split('T')[1];
+		// format time	of response
+		var formattime = modifiedtime.substring(0,2)+":"+modifiedtime.substring(2,4)+":"+modifiedtime.substring(4,6);
+		var formatDateTime=formatDate+" "+formattime;
+		target.u_subnet_modified_date=formatDateTime;// return the value to be put into the target field
 	}
 	
 })(source, target, map, log, action==="update");]]></script>
@@ -36,15 +42,15 @@ target.u_subnet_modified_date=formatDateTime;// return the value to be put into 
         <sys_created_on>2017-04-12 07:19:12</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>47c9c6c6dbc67200ef73d8c0cf9619f0</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>AMS Subnets Transform Map</sys_name>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>AMS_SubnetsTransformMap</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_transform_map_47c9c6c6dbc67200ef73d8c0cf9619f0</sys_update_name>
-        <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-04-12 13:20:31</sys_updated_on>
+        <sys_updated_by>saikrishna</sys_updated_by>
+        <sys_updated_on>2017-06-01 14:06:07</sys_updated_on>
         <target_table>x_109369_ams_subnets</target_table>
     </sys_transform_map>
 </record_update>

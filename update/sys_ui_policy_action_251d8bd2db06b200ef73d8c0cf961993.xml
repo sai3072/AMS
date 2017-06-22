@@ -19,7 +19,7 @@
         <sys_updated_by>priyanka</sys_updated_by>
         <sys_updated_on>2017-04-14 06:03:35</sys_updated_on>
         <table>x_109369_ams_service_requests</table>
-        <ui_policy display_value="AMS show fields on category ">a2dc47d2db06b200ef73d8c0cf961917</ui_policy>
+        <ui_policy display_value="AMS_ShowFieldsOnCategory ">a2dc47d2db06b200ef73d8c0cf961917</ui_policy>
         <visible>true</visible>
     </sys_ui_policy_action>
 </record_update>

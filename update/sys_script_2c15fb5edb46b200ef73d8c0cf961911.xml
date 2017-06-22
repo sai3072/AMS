@@ -19,7 +19,7 @@
         <filter_condition/>
         <is_rest>false</is_rest>
         <message/>
-        <name>AMS CreateCase for incident</name>
+        <name>AMS_CreateCaseforIncident</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -29,24 +29,31 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	
 	var ccemails;
-	var createtest=new AMSCaseFetch();//Get AMS resource object
-	if(current.u_case_cc_emails=='')	//Check empty value for cc_emails
-		 ccemails='';
+	//Get AMS resource object
+	var createtest = new AMS_CaseFetch();
+	//Check empty value for cc_emails
+	if(current.u_case_cc_emails == '')
+		ccemails = '';
 	else
-		 ccemails=[current.u_case_cc_emails.toString()];
-	//API call to create case 
-	var caseId=createtest.createCaseAndInsert(current.u_case_category.toString(),ccemails,current.u_case_details.toString(),current.u_case_type.toString(),current.u_case_service_code.toString(),current.u_incidents_priority.u_incident_priority_code.toString(),current.u_case_subject.toString());
-	current.u_case_id=caseId;
-	if(caseId!=false){
-	gs.addInfoMessage('Incident successfully created');
+		ccemails = [current.u_case_cc_emails.toString()];
+	//API call to create case
+	var caseId = createtest.createCaseAndInsert(current.u_case_category.toString(), ccemails, current.u_case_details.toString(), current.u_case_type.toString(), current.u_case_service_code.toString(), current.u_incidents_priority.u_incident_priority_code.toString(), current.u_case_subject.toString());
+	
+	current.u_case_id = caseId;
+	//check whether api is failed or success
+	if(caseId != false){
+		gs.addInfoMessage('Incident successfully created');
 		current.update();
 	}
 	else
 		{
+			//if creation failed abort the action
 		gs.addInfoMessage('Incident creation failed');
-	current.setAbortAction(true);
-		}
+		current.setAbortAction(true);
+	}
+	
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
@@ -55,16 +62,16 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>2c15fb5edb46b200ef73d8c0cf961911</sys_id>
-        <sys_mod_count>53</sys_mod_count>
-        <sys_name>AMS CreateCase for incident</sys_name>
+        <sys_mod_count>59</sys_mod_count>
+        <sys_name>AMS_CreateCaseforIncident</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_2c15fb5edb46b200ef73d8c0cf961911</sys_update_name>
-        <sys_updated_by>saikrishna</sys_updated_by>
-        <sys_updated_on>2017-05-17 09:29:44</sys_updated_on>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-06-05 11:03:31</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

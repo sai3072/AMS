@@ -21,7 +21,7 @@
 gs.addInfoMessage("ui ");
 }]]></script_true>
         <set_values/>
-        <short_description>on reply check</short_description>
+        <short_description>AMS_ShowFieldsOnReplyCheck</short_description>
         <sys_class_name>sys_ui_policy</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-14 06:55:58</sys_created_on>
@@ -29,16 +29,16 @@ gs.addInfoMessage("ui ");
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>bfc7dcbedb8eb200ef73d8c0cf9619ee</sys_id>
-        <sys_mod_count>9</sys_mod_count>
-        <sys_name>on reply check</sys_name>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>AMS_ShowFieldsOnReplyCheck</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_ui_policy_bfc7dcbedb8eb200ef73d8c0cf9619ee</sys_update_name>
-        <sys_updated_by>madhav</sys_updated_by>
-        <sys_updated_on>2017-04-17 12:25:23</sys_updated_on>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-06-02 08:46:01</sys_updated_on>
         <table>x_109369_ams_case</table>
         <ui_type>0</ui_type>
         <view/>

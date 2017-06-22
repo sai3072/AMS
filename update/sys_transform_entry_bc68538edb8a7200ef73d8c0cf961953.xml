@@ -6,7 +6,7 @@
         <coalesce_case_sensitive>false</coalesce_case_sensitive>
         <coalesce_empty_fields>false</coalesce_empty_fields>
         <date_format>yyyy-MM-dd HH:mm:ss</date_format>
-        <map display_value="AMS RFC Transform Map">47385f4edb8a7200ef73d8c0cf961914</map>
+        <map display_value="AMS_RFCTransformMap">47385f4edb8a7200ef73d8c0cf961914</map>
         <reference_value_field/>
         <source_field>u_rfc_correspondence</source_field>
         <source_script><![CDATA[answer = (function transformEntry(source) {

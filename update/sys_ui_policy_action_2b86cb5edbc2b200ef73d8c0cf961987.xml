@@ -19,7 +19,7 @@
         <sys_updated_by>madhav</sys_updated_by>
         <sys_updated_on>2017-04-13 06:57:46</sys_updated_on>
         <table>x_109369_ams_incidents</table>
-        <ui_policy display_value="AMS show other fields on category">5385cb1edbc2b200ef73d8c0cf9619c0</ui_policy>
+        <ui_policy display_value="AMS_ShowOtherFieldsOnCategory">5385cb1edbc2b200ef73d8c0cf9619c0</ui_policy>
         <visible>true</visible>
     </sys_ui_policy_action>
 </record_update>

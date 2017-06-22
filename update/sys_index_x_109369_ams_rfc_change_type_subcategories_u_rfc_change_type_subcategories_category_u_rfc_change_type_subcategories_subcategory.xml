@@ -18,7 +18,7 @@
         <sys_update_name>sys_index_x_109369_ams_rfc_change_type_subcategories_u_rfc_change_type_subcategories_category_u_rfc_change_type_subcategories_subcategory</sys_update_name>
         <sys_updated_by>saikrishna</sys_updated_by>
         <sys_updated_on>2017-04-12 07:15:06</sys_updated_on>
-        <table display_value="Rfc Change Type Subcategories" name="x_109369_ams_rfc_change_type_subcategories">c6bbf186db867200ef73d8c0cf96192a</table>
+        <table/>
         <unique_index>false</unique_index>
     </sys_index>
 </record_update>

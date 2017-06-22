@@ -3,10 +3,10 @@
     <sys_script_include action="INSERT_OR_UPDATE">
         <access>package_private</access>
         <active>true</active>
-        <api_name>x_109369_ams.AMSSignatureUtil</api_name>
+        <api_name>x_109369_ams.AMS_SignatureUtil</api_name>
         <client_callable>false</client_callable>
-        <description/>
-        <name>AMSSignatureUtil</name>
+        <description>Generates Signature and appropriate parameters  for rest call to establish connection.</description>
+        <name>AMS_SignatureUtil</name>
         <script><![CDATA[/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -53,16 +53,16 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var AMSSignatureUtil = __webpack_require__(1);
+	/* WEBPACK VAR INJECTION */(function(global) {var AMS_SignatureUtil = __webpack_require__(1);
 
-	global.AMSSignatureUtil = AMSSignatureUtil;
+	global.AMS_SignatureUtil = AMS_SignatureUtil;
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer, process) {var AMSSignatureUtil = exports,
+	/* WEBPACK VAR INJECTION */(function(Buffer, process) {var AMS_SignatureUtil = exports,
 	    url = __webpack_require__(7),
 	    querystring = __webpack_require__(14),
 	    crypto = __webpack_require__(17),
@@ -380,9 +380,9 @@
 	  return path + '?' + encodeRfc3986(querystring.stringify(query))
 	}
 
-	AMSSignatureUtil.RequestSigner = RequestSigner
+	AMS_SignatureUtil.RequestSigner = RequestSigner
 
-	AMSSignatureUtil.sign = function(request, credentials) {
+	AMS_SignatureUtil.sign = function(request, credentials) {
 	  return new RequestSigner(request, credentials).sign()
 	}
 
@@ -10426,14 +10426,14 @@
         <sys_created_on>2017-04-12 06:51:04</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>829342cedb867200ef73d8c0cf961990</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>AMSSignatureUtil</sys_name>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>AMS_SignatureUtil</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_include_829342cedb867200ef73d8c0cf961990</sys_update_name>
-        <sys_updated_by>saikrishna</sys_updated_by>
-        <sys_updated_on>2017-04-12 06:51:04</sys_updated_on>
+        <sys_updated_by>madhav</sys_updated_by>
+        <sys_updated_on>2017-06-01 07:20:38</sys_updated_on>
     </sys_script_include>
 </record_update>

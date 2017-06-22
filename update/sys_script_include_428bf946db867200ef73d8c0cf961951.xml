@@ -3,838 +3,357 @@
     <sys_script_include action="INSERT_OR_UPDATE">
         <access>package_private</access>
         <active>true</active>
-        <api_name>x_109369_ams.AMSResourceFetch</api_name>
+        <api_name>x_109369_ams.AMS_ResourceFetch</api_name>
         <client_callable>true</client_callable>
-        <description/>
-        <name>AMSResourceFetch</name>
+        <description>Calling Apis To get resources such as Vpcs, Stacks, Subnets ,Amis</description>
+        <name>AMS_ResourceFetch</name>
         <script><![CDATA[var nextToken = "";
-var body = {};// initialize the request body
+// initialize the request body
+var body = {};
 var maxResults = parseInt(gs.getProperty('x_109369_ams.Ams.NextToken.MaxResults'));
-var logger = gs.getProperty('x_109369_ams.debug.AMSRestCalls');// get the property value of AMSRestCalls(Boolean Value)
+// get the property value of AMSRestCalls(Boolean Value)
+var logger = gs.getProperty('x_109369_ams.debug.AMSRestCalls');
 var totalResults = 0;
-var AMSResourceFetch = Class.create();
-AMSResourceFetch.prototype = {
+var AMS_ResourceFetch = Class.create();
+AMS_ResourceFetch.prototype = {
 	initialize : function() 
 	{
-		this.amsUtil = new AMSApiUtil(); // create object for AMSApiUtil initialize corresponding import set table name
+		// create object for AMSApiUtil initialize corresponding import set table name
+		this.amsUtil = new AMS_ApiUtil(); 
 		this.vpcImportSetTable = 'x_109369_ams_import_set_vpcs';
 		this.stackImportSetTable = 'x_109369_ams_import_set_stacks';
 		this.subnetImportSetTable = 'x_109369_ams_import_set_subnets';
 		this.amiImportSetTable = 'x_109369_ams_import_set_amis';
-		this.rfcImportSetTable = 'x_109369_ams_import_set_rfcs';
-		this.caseImportSetTable='x_109369_ams_import_set_cases';
-		this.incidentImportSetTable = 'x_109369_ams_import_set_incidents';
-		this.serviceRequestImportSetTable = 'x_109369_ams_import_set_service_requests';
-		this.changeTypeCategories = 'x_109369_ams_import_set_rfc_change_type_categories';
-		this.changeTypeSubcategories = 'x_109369_ams_import_set_rfc_change_type_subcategories';
-		this.changeTypeItems = 'x_109369_ams_import_set_rfc_change_type_items';
-		this.changeTypeOperations = 'x_109369_ams_import_set_rfc_change_type_operations';
-		this.severityLevels = 'x_109369_ams_import_set_case_severity_levels';
-		this.changeTypeVersion='x_109369_ams_import_set_rfc_change_type_version';
-		this.changeTypeClassifications='x_109369_ams_import_set_rfc_change_type_classification';
 		// intialize the service type
 		this.supportService = 'support';
 		this.changeService = 'amscm';
 		this.provisioningService = 'amsskms';
-		this.totalCorrespondence = '';// intialize Correspondence
+		// intialize Correspondence
+		this.totalCorrespondence = '';
 	},
+	
 	// function to get List of VPCs
 	getListOfVPCSummariesAndInsert : function(nextToken) 
 	{
 		body = {MaxResults : maxResults,NextToken : nextToken};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'ListVpcSummaries', body);// raise a request
+		// raise a request
+		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'ListVpcSummaries', body);
 		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('VpcSummaries') > -1){ // Check for VpcSummaries in Response body
+		
+		// Check for VpcSummaries in Response body
+		if (jsonBody.indexOf('VpcSummaries') > -1)
+		{ 
 			var vpcGR = new GlideRecord(this.vpcImportSetTable);
 			// For loop to insert records
 			for (var i = 0; i < parsedResponseBody.VpcSummaries.length; i++) 
 			{
 				var record = parsedResponseBody.VpcSummaries[i];
 				vpcGR.initialize();
-				vpcGR.u_vpc_id = record.VpcId; // VPC ID
-				vpcGR.u_vpc_name = record.Name; // VPC Name
-				vpcGR.u_vpc_description = record.Description; // VPC Description
-				vpcGR.u_vpc_region = record.Region; // VPC Region
-				vpcGR.u_vpc_visibility = record.Visibility.Id; // VPC Visibility
-				vpcGR.u_vpc_created_date = record.CreatedTime; // Created Time
-				vpcGR.u_vpc_modified_date = record.LastModifiedTime;// Modified Time
-				vpcGR.u_vpc_amazon_request_id = parsedResponseBody.requestId["x-amzn-Requestid"]; // Ams generated Request Id
+				// VPC ID
+				vpcGR.u_vpc_id = record.VpcId;
+				// VPC Name
+				vpcGR.u_vpc_name = record.Name; 
+				// VPC Description
+				vpcGR.u_vpc_description = record.Description; 
+				// VPC Region
+				vpcGR.u_vpc_region = record.Region; 
+				// VPC Visibility
+				vpcGR.u_vpc_visibility = record.Visibility.Id; 
+				// Created Time
+				vpcGR.u_vpc_created_date = record.CreatedTime; 
+				// Modified Time
+				vpcGR.u_vpc_modified_date = record.LastModifiedTime;
+				// Ams generated Request Id
+				vpcGR.u_vpc_amazon_request_id = parsedResponseBody.requestId["x-amzn-Requestid"]; 
 				vpcGR.insert();
 			}
 			nextToken = parsedResponseBody.NextToken;
-			if (undefined !== nextToken){// check for nexttoken in respose 
-				this.getListOfVPCSummariesAndInsert(nextToken);// call the api with next token
+			
+			// check for nexttoken in respose 
+			if (undefined !== nextToken)
+			{
+				// call the api with next token
+				this.getListOfVPCSummariesAndInsert(nextToken);
 			}
+			
 			return true;
-		} 
+		}
+		
 		else return false;
 	},
+	
 	// function to get List of Stacks
 	getListOfStackSummariesAndInsert : function(nextToken) 
 	{
 		body = {MaxResults : maxResults,NextToken : nextToken};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'ListStackSummaries', body);// raise a request
+		// raise a request
+		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'ListStackSummaries', body);
 		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('StackSummaries') > -1){ // Check for StackSummaries in Response body
-			var stackGR = new GlideRecord(this.stackImportSetTable); // Import Set extended Stack table
+		
+		// Check for StackSummaries in Response body
+		if (jsonBody.indexOf('StackSummaries') > -1)
+		{ 
+			// Import Set extended Stack table
+			var stackGR = new GlideRecord(this.stackImportSetTable); 
 			// For loop to insert records to staging table from response
 			for (var i = 0; i < parsedResponseBody.StackSummaries.length; i++) 
 			{
 				var record = parsedResponseBody.StackSummaries[i];
 				stackGR.initialize();
-				stackGR.u_stack_name = record.Name; // Stack Name
-				stackGR.u_stack_description = record.Description;// Stack Description
-				stackGR.u_stack_id = record.StackId; // Stack ID
-				stackGR.u_stack_template_id = record.StackTemplateId; // Stack template ID
-				stackGR.u_vpc_id = record.VpcId; // Assigining the VPC id
-				stackGR.u_stack_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; // Ams generated RequestId
+				// Stack Name
+				stackGR.u_stack_name = record.Name; 
+				// Stack Description
+				stackGR.u_stack_description = record.Description;
+				// Stack ID
+				stackGR.u_stack_id = record.StackId; 
+				// Stack template ID
+				stackGR.u_stack_template_id = record.StackTemplateId; 
+				// Assigining the VPC id
+				stackGR.u_vpc_id = record.VpcId; 
+				// Ams generated RequestId
+				stackGR.u_stack_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; 
 				stackGR.insert();
 			}
 			nextToken = parsedResponseBody.NextToken;
-			if (undefined !== nextToken){ // check for nexttoken in respose
-				this.getListOfStackSummariesAndInsert(nextToken);// call the api with next token
+			
+			// check for nexttoken in respose
+			if (undefined !== nextToken)
+			{ 
+				// call the api with next token
+				this.getListOfStackSummariesAndInsert(nextToken);
 			}
+			
 			return true;
 		} 
+		
 		else return false;
 	},
+	
 	// function to get List of Subnets
 	getListOfSubnetSummariesAndInsert : function(nextToken) 
 	{
 		body = {MaxResults : maxResults,NextToken : nextToken};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'ListSubnetSummaries', body);// raise a request
+		// raise a request
+		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'ListSubnetSummaries', body);
+		
 		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('SubnetSummaries') > -1){ // Check for SubnetSummaries in Response body
-			var subnetGR = new GlideRecord(this.subnetImportSetTable);// Import Set extended Subnet table
+		
+		// Check for SubnetSummaries in Response body
+		if (jsonBody.indexOf('SubnetSummaries') > -1)
+		{ 
+			// Import Set extended Subnet table
+			var subnetGR = new GlideRecord(this.subnetImportSetTable);
+			
 			// For loop to insert records to staging table from response
-			for (var count = 0; count < parsedResponseBody.SubnetSummaries.length; count++) {
+			for (var count = 0; count < parsedResponseBody.SubnetSummaries.length; count++) 
+			{
 				var record = parsedResponseBody.SubnetSummaries[count];
 				subnetGR.initialize();
-				subnetGR.u_subnet_name = record.Name; // Subnet Name
-				subnetGR.u_subnet_description = record.Description; // Subnet Description
-				subnetGR.u_subnet_id = record.SubnetId; // Subnet ID
-				subnetGR.u_subnet_visibility = record.Visibility.Id; // Subnet Visibility
-				subnetGR.u_vpc_id = record.VpcId; // Assign the VPC Id of the subnet
-				subnetGR.u_subnet_created = record.CreatedTime;// creation time
-				subnetGR.u_subnet_modified = record.LastModifiedTime;// Modified time
-				subnetGR.u_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; // Ams generated Request Id
+				// Subnet Nam
+				subnetGR.u_subnet_name = record.Name; 
+				// Subnet Description
+				subnetGR.u_subnet_description = record.Description; 
+				// Subnet ID
+				subnetGR.u_subnet_id = record.SubnetId; 
+				// Subnet Visibility
+				subnetGR.u_subnet_visibility = record.Visibility.Id; 
+				// Assign the VPC Id of the subnet
+				subnetGR.u_vpc_id = record.VpcId; 
+				// creation time
+				subnetGR.u_subnet_created = record.CreatedTime;
+				// Modified time
+				subnetGR.u_subnet_modified = record.LastModifiedTime;
+				// Ams generated Request Id
+				subnetGR.u_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; 
 				subnetGR.insert();
 			}
+			
 			nextToken = parsedResponseBody.NextToken;
-			if (undefined !== nextToken) { // check for nexttoken in respose
-				this.getListOfSubnetSummariesAndInsert(nextToken);// call the api with next token
+			
+			// check for nexttoken in respose
+			if (undefined !== nextToken) 
+			{ 
+				// call the api with next token
+				this.getListOfSubnetSummariesAndInsert(nextToken);
 			}
+			
 			return true;
 		} 
+		
 		else return false;
 	},
+	
 	// function to get List of Amis
 	getListOfAMIsAndInsert : function(vpcId, nextToken) 
 	{
 		var record = "";
 		body = {MaxResults : maxResults,NextToken : nextToken,VpcId : vpcId};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'ListAmis', body);// raise a request
+		// raise a request
+		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'ListAmis', body);
 		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('Amis') > -1) {// Check for Amis in Response body
+		
+		// Check for Amis in Response body
+		if (jsonBody.indexOf('Amis') > -1) 
+		{
 			var amiGR = new GlideRecord(this.amiImportSetTable);
 			// For loop to insert records
-			for (var count = 0; count < parsedResponseBody.Amis.length; count++) {
+			for (var count = 0; count < parsedResponseBody.Amis.length; count++) 
+			{
 				record = parsedResponseBody.Amis[count];
 				amiGR.initialize();
-				amiGR.u_ami_name = record.Name; // AMI Name
-				amiGR.u_ami_description = record.Description; // AMI Description
-				amiGR.u_ami_id = record.AmiId; // AMI Id
-				amiGR.u_ami_created_date = record.CreationTime;// Created time
-				amiGR.u_ami_vpc_id=vpcId;
-				amiGR.u_ami_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; // Ams generated Request Id
+				// AMI Name
+				amiGR.u_ami_name = record.Name; 
+				// AMI Description
+				amiGR.u_ami_description = record.Description; 
+				// AMI Id
+				amiGR.u_ami_id = record.AmiId; 
+				// Created time
+				amiGR.u_ami_created_date = record.CreationTime;				
+				amiGR.u_ami_vpc_id = vpcId;
+				// Ams generated Request Id
+				amiGR.u_ami_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; 
 				amiGR.insert();
 			}
 			nextToken = record.NextToken;
-			if (undefined !== nextToken) { // check for nexttoken in respose
-				this.getListOfAMIsAndInsert(vpcId, nextToken);// call the api with next token
+			
+			// check for nexttoken in respose
+			if (undefined !== nextToken) 
+			{ 
+				// call the api with next token
+				this.getListOfAMIsAndInsert(vpcId, nextToken);
 			}
+			
 			return true;
 		} 
+		
 		else return false;
 	},
+	
 	// function to get VPC
 	getVPCAndInsert : function(vpcId) 
 	{
 		body = {VpcId : vpcId};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'GetVpc', body);// raise a request
+		// raise a request
+		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'GetVpc', body);
 		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('Vpc') > -1){ // Check for Vpc in Response body
+		
+		// Check for Vpc in Response body
+		if (jsonBody.indexOf('Vpc') > -1)
+		{ 
 			var vpcGR = new GlideRecord(this.vpcImportSetTable);
 			vpcGR.initialize();
-			vpcGR.u_vpc_name = parsedResponseBody.Vpc.Name; // VPC Name
-			vpcGR.u_vpc_id = parsedResponseBody.Vpc.VpcId; // VPC ID
-			vpcGR.u_vpc_description = parsedResponseBody.Vpc.Description; // VPC Description
-			vpcGR.u_vpc_region = parsedResponseBody.Vpc.Region; // VPC Region
-			vpcGR.u_vpc_visibility = parsedResponseBody.Vpc.Visibility.Id; // VPC Visibility
-			vpcGR.u_vpc_created_date = parsedResponseBody.Vpc.CreatedTime; // Created Time
-			vpcGR.u_vpc_modified_date = parsedResponseBody.Vpc.LastModifiedTime;// Modified Time
-			vpcGR.u_vpc_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; // Ams generated Request Id
+			// VPC Name
+			vpcGR.u_vpc_name = parsedResponseBody.Vpc.Name; 
+			// VPC ID
+			vpcGR.u_vpc_id = parsedResponseBody.Vpc.VpcId; 
+			// VPC Description
+			vpcGR.u_vpc_description = parsedResponseBody.Vpc.Description; 
+			// VPC Region
+			vpcGR.u_vpc_region = parsedResponseBody.Vpc.Region; 
+			// VPC Visibility
+			vpcGR.u_vpc_visibility = parsedResponseBody.Vpc.Visibility.Id;
+			// Created Time
+			vpcGR.u_vpc_created_date = parsedResponseBody.Vpc.CreatedTime; 
+			// Modified Time
+			vpcGR.u_vpc_modified_date = parsedResponseBody.Vpc.LastModifiedTime;
+			// Ams generated Request Id
+			vpcGR.u_vpc_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; 
 			vpcGR.insert();
 			return true;
-		} 
+		}
+		
 		else return false;
 	},
+	
 	// function to get Stack
 	getStackAndInsert : function(stackId) 
 	{
 		body = {StackId : stackId};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'GetStack', body);// raise a request
+		// raise a request
+		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'GetStack', body);
 		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('Stack') > -1) {// Check for Stack in Response body
-			var stackGR = new GlideRecord(this.stackImportSetTable);// Import Set extended stack table
+		
+		// Check for Stack in Response body
+		if (jsonBody.indexOf('Stack') > -1) 
+		{
+			// Import Set extended stack table
+			var stackGR = new GlideRecord(this.stackImportSetTable);
 			stackGR.initialize();
-			stackGR.u_stack_name = parsedResponseBody.Stack.Name; // Stack Name
-			stackGR.u_stack_id = parsedResponseBody.Stack.StackId; // Stack ID
-			stackGR.u_stack_description = parsedResponseBody.Stack.Description; // Stack Description
-			stackGR.u_vpc_id = parsedResponseBody.Stack.VpcId;// VPC ID
-			stackGR.u_stack_template_id = parsedResponseBody.Stack.StackTemplateId;// Stack Template ID
-			stackGR.u_stack_status = parsedResponseBody.Stack.Status.Id; // Stack status
-			stackGR.u_stack_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; // Ams generated RequestId
+			// Stack Name
+			stackGR.u_stack_name = parsedResponseBody.Stack.Name; 
+			// Stack ID
+			stackGR.u_stack_id = parsedResponseBody.Stack.StackId; 
+			// Stack Description
+			stackGR.u_stack_description = parsedResponseBody.Stack.Description; 
+			// VPC ID
+			stackGR.u_vpc_id = parsedResponseBody.Stack.VpcId;
+			// Stack Template ID
+			stackGR.u_stack_template_id = parsedResponseBody.Stack.StackTemplateId;
+			// Stack status
+			stackGR.u_stack_status = parsedResponseBody.Stack.Status.Id; 
+			// Ams generated RequestId
+			stackGR.u_stack_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; 
 			stackGR.insert();
 			return true;
-		} 
+		}
+		
 		else return false;
 	},
+	
 	// function to get Subnet
 	getSubnetAndInsert : function(subnetId) 
 	{
 		body = {SubnetId : subnetId};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'GetSubnet', body);// raise a request
+		// raise a request
+		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.provisioningService, 'GetSubnet', body);
 		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('Subnet') > -1){ // Check for Subnet in Response body
+		
+		// Check for Subnet in Response body
+		if (jsonBody.indexOf('Subnet') > -1)
+		{ 
 			var subnetGR = new GlideRecord(this.subnetImportSetTable);
 			var record = parsedResponseBody.Subnet;
 			subnetGR.initialize();
-			subnetGR.u_subnet_name = record.Name; // Subnet Name
-			subnetGR.u_subnet_description = record.Description; // Subnet Description
-			subnetGR.u_subnet_id = record.SubnetId; // Subnet ID
-			subnetGR.u_subnet_visibility = record.Visibility.Id; // Subnet Visibility
-			subnetGR.u_subnet_region = record.Region; // Subnet Region
-			subnetGR.u_vpc_id = record.VpcId; // Assigning Vpc
-			subnetGR.u_subnet_created = record.CreatedTime;// creation time
-			subnetGR.u_subnet_modified = record.LastModifiedTime;// Modified time
-			subnetGR.u_subnet_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; // Ams generated RequestId
+			// Subnet Name
+			subnetGR.u_subnet_name = record.Name; 
+			// Subnet Description
+			subnetGR.u_subnet_description = record.Description; 
+			// Subnet ID
+			subnetGR.u_subnet_id = record.SubnetId; 
+			// Subnet Visibility
+			subnetGR.u_subnet_visibility = record.Visibility.Id; 
+			// Subnet Region
+			subnetGR.u_subnet_region = record.Region; 
+			// Assigning Vpc
+			subnetGR.u_vpc_id = record.VpcId; 
+			// creation time
+			subnetGR.u_subnet_created = record.CreatedTime;
+			// Modified time
+			subnetGR.u_subnet_modified = record.LastModifiedTime;
+			// Ams generated RequestId
+			subnetGR.u_subnet_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; 
 			subnetGR.insert();
 			return true;
 		} 
+		
 		else return false;
 	},
-	// function to get List of Rfcs
-	getListOfRfcsAndInsert : function(nextToken) 
-	{
-		body = {MaxResults : 100,NextToken : nextToken};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'ListRfcSummaries', body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('RfcSummaries') > -1){ // Check for RfcSummaries in Response body
-			var rfcGR = new GlideRecord(this.rfcImportSetTable);
-			var record = "";
-			for (var count = 0; count < parsedResponseBody.RfcSummaries.length; count++) {
-				record = parsedResponseBody.RfcSummaries[count];
-				rfcGR.initialize();
-				rfcGR.u_rfc_subject = record.Title; // RFC Subject
-				rfcGR.u_rfc_id = record.RfcId; // RFC Id
-				rfcGR.u_rfc_status = record.Status.Id; // RFC Status
-				rfcGR.u_rfc_scheduled = record.CreatedTime;// RFC Created Time for List view
-				rfcGR.u_rfc_created_date = record.CreatedTime; //RFC Created Time for form view
-				rfcGR.u_rfc_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; // Ams generated RequestId
-				rfcGR.insert();
-			}
-			nextToken = parsedResponseBody.NextToken;
-			if (undefined !== nextToken) {// check for nexttoken in respose
-				this.getListOfRfcsAndInsert(nextToken); // call the api with next token
-			}
-			return true;
-		} 
-		else return false;
-	},
-	// function to get Rfc
-	getRfcAndInsert : function(rfcId) 
-	{
-		body = {RfcId : rfcId};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'GetRfc', body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('Rfc') > -1){ // Check for Rfc in Response body
-			var rfcGR = new GlideRecord(this.rfcImportSetTable);
-			var record = parsedResponseBody.Rfc;
-			rfcGR.initialize();
-			rfcGR.u_rfc_subject = record.Title; // RFC Subject
-			rfcGR.u_rfc_id = record.RfcId; // RFC Id
-			rfcGR.u_rfc_status = record.Status.Id; // RFC Status
-			rfcGR.u_rfc_scheduled = record.CreatedTime;// RFC Created Time for List view
-			rfcGR.u_rfc_created_date = record.CreatedTime; //RFC Created Time for form view
-			rfcGR.u_rfc_description = record.Description; // RFC Description
-			rfcGR.u_rfc_execution_parameters = record.ExecutionParameters; // RFC Execution Parameters
-			rfcGR.u_rfc_execution_output = record.ExecutionOutput; // RFC Execution output
-			rfcGR.u_rfc_aws_approval_status = record.ApprovalState.AwsApprovalStatus.Id; // RFC AWS Approval Status
-			rfcGR.u_rfc_customer_approval_status = record.ApprovalState.CustomerApprovalStatus.Id; // RFC CustomerapprovalStatus
-			rfcGR.u_rfc_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"]; // Ams generated RequestId
-			rfcGR.insert();
-			return true;
-		}
-		else return false;
-	},
-	// function to get Correspondence for Rfc
-	getCorrespondenceForRfcAndInsert : function(rfcId, nextToken) 
-	{
-		if (!rfcId){ 
-			if (logger)
-			gs.error('AMSResourceFetch >>>> getCorrespondence. rfcId is required');
-			return false;
-		}
-		body = {MaxResults : maxResults,NextToken : nextToken,RfcId : rfcId};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'ListRfcCorrespondences', body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('CorrespondenceEntries') > -1){ // Check forCorrespondenceEntries in Response body
-			var record = '';
-			for (var count = 0; count < parsedResponseBody.CorrespondenceEntries.length; count++){
-				record = parsedResponseBody.CorrespondenceEntries[count];
-				this.totalCorrespondence += record.CreatedTime+ "\t\t"+ record.CreatedBy+ "\n"+ record.Correspondence+ "\n\n"
-						+ "--------------------------------------------------------------------------------------------------------"+ "\n";// Formatted RFC Correspondence body
-			}
-			nextToken = parsedResponseBody.NextToken;
-			if (undefined != nextToken){ 
-				this.getCorrespondenceForRfcAndInsert(rfcId, nextToken); // call the api with next token
-			}
-			var rfcCorrespondenseGR = new GlideRecord(this.rfcImportSetTable);
-			rfcCorrespondenseGR.initialize();
-			rfcCorrespondenseGR.u_rfc_id = rfcId;// RFC Id
-			rfcCorrespondenseGR.u_rfc_correspondence = this.totalCorrespondence;
-			rfcCorrespondenseGR.u_rfc_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];// Ams generated Request Id
-			rfcCorrespondenseGR.insert();
-			return true;
-		}
-	},
-	// function to update Rfc description
-	// RFC should be in editing stage then only this api will work
-	updateDescription : function(description,rfcId) 
-	{
-		body = {"Description" : description,"RfcId" : rfcId};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'UpdateRfcDescription', body);
-		var jsonBody = JSON.stringify(parsedResponseBody);
-	},
-//function to update rfc title update
-	updateRfcTitle : function(title,rfcId) 
-	{
-		body = {"Title" : title,"RfcId" : rfcId};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'UpdateRfcTitle', body);
-		var jsonBody = JSON.stringify(parsedResponseBody);
-	},
-	//function to ListRestrictedExecutionTimes
-	getListRestrictedExecutionTimes : function() 
-	{
-		body = {"maxResults": maxResults, "nextToken": nextToken};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'ListRestrictedExecutionTimes', body);
-		//var jsonBody = JSON.stringify(parsedResponseBody);
-	},
-	updateRestrictedExecutionTimes :function(endTime,startTime)
-	{
-		body = {"RestrictedExecutionTimes": [ { "TimeRange": { "EndTime": endTime,"StartTime": startTime } } ] };
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'UpdateRestrictedExecutionTimes', body);
-		//var jsonBody = JSON.stringify(parsedResponseBody);
-	},
-	updateRfcExpectedOutcome : function(expectedOutcome,rfcId) 
-	{
-		body = { "ExpectedOutcome": expectedOutcome,"RfcId": rfcId};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'UpdateRfcExpectedOutcome', body);
-		var jsonBody = JSON.stringify(parsedResponseBody);
-	},
-	// function to cancel Rfc
-	cancelRfc : function(rfcid, reason) 
-	{
-		body = {RfcId : rfcid,Reason : reason};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'CancelRfc', body);
-		if(parsedResponseBody==''){
-			return true;
-		}else return false;
-	},
-	// function to submit Rfc
-	submitRfc : function(rfcid) 
-	{
-		body = {RfcId : rfcid};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'SubmitRfc', body);
-		var jsonBody = JSON.stringify(parsedResponseBody);
-	},
-	// function to create Rfc
-	createRfc : function(description, expectedOutcome, implementationPlan, requestedStartTime, requestedEndTime, rollbackPlan, title, worstCaseScenario, changeTypeId, changeTypeVersion, executionParameters) 
-	{
-		gs.info("**************"+changeTypeId+changeTypeVersion+title);
-		if (!changeTypeId || !changeTypeVersion || !title){ 
-			if (logger)
-			gs.error('AMSResourceFetch >>>> createRfc. changeTypeId ,changeTypeId, title is required');
-			gs.info(changeTypeId+changeTypeVersion+title);
-			return false;
-		}
-		if(!description)description ='';
-		if(!expectedOutcome)expectedOutcome ='';
-		if(!implementationPlan)implementationPlan ='';
-		if(!requestedStartTime)requestedStartTime ='';
-		if(!requestedEndTime)requestedEndTime ='';
-		if(!rollbackPlan)rollbackPlan ='';
-		if(!executionParameters)executionParameters ='';
-		body = {
-			Description : description,
-			ExpectedOutcome : expectedOutcome,
-			ImplementationPlan : implementationPlan,
-			RequestedStartTime : requestedStartTime,
-			RequestedEndTime : requestedEndTime,
-			RollbackPlan : rollbackPlan,
-			Title : title,
-			WorstCaseScenario : worstCaseScenario,
-			ChangeTypeId : changeTypeId,
-			ChangeTypeVersion : changeTypeVersion,
-			ExecutionParameters : executionParameters
-		};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'CreateRfc', body);
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('RfcId') > -1) {
-			return parsedResponseBody.RfcId;
-		}else return false;
-	},
-	// function to get Cases
-	getDescribeCasesAndInsert : function(afterTime, beforeTime, caseIdList, displayId, includeCommunications, includeResolvedCases, language, nextToken) 
-	{
-		var now = new Date();
-		var backThen = new Date();
-		var caseGR = '';
-		backThen.setFullYear(backThen.getFullYear() - 1);// set date to lastyear
-		// check for null parameters and assign a default value to it
-		if (!beforeTime)beforeTime = now;
-		if (!afterTime)afterTime = backThen;
-		if (!caseIdList)caseIdList = [];
-		if (!includeCommunications)includeCommunications = true;
-		if (!includeResolvedCases)includeResolvedCases = true;
-		if (!language)language = "en";
-		body = {// setup the body
-			"afterTime" : afterTime,
-			"beforeTime" : beforeTime,
-			"caseIdList" : caseIdList,
-			"includeCommunications" : includeCommunications,
-			"includeResolvedCases" : includeResolvedCases,
-			"language" : language
-		};
-		if(caseIdList.length==0){
-				body["maxResults"]=maxResults;
-				body["nextToken"]=nextToken;
-				body["displayId"]=displayId;
-			}
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.supportService, 'DescribeCases', body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('cases') > -1) { // Check for Cases in Response
-			var record = '';					
-			for (var count = 0; count < parsedResponseBody.cases.length; count++) 
-			{ // loop through the cases
-			record = parsedResponseBody.cases[count];
-			if(record.serviceCode=='sentinel-report-incident') caseGR = new GlideRecord(this.incidentImportSetTable);
-			else if(record.serviceCode=='sentinel-service-request') caseGR = new GlideRecord(this.serviceRequestImportSetTable);
-			else caseGR = new GlideRecord(this.caseImportSetTable);
-			caseGR.initialize();
-			caseGR.u_case_id = record.caseId; // Case Id
-			caseGR.u_case_category = record.categoryCode; // Case Category Code
-			caseGR.u_case_cc_emails = record.ccEmailAddresses.toString(); // Case email address
-			caseGR.u_case_type = record.serviceCode + ', '+ record.categoryCode;// Concatenate Case Service code and Case Category code
-			caseGR.u_case_status = record.status;// Case Status
-			caseGR.u_case_subject = record.subject;// Case Subject
-			caseGR.u_case_time_created = record.timeCreated;// Case time Created in form view 
-			caseGR.u_case_created_date=record.timeCreated;//Case time Created in List view
-			caseGR.u_case_priority=record.severityCode;
-			caseGR.u_case_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];// Ams generated RequestId
-			caseGR.insert();}
-			nextToken = parsedResponseBody.nextToken;
-			if (undefined !== nextToken) // check for nexttoken in respose
-			{
-				this.getDescribeCasesAndInsert(afterTime, beforeTime, caseIdList, displayId, includeCommunications, includeResolvedCases, language, nextToken);// call the current api with next token
-			}
-			return true;
-		} 
-		else return false;
-	},
-	// function to get Communication for a case
-	getCommunicationsAndInsert : function(caseId, nextToken) 
-	{
-		var now = new Date();
-		var backThen = new Date();
-		backThen.setFullYear(backThen.getFullYear() - 1);// set date to last year
-		if (!caseId) {
-			if (logger)
-				gs.error('AMSResourceFetch >>>> getCommunications. caseId is required');
-			return false;
-		}
-		body = {// setup body
-			"afterTime" : backThen,
-			"beforeTime" : now,
-			"caseId" : caseId,
-			"maxResults" : maxResults,
-			"nextToken" : nextToken
-		};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.supportService, 'DescribeCommunications', body);// raise the request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('communications') > -1){// Check for Communications in Response body
-			for (var count = 0; count < parsedResponseBody.communications.length; count++){
-				// loop through thecommunication
-				var record = parsedResponseBody.communications[count];
-				this.totalCorrespondence += record.timeCreated + "\t\t"+ record.submittedBy + "\n\n"+ record.body + "\n"
-						+ "-------------------------------------------------------------------------------------------------------------------------------------------------------------------"+ "\n";// Formatted correspondence body
-			}
-			nextToken = parsedResponseBody.nextToken;
-			if (undefined !== nextToken){// check for nexttoken in respose
-				this.getCommunicationsAndInsert(caseId, nextToken);// call the api withnext token
-			}
-			var caseGR = new GlideRecord(this.caseImportSetTable);
-			caseGR.initialize();
-			caseGR.u_case_id = caseId;// Case Id
-			caseGR.u_case_correspondence = this.totalCorrespondence;// all Correspondence of case id
-			caseGR.u_case_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];// Ams generated Request Id
-			caseGR.insert();
-			return true;
-		} 
-		else return false;
-	},
-	//function to get Severity levels of case
-	getSeverityLevelsAndInsert :function()
-	{
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.supportService, 'DescribeSeverityLevels', body);// raise arequest
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('severityLevels') > -1){ // Check for Rfc in Response body
-			for (var count = 0; count < parsedResponseBody.severityLevels.length; count++){
-				// loop severity levels
-				var caseSeverityGR = new GlideRecord(this.severityLevels);
-				caseSeverityGR.initialize();
-				caseSeverityGR.u_case_severity_name = parsedResponseBody.severityLevels[count].name;//Severity name
-				caseSeverityGR.u_case_severity_code=parsedResponseBody.severityLevels[count].code; //Severity code
-				caseSeverityGR.u_case_severity_level_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];// Ams generated Request Id
-				caseSeverityGR.insert();
-			}
-			return true;
-		} 
-		else return false;
-	},
-	// function to get ListChangeTypeCategories for RFC
-	getRfcListChangeTypeCategoriesAndInsert : function(nextToken) 
-	{
-		body = {
-			"maxResults" : maxResults,
-			"nextToken" : nextToken
-		};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'ListChangeTypeCategories', body);// raise arequest
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('ChangeTypeCategories') > -1){ // Check for Rfc in Response body
-			for (var count = 0; count < parsedResponseBody.ChangeTypeCategories.length; count++){
-				// loop throughthecategories
-				var rfcCategoryGR = new GlideRecord(this.changeTypeCategories);
-				rfcCategoryGR.initialize();
-				rfcCategoryGR.u_rfc_change_type_categories_category = parsedResponseBody.ChangeTypeCategories[count];// RFC Category
-				rfcCategoryGR.u_rfc_change_type_categories_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];// Ams generated Request Id
-				rfcCategoryGR.insert();
-			}
-			nextToken = parsedResponseBody.nextToken;
-			if (undefined !== nextToken){ // check for nexttoken in respose
-				this.getRfcListChangeTypeCategoriesAndInsert(nextToken);// call the api with next token
-			}
-			return true;
-		} 
-		else return false;
-	},
-	// function to get ListChangeTypeSubcategories for RFC
-	getRfcListChangeTypeSubcategoriesAndInsert : function(category) 
-	{
-		body = {
-			"Category" : category,
-			"locale" : "en",
-			"maxResults" : maxResults,
-			"nextToken" : nextToken
-		};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'ListChangeTypeSubcategories', body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('ChangeTypeSubcategories') > -1){ // Check for Rfc in Response body
-			for (var count = 0; count < parsedResponseBody.ChangeTypeSubcategories.length; count++){
-				var rfcSubcategoryGR = new GlideRecord(this.changeTypeSubcategories);
-				rfcSubcategoryGR.initialize();
-				rfcSubcategoryGR.u_rfc_change_type_subcategories_category = category;
-				rfcSubcategoryGR.u_rfc_change_type_subcategories_subcategory = parsedResponseBody.ChangeTypeSubcategories[count];// RFC Category
-				rfcSubcategoryGR.u_rfc_change_type_subcategories_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];// Ams generated Request Id
-				rfcSubcategoryGR.insert();
-			}
-			return true;
-		} 
-		else return false;
-	},
-	// Function to ListChangeTypeItems for RFC
-	getRfcListChangeTypeItemsAndInsert : function(category, subcategory) 
-	{
-		body = {
-			"Category" : category,
-			"locale" : "en",
-			"maxResults" : maxResults,
-			"nextToken" : nextToken,
-			"Subcategory" : subcategory
-		};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'ListChangeTypeItems', body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('ChangeTypeItems') > -1){ // Check for ChangeTypeItems in Response body
-			for (var count = 0; count < parsedResponseBody.ChangeTypeItems.length; count++){
-				var rfcItemGR = new GlideRecord(this.changeTypeItems);
-				rfcItemGR.initialize();
-				rfcItemGR.u_rfc_change_type_items_category = category;// RFC Category
-				rfcItemGR.u_rfc_change_type_items_subcategory = subcategory;// RFC Subcategory
-				rfcItemGR.u_rfc_change_type_items_item = parsedResponseBody.ChangeTypeItems[count];// RFC item
-				rfcItemGR.u_rfc_change_type_items_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];// Ams generated Request Id
-				rfcItemGR.insert();
-			}
-			nextToken = parsedResponseBody.nextToken;
-			if (undefined !== nextToken){ // check for nexttoken in respose
-				this.getRfcListChangeTypeItemsAndInsert(nextToken);// call the api with next token
-			}
-			return true;
-		} 
-		else return false;
-	},
-	// Function to ListChangeTypeOperations for RFC
-	getRfcListChangeTypeOperationsAndInsert : function(category, item, subcategory, nextToken) 
-	{
-		body = {
-			"Category" : category,
-			"Item" : item,
-			"locale" : "en",
-			"maxResults" : maxResults,
-			"nextToken" : nextToken,
-			"Subcategory" : subcategory
-		};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'ListChangeTypeOperations', body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('ChangeTypeOperationSummaries') > -1){ // Check for ChangeTypeOperationSummaries inResponsebody
-			for (var count = 0; count < parsedResponseBody.ChangeTypeOperationSummaries.length; count++) {
-				var rfcOperationGR = new GlideRecord(this.changeTypeOperations);
-				var record=parsedResponseBody.ChangeTypeOperationSummaries[count];
-				rfcOperationGR.initialize();
-				rfcOperationGR.u_rfc_change_type_operations_change_type_id =record.ChangeTypeId;
-				rfcOperationGR.u_rfc_change_type_operations_operation =record.Operation;// RFC Category
-				rfcOperationGR.u_rfc_change_type_operations_category = category;
-				rfcOperationGR.u_rfc_change_type_operations_subcategory = subcategory;
-				rfcOperationGR.u_rfc_change_type_operations_item = item;
-				rfcOperationGR.u_rfc_change_type_operations_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];// Ams generated Request Id
-				rfcOperationGR.insert();
-			}
-			nextToken = parsedResponseBody.nextToken;
-			if (undefined !== nextToken){ // check for nexttoken in respose
-				this.getRfcListChangeTypeOperationsAndInsert(category, item, subcategory, nextToken);// call the api with next token
-			}
-			return true;
-		} 
-		else return false;
-	},
-// Function to updateRfcExecutionParameters for RFC
-updateRfcExecutionParameters : function(parameters, rfcid) 
-	{
-		body = {
-			"ExecutionParameters" : parameters,//Use following format for ExecutionParameters: "{\"VpcId\":\"vpc-f00e7a94\",\"Username\":\"test\",\"DomainFQDN\":\"test\",\"StackIds\":[\"stack-fc1da890a40a9f901\"],\"TimeRequestedInHours\":5}"
-			"RfcId" : rfcid
-		};
-		this.amsUtil.getParsedResponseBody(this.changeService, 'UpdateRfcExecutionParameters', body);// raise a request
-		return true;
-	},
-// Function to DescribeSeverityLevels for RFC
-getDescribeSeverityLevelsAndInsert : function() 
-	{
-		body = {
-			"language" : "en"
-		};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.supportService, 'DescribeSeverityLevels', body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('severityLevels') > -1){ // Check for severityLevels in Response body
-			for (var count = 0; count < parsedResponseBody.severityLevels.length; count++){ // loop through the severityLevels
-				var severityLevelsGR = new GlideRecord(this.severityLevels);
-				severityLevelsGR.initialize();
-				severityLevelsGR.u_case_severity_name = parsedResponseBody.severityLevels[count].name;
-				severityLevelsGR.u_case_severity_code = parsedResponseBody.severityLevels[count].code;
-				severityLevelsGR.insert();
-			}
-			return true;
-		} 
-		else return false;
-	},
-// Function to resolve Case
-resolveCase : function(caseId) 
-	{
-		if (!caseId){
-			if (logger)
-				gs.error('AMSResourceFetch >>>> resolveCase. caseId is required');
-			return false;
-		}
-		body = {"caseId" : caseId};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.supportService, 'ResolveCase', body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if(jsonBody.indexOf('finalCaseStatus')>1){
-			var resolvedCaseGR = new GlideRecord(this.caseImportSetTable);
-			resolvedCaseGR.initialize();
-			resolvedCaseGR.u_case_id=caseId;
-			resolvedCaseGR.u_case_status=parsedResponseBody.finalCaseStatus;
-			resolvedCaseGR.insert();
-			return true;
-		}
-		else return false;
-	},
-//Function to Create case 
-	createCaseAndInsert:function(categoryCode,ccEmailAddresses,communicationBody,issueType,serviceCode,severityCode,subject)
-	{
-		if (!categoryCode) {
-			if (logger)
-				gs.error('AMSResourceFetch >>>> createCaseAndInsert. categoryCode is required');
-			return false;
-		}
-		if (!communicationBody) {
-			if (logger)
-				gs.error('AMSResourceFetch >>>> createCaseAndInsert. communicationBody is required');
-			return false;
-		}
-		if (!subject){
-			if (logger)
-				gs.error('AMSResourceFetch >>>> createCaseAndInsert. subject is required');
-			return false;
-		}
-		if (ccEmailAddresses=='')ccEmailAddresses = [];
-		body={
-	   //"attachmentSetId": "string",
-	   "categoryCode": categoryCode,
-	   "ccEmailAddresses": ccEmailAddresses,
-	   "communicationBody": communicationBody,
-	   "issueType": issueType,
-	   "language": 'en',
-	   "serviceCode": serviceCode,
-	   "severityCode": severityCode,
-	   "subject": subject
-		};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.supportService, 'CreateCase', body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('caseId') > -1){ // Check for Caseid in Response body
-				return parsedResponseBody.caseId; 
-		} 
-		else return false;
-	},
-//Function to Add Communication to a case
-addCommunicationToCase:function(caseId,ccEmailAddresses,communicationBody)
-	{
-		if (!caseId){
-			if (logger)
-				gs.error('AMSResourceFetch >>>> addCommunications. caseId is required');
-			return false;
-		}
-		if(ccEmailAddresses.length > 1){
-			body={"caseId" : caseId,"ccEmailAddresses": [ ccEmailAddresses ],"communicationBody": communicationBody};
-		}
-		else{
-			body={"caseId" : caseId,"communicationBody": communicationBody};
-		}
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.supportService, 'AddCommunicationToCase', body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('result') > -1) {
-			return true;
-		}
-		else return false;
-	},
-//Function to List Change type Version Summaries		
-listChangeTypeVersionSummariesAndInsert:function(changeTypeId)
-	{body={"Filters": [ {"Attribute": "ChangeTypeId","Value": changeTypeId}],"maxResults": maxResults,"nextToken": nextToken};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService,'ListChangeTypeVersionSummaries',body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-	},
-//Function to get Change Type Version and Insert	
-	getChangeTypeVersionAndInsert:function(changeTypeId,locale,version)
-	{
-		if (!changeTypeId){
-			if (logger)
-				gs.error('AMSResourceFetch >>>> getChangeTypeVersionAndInsert. changeTypeId is required');
-			return false;
-		}
-		body={"ChangeTypeId": changeTypeId,"Locale": locale,"Version":version};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService,'GetChangeTypeVersion',body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('ChangeTypeVersion') > -1){ // Check for severityLevels in Response body
-			var record =parsedResponseBody.ChangeTypeVersion;
-			var changeTypeVersionsGR = new GlideRecord(this.changeTypeVersion);
-				changeTypeVersionsGR.initialize();
-				changeTypeVersionsGR.u_rfc_change_type_version_changetypeid =record.ChangeTypeId;
-				changeTypeVersionsGR.u_rfc_change_type_version_createdtime = record.CreatedTime;
-				changeTypeVersionsGR.u_rfc_change_type_version_deprecationmessage=record.DeprecationMessage;
-				changeTypeVersionsGR.u_rfc_change_type_version_executioninputschema=record.ExecutionInputSchema;
-				changeTypeVersionsGR.u_rfc_change_type_version_expectedexecutiondurationinminutes= record.ExpectedExecutionDurationInMinutes;
-				changeTypeVersionsGR.u_rfc_change_type_version_version=record.Version;
-				changeTypeVersionsGR.u_rfc_change_type_version_approvalcondition=JSON.stringify(record.ApprovalCondition);
-				changeTypeVersionsGR.u_rfc_change_type_version_approvalcondition_aws_approval=record.ApprovalCondition.CustomerApproval.Id;
-				changeTypeVersionsGR.u_rfc_change_type_version_approvalcondition_customer_approval=record.ApprovalCondition.AwsApproval.Id;
-				changeTypeVersionsGR.u_rfc_change_type_version_automationstatus=record.AutomationStatus.Id;
-				changeTypeVersionsGR.insert();
-			return true;
-		} 
-		else return false;
-	},
-	//function to call ListRfcTechnicians
-	getListRfcTechnicians : function(rfcid) 
-	{
-		body = {RfcId:rfcid};
-		this.amsUtil.getParsedResponseBody(this.changeService, 'ListRfcTechnicians', body);// raise a request
-	},
-		//function to add technician to rfc
-	addAssociateTechnicianWithRfc : function() 
-	{
-		body = {RfcId:'eaadadb8-fead-d0f1-9a55-ba73e4b9e38b',"Technician":{ "Email": "aws-dev@nisostech.com",
-      "Name": "nisos"}};
-		this.amsUtil.getParsedResponseBody(this.changeService, 'AssociateTechnicianWithRfc', body);// raise a request
-		return true;
-	},
-	//function to remove technician from rfc
-	removeDisassociateTechnicianFromRfc : function() 
-	{
-		body = {RfcId:'eaadadb8-fead-d0f1-9a55-ba73e4b9e38b',"TechnicianEmail": "aws-dev@nisostech.com"};
-		this.amsUtil.getParsedResponseBody(this.changeService, 'DisassociateTechnicianFromRfc', body);// raise a request
-		return true;
-	},
-		//Function to List Change Type Classifications
-	getListChangeTypeClassificationSummariesAndInsert:function(nextToken)
-	{
-		body={  "Locale": 'en',"maxResults": maxResults,"nextToken": nextToken};
-		var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService,'ListChangeTypeClassificationSummaries',body);// raise a request
-		var jsonBody = JSON.stringify(parsedResponseBody);
-		if (jsonBody.indexOf('ChangeTypeClassificationSummaries') > -1){ // Check for ChangeTypeOperationSummaries inResponsebody
-			for (var count = 0; count < parsedResponseBody.ChangeTypeClassificationSummaries.length; count++){
-				// loop throughthe ChangeTypeOperation
-				var rfcOperationGR = new GlideRecord(this.changeTypeClassifications);
-				rfcOperationGR.initialize();
-				rfcOperationGR.u_rfc_change_type_classification_subcategory =parsedResponseBody.ChangeTypeClassificationSummaries[count].Subcategory;
-				rfcOperationGR.u_rfc_change_type_classification_operation = parsedResponseBody.ChangeTypeClassificationSummaries[count].Operation;
-				rfcOperationGR.u_rfc_change_type_classification_item = parsedResponseBody.ChangeTypeClassificationSummaries[count].Item;
-				rfcOperationGR.u_rfc_change_type_classification_change_type_id=parsedResponseBody.ChangeTypeClassificationSummaries[count].ChangeTypeId;
-				rfcOperationGR.u_rfc_change_type_classification_category=parsedResponseBody.ChangeTypeClassificationSummaries[count].Category;
-				rfcOperationGR.u_rfc_change_type_classification_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];// Ams generated Request Id
-				rfcOperationGR.insert();
-			}
-			nextToken = parsedResponseBody.nextToken;
-			if (undefined !== nextToken){ // check for nexttoken in respose
-				this.getListChangeTypeClassificationSummariesAndInsert(nextToken);// call the api with next token
-			}
-			return true;
-		} 
-		else return false;
-	},
-	type : 'AMSResourceFetch'
+	
+	type : 'AMS_ResourceFetch'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-04-12 06:17:11</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>428bf946db867200ef73d8c0cf961951</sys_id>
-        <sys_mod_count>224</sys_mod_count>
-        <sys_name>AMSResourceFetch</sys_name>
+        <sys_mod_count>233</sys_mod_count>
+        <sys_name>AMS_ResourceFetch</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_include_428bf946db867200ef73d8c0cf961951</sys_update_name>
         <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-05-17 07:35:04</sys_updated_on>
+        <sys_updated_on>2017-06-01 12:48:43</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -3,27 +3,27 @@
     <sys_ui_macro action="INSERT_OR_UPDATE">
         <active>true</active>
         <category>general</category>
-        <description>To get Sections depending upon the ChangeTypeId</description>
+        <description>To get Sections depending upon the ChangeTypeId.</description>
         <media_type/>
-        <name>AMS_Get_Section</name>
-        <scoped_name>x_109369_ams_AMS_Get_Section</scoped_name>
+        <name>AMS_CreateDynamicFieldsForRFC</name>
+        <scoped_name>x_109369_ams_AMS_CreateDynamicFieldsForRFC</scoped_name>
         <sys_class_name>sys_ui_macro</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-05-10 11:06:39</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>5e390787dba67200ef73d8c0cf9619e5</sys_id>
-        <sys_mod_count>1183</sys_mod_count>
-        <sys_name>AMS_Get_Section</sys_name>
+        <sys_mod_count>1540</sys_mod_count>
+        <sys_name>AMS_CreateDynamicFieldsForRFC</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_ui_macro_5e390787dba67200ef73d8c0cf9619e5</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-05-30 05:26:11</sys_updated_on>
+        <sys_updated_by>madhav</sys_updated_by>
+        <sys_updated_on>2017-06-07 13:02:48</sys_updated_on>
         <xml><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <j:jelly xmlns:j="jelly:core" xmlns:g="glide" xmlns:g2="null" xmlns:j2="null" trim="false">
-<!--g:requires name="scripts/lib/jquery_includes.js"/-->
+<g:requires name="scripts/lib/jquery_includes.js"/>
 <style>
       *{font-family: 'Roboto', sans-serif;}
 	@keyframes click-wave {
@@ -61,9 +61,9 @@
 	 display: inline-flex;
 	 align-items: center;
 	 justify-content: center;
-	 height: 40px;
+	 height: 20px;
 	 position: relative;
-	 width: 100%;
+	 width: 40px;
 	 max-width: 110px;
 	 margin: auto;
 	}
@@ -94,7 +94,7 @@
 	 left: 4px;
 	}
 	.switch input~:checked~.switch-toggle {
-	 left: 72px;
+	 left: 22px;
 	}
 	.switch input:checked {
 	 z-index: 0;
@@ -103,8 +103,8 @@
 	 background: #4a4a4a;
 	 border-radius: 50%;
 
-	 width: 33px; 
-	 height: 33px;
+	 width: 15px; 
+	 height: 15px;
 	 left: 0;
 	 position: absolute;
 	 top: 3px;
@@ -184,6 +184,13 @@
 	.option-input.radio::after {
 	  border-radius: 50%;
 	}
+	.table>tbody .hidden-row {
+	  padding: 0 8px;
+	}
+	.bg-aws-color {
+	 background: #eee;	
+	}
+	
 </style>
 <!-- MomentJS Plugin -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
@@ -192,219 +199,127 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.min.css"/>
 <!-- Bootstrap Tags-Input Plugin -->
-<link rel="stylesheet" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css"/>
-<script src="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>	
+<!--link rel="stylesheet" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css"/>
+<script src="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script-->	
+<!-- Bootstrap select picker plugin -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
 
-	
 <script>
 	var $snowJQ = jQuery.noConflict();
-	
+ <!-- ********* Function to remove the Dynamic Fields from the main RFC Form ******* -->	
     function hideUIMacro(){
 		try {
 			$snowJQ("#bodyDiv").empty();//$snowJQ("dynForm").remove();
-			console.log('REMOVED DYNFORM ............. ');
 		}
 		catch(err) {
 			console.log('Nothing to remove ' + err.message);
 		} 
 	}
-<!-- var advanceParamTable = document.createElement("table");
-advanceParamTable.style.width = "100%";
-advanceParamTable.id = "advanceFieldsTable";
-var tableDiv = document.createElement("DIV");
-tableDiv.id = "fieldsTable";
-var paramTable = document.createElement("table");
-paramTable.id = "mainTable";
-var stackTempIdTable = document.createElement("table");
-stackTempIdTable.style.width = "65%";
-stackTempIdTable.id = "stackTempIdTable";	
-var resourceTableDiv = document.createElement("DIV");
-resourceTableDiv.id = "resourceDIV";
-var resourceTable = document.createElement("table");
-resourceTable.style.width = "65%";
-resourceTable.id = "resourceTable";
-resourceTableDiv.appendChild(resourceTable); -->
-
-	
-function setChangeTypeId(id){
-	var ga = new GlideAjax('Get_RFC_Form_Fields');
+<!-- ******** Function to get the Dynamic fields using changeyeId	******** -->
+function getFieldsToCreateDynamicForm(id){
+	var ga = new GlideAjax('AMS_GetRFCFormFields');
 	ga.addParam('sysparm_name', 'getFields');
 	ga.addParam('sysparm_changeTypeId', id);
 	ga.getXMLWait();
 	var res = ga.getAnswer();
 	var params = JSON.parse(res);
-	console.log(JSON.stringify(params , null, 2));
 	buildHtmlTable(params);
-	//return;
 }
-	
-<!-- function startTime(value) {
-	if (value == 'schedule') {
-		$("scheduledDiv").show();
-		var scheduledElements = document.getElementById("scheduledDiv");
-		while (scheduledElements.firstChild) {
-			scheduledElements.removeChild(scheduledElements.firstChild);
+<!-- ********** Function for date picker	********  -->
+function prepareSelectPickers(){
+	var allSelectPickers = $snowJQ('#bodyDiv').find('select');
+	for (var i =0; allSelectPickers.length > i ; i++){
+		if (allSelectPickers[i].id != "") {
+			$snowJQ('#' + allSelectPickers[i].id + '')
+			.selectpicker({
+				liveSearch: true,
+				liveSearchStyle: "contains",
+				actionsBox: true,
+				showTick: true
+			}); 	
 		}
-		var regionDiv = document.createElement("DIV");
-		var zoneDate = document.createElement("input");
-		zoneDate.type = "date";
-		regionDiv.appendChild(zoneDate);
-		var res = new GlideAjax('AMS_Get_Time_Zone');
-		res.addParam('sysparm_name', 'getZones');
-		res.getXMLWait();
-		var map = res.getAnswer();
-		var maps = map.split(',');
-		var selectZone = document.createElement("select");
-		for (var i = 0; maps.length &gt; i; i++) {
-			if (maps[i] != '') {
-				var optionZone = document.createElement("option");
-				optionZone.value = maps[i];
-				optionZone.innerHTML = maps[i];
-				selectZone.add(optionZone);
-			}
-		}
-		regionDiv.appendChild(selectZone);
-		$("scheduledDiv").appendChild(regionDiv);
-	} else {
-		$("scheduledDiv").hide();
 	}
-} -->
-	  
-function validateAllInputs(){
+}
+<!-- ******* Function to validate all the mandatory fields	******** -->
+function validateAllRequiredInputs(){
 	var requiredIDs = document.querySelectorAll(".requiredID");
-	var isValid = true;
+	var emptyFieldMap={};
 	for (var i = 0; requiredIDs.length > i; i++) {
 		var inputVar = requiredIDs[i].querySelectorAll('input, textarea, select, radio');
 		if (inputVar.length >0 ) {		
-			console.log('checking ' + inputVar[0].getAttribute("name"));
 			if(!inputVar[0].value) {
-				console.log(' MISSING ' + inputVar[0].getAttribute("name") );
-				isValid = false;				
-			} 
+				emptyFieldMap["isValid"] = false;	
+				emptyFieldMap["fieldName"]=inputVar[0].getAttribute("name");
+				return emptyFieldMap;
+			}else{
+					emptyFieldMap["isValid"] = true;
+				}
 		}
 	}
-	
-	if (!isValid) alert('Please enter all required data');
-	console.log('RETURNING isValid from validateAllInputs = ' + isValid);
-	return(isValid);
-	
+	return emptyFieldMap;
 }
-	
+<!-- ******* Function to get all the dynamic created field values which is called from client script ***** -->
 function getValues() {
-		 <!-- var basicexecutionParameters={};
-		 var advancedexecutionParameters={};
-	     fieldMap["basicexecutionParameters"] = basicexecutionParameters;
-		 fieldMap["advancedexecutionParameters"] = advancedexecutionParameters; -->
 		 var executionparameters_properties={};
 		 var executionparameters_params={};
 		 var fieldMap={};
-		 <!-- var subject = document.getElementById("Subject").value;
-		 var fieldMap={};
-		 fieldMap["Subject"] = subject;
-		 var description = document.getElementById("Description").value;  
-		 fieldMap["Description"] = description; -->
-	     	
-		     var parametersIDs = document.querySelectorAll(".parameters");
-			 for (var i = 0; parametersIDs.length > i; i++) {
+	<!-- Get all the required field values whose class name is div.parameters -->
+   	     var parametersIDs = document.querySelectorAll("div.parameters");
+			for (var i = 0; parametersIDs.length > i; i++) {
 				 var inputVar = parametersIDs[i].querySelectorAll('input, textarea, select, radio');
 				 if (inputVar.length >0 ) {		
 				   if(inputVar[0].value) 
-				     if(inputVar[0].getAttribute("name") ) {
-				    	executionparameters_params[inputVar[0].getAttribute("name")] = getInputType(inputVar[0].value, inputVar[0].getAttribute("type"));
+				     if(inputVar[0].getAttribute("name") ) 
+						executionparameters_params[inputVar[0].getAttribute("name")] = getInputType(inputVar[0].value, inputVar[0].getAttribute("paramType"));						
 				    } 
-				 }
-			 }
-			var propertiesIDs = document.querySelectorAll(".properties");
-			 for (var i = 0; propertiesIDs.length > i; i++) {
+			}
+			<!-- Get all the other field values whose class name is div.properties --> 
+			var propertiesIDs = document.querySelectorAll("div.properties");
+			for (var i = 0; propertiesIDs.length > i; i++) {
 				 var inputVar = propertiesIDs[i].querySelectorAll('input, textarea, select, radio');
-				 if (inputVar.length >0 ) {
+				 if (inputVar.length >0 ) {		
 				   if(inputVar[0].value) 
-				   if(inputVar[0].getAttribute("name") ) {
-				    	executionparameters_properties[inputVar[0].getAttribute("name")] = getInputType(inputVar[0].value, inputVar[0].getAttribute("type"));
-				    }
-				 }
-			 }
-			var propertiesTagsInputs = document.querySelectorAll(".properties input[class='form-control select-multiple']");
-			for (var i = 0; propertiesTagsInputs.length > i; i++) {
-				if (propertiesTagsInputs[i].value){
-				console.log('Handling param ' + propertiesTagsInputs[i].getAttribute("name") );
-				executionparameters_properties[propertiesTagsInputs[i].getAttribute("name")] = getInputType(propertiesTagsInputs[i].value.split(','), Array) ;
-				console.log(propertiesTagsInputs[i].value.split(','));
-				}
+				     if(inputVar[0].getAttribute("name") ) 
+						executionparameters_properties[inputVar[0].getAttribute("name")] = getInputType(inputVar[0].value, inputVar[0].getAttribute("paramType"));						
+				    } 
 			}
-			
-			var parametersTagsInputs = document.querySelectorAll(".parameters input[class='form-control  select-multiple']");
-			for (var i = 0; parametersTagsInputs.length > i; i++) {
-				if (parametersTagsInputs[i].value){
-				console.log('Handling param ' + parametersTagsInputs[i].getAttribute("name") );
-				executionparameters_params[parametersTagsInputs[i].getAttribute("name")] = getInputType(parametersTagsInputs[i].value.split(','), Array)  ;
-				}
-				console.log(parametersTagsInputs[i].value.split(','));
-			}
-			<!-- var multipleElements = document.querySelectorAll(".select-multiple > input");
- 			for (var i = 0; multipleElements.length > i; i++) {
- 				var el = multipleElements[i].getAttribute("name");
-				var val = $snowJQ('#dynForm')
-        					.find('[name="' + multipleElements[i].getAttribute("name") + '"]')
-        					.tagsinput('items');
-				//fallback if the tags plugin doesn't work
-				if(!val) {
-					val = $snowJQ('#dynForm')
-        					.find('[name="' + multipleElements[i].getAttribute("name") + '"]')
-        					.val()
-							.split(',');
-				}
- 				executionparameters_params[el] = val;
- 			} -->
-			<!-- executionparameters_properties["requestedStartTime"] = (document.getElementById("requestedStartTime").value);
-			executionparameters_properties["Parameters"] = executionparameters_params; -->
-			executionparameters_properties["requestedStartTime"] = (document.getElementById("requestedStartTime").value);
+			 
+			executionparameters_properties["requestedStartTime"] = (document.getElementById("requestedStartTime").value);<!-- Add Requested start and end time -->
 			executionparameters_properties["requestedEndTime"] = (document.getElementById("requestedEndTime").value);
+			var tagz = document.getElementById("HiddenTags");
+<!-- 	Try block for checking the value in HiddenTags -->
+			try{
+					if (tagz.value) {
+						var tmpArr = (JSON.parse(tagz.value)).tmpArr;
+						executionparameters_properties["Tags"] = tmpArr;
+					}
+			}catch(err){
+				console.log("Error = "+err.message);
+			}
 			executionparameters_properties["Parameters"] = executionparameters_params;
-			
-			<!-- console.log("toSubmit value = " + JSON.stringify(trimEmptyValues(executionparameters_properties), null, 2) );
-			var subject = document.getElementById("Subject").value;
-			executionparameters_properties["Subject"] = subject;
-			var description = document.getElementById("Description").value;  
-			executionparameters_properties["Description"] = description;
-			console.log('FORM VALUES ' + executionparameters_properties); -->
 			return trimEmptyValues(executionparameters_properties) ;
-			
-		
 }
-<!-- function getDynamicFieldValues(){
-		 var formFields=document.getElementById("dynForm");
-		 var fields= {};
-		 fields["Subject"]=document.getElementById("subject").value;
-		 fields["Description"]=document.getElementById("Description").value;
-		 var allFields=document.getElementsByClassName("form-group");
-		 var dynFields={};
-		  for (var ii = 0; allFields.length > ii; ii++) {
-				dynFields[allFields[ii].id] = allFields[ii].value;
-			}
-		 fields["allFields"]=dynFields;
-		 return fields;
-} -->
-	
+<!-- ******* Function to convert the value according to the input type	*****  -->
 function getInputType(value, valuetype) {
-		if(value === "")
-			return "";
-		else if(value === "true" || value === "false") {
-			if (valuetype == "radio") return eval(value);
-		} else if(!Number.isNaN(Number(value))) {
-			if (valuetype == "number") {
-				return parseFloat(value);
-			} else if (valuetype == "text") {
-				//console.log('returning ' + value.trim());
-				return value.trim();
-			}
-		} else if(Array.isArray(value)) {
-			if (valuetype == "text") return value.map(Function.prototype.call, String.prototype.trim);
-			console.log('returning ' + value);
-		} else 
+		if (valuetype === "array"){
+			var tmp = value.split(',');
+			if(!Array.isArray(tmp)) tmp = tmp.push(value);
+			return tmp;
+		} else if (valuetype === "number"){
+			return parseFloat(value);
+		} else if (valuetype === "boolean"){
+			return (value == "true");
+		} else if (valuetype === "string"){
 			return value;
+		} else if (valuetype === "integer"){
+			return parseInt(value);
+		} else {
+			return value;
+		}
 }	   
-	
+	<!-- ****** Function to remove empty spaces in each values fetched from the fields ******	 -->
 function trimEmptyValues(obj){
  var propNames = Object.getOwnPropertyNames(obj);
   for (var i = 0; propNames.length > i; i++) {
@@ -417,17 +332,16 @@ function trimEmptyValues(obj){
   }
   return obj;
 }
-	
+<!-- ***** Function to create the date in the Date and Time picker ***** -->
 function createDate(){
-		//console.log('Changing date');
 		var dateChosen = $snowJQ('#datePicker').datepicker('getDate');
 		var timeChosen = $snowJQ("#time").val().split(":") ;
 		var timezoneChosen = $snowJQ("#timezones").val() ;
 		if (dateChosen) {
 			dateChosen.setHours(timeChosen[0]);
 			dateChosen.setMinutes(timeChosen[1]);
-			var myDateTime = moment(dateChosen).utc();//.format();
-			//myDateTime = myDateTime.split('+')[0];
+			var myDateTime = moment(dateChosen).format();
+			myDateTime = myDateTime.split('+')[0];
 			var finalDateChosen = moment.tz(myDateTime, timezoneChosen);
 			finalDateChosen.format();
 			var finalDateUTC = moment.utc(finalDateChosen);
@@ -435,30 +349,36 @@ function createDate(){
 			var finalEndDataChosen = finalDateUTC.add(1,'days');
 			$snowJQ("#requestedEndTime").val(finalEndDataChosen.toISOString());
 		}
-		
 }
-	
+<!-- ****** Function to create current date	****** -->
 function prepareDateTimePicker(){
 		var container=$snowJQ('.dynForm').length>0 ? $snowJQ('.dynform').parent() : "body";
-		console.log(container);
-		
 		var now = moment().add(15,'m').format("HH:mm");
 		var currDate = moment().toString();
 		$snowJQ('#time')
 		.on("keyup", function(e){
 			var key=String.fromCharCode(e.keyCode);
-			//console.log(key);
 			var value=$snowJQ(this).val();
-			<!--if(!(key>=0&&key<=9))$(this).val($(this).val().substr(0,$(this).val().length-1));-->
     		if(value.length==2)$snowJQ(this).val($snowJQ(this).val()+':');
 		})
-		.on("change", function(e){createDate();updateRfcJsonValues()})
+		.on("change", function(e){
+			var patt = new RegExp("^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$");
+			var res = patt.test(e.target.value);
+			if(res) {
+				$snowJQ('#time').parent().parent().removeClass("bg-danger");
+				$snowJQ("#time").parent().next().hide();
+				createDate();
+				updateRfcJsonValues()
+			} else {
+				$snowJQ('#time').parent().parent().addClass('bg-danger');
+				$snowJQ("#time").parent().next().show();
+			}
+
+		})
 		$snowJQ("#time").attr("placeholder" , now);
 		$snowJQ("#time").val(now);
-		console.log('Time set ' + $snowJQ("#time").val());
 		
 		var timezoneNames = moment.tz.names();
-		console.log('Timezone guess ' + moment.tz.guess());
 		var x = document.getElementById("timezones");
 		
 		for (var i = 0; timezoneNames.length > i; i++) {
@@ -470,7 +390,6 @@ function prepareDateTimePicker(){
 		
 		$snowJQ("#timezones option[value= '" + moment.tz.guess() + "'] ").attr("selected" , "selected");
 		var tmp = $snowJQ("#timezones").find(":selected").text();
-		console.log('Timezone set ' + tmp );		
 		
 		$snowJQ('#timezones')
 		.on("change", function(e){createDate();updateRfcJsonValues()})
@@ -488,24 +407,18 @@ function prepareDateTimePicker(){
 			createDate();
 			updateRfcJsonValues();
         })
-        .on('hide',function(){ // nasty hack due to https://github.com/uxsolutions/bootstrap-datepicker/issues/478 bug
+        .on('hide',function(){ 
 			var a = $snowJQ(this);
 			setTimeout(function(){a.show();},2);
 		});
-		//$snowJQ('#datePicker').datepicker('setDate', currDate);
+		$snowJQ('#datePicker').datepicker('setDate', currDate);
 		$snowJQ("#startDate").val($snowJQ("#datePicker").datepicker('getDate'));
-
-		console.log('Date set ' + $snowJQ('#datePicker').datepicker('getDate'));
-		console.log('Date set ' + $snowJQ('#startDate').val());
-		
 		createDate();
 	}
-	
+<!-- *** Function to update the RFC JSON field value	**** -->
 	function updateRfcJsonValues(){
 		var rfcJson = {};
 		rfcJson["executionParameters"] = getValues();
-		//console.log(rfcJson);
-		//print the JSON being created
 		(document.getElementById("rfcJson")).value = JSON.stringify(rfcJson);	
 	}
 	 	
@@ -514,15 +427,21 @@ function prepareDateTimePicker(){
 		if(component){
 				if(component.include(id)){
 					alert(id+" already added!!");
-				return;
-			}else{
-					document.getElementById(componentID.name).value=component+","+id;
-			}
-		}else{
+						return;
+					}
+				else{
+					if(componentID.name.include("Subnet") || componentID.name=="StackIds"){
+						document.getElementById(componentID.name).value=component+","+id;
+					}else{
+						document.getElementById(componentID.name).value=id;
+					}
+				}
+	}
+	else{
 			document.getElementById(componentID.name).value=id;
 		}
 	}
-	
+<!-- ***** Function to clear the selected values from the drop-down	***** -->
 	function clearAll(nodeName){
 	var component=document.getElementById(nodeName).value;
 	if(nodeName){
@@ -530,65 +449,245 @@ function prepareDateTimePicker(){
 	return null;
 		}
 	}
-	
+<!-- ***** Function to validate the given field(item) value using pattern	***** -->
 	function validate(item) {
-		var isValid = item[0].checkValidity();
-		
+		<!--**If HTML5 input pattern mismatch check fails **-->
+		item.parent().parent().removeClass('bg-danger');
+		item.parent().parent().children('#helptext').hide();
+		var patt = new RegExp(item[0].getAttribute("pattern"));
+		var res = patt.test(item[0].value);
+		var errMessage = "";
 		try{
+			var isValid = item[0].checkValidity();
 			if(!isValid) {
-				<!-- if(item[0].getAttribute("data-role") === "tagsinput"){
-					// special treatment for these
-					//console.log(item[0].getAttribute("name"));
-					if(item[0].getAttribute("name") === "SubnetIds"){
-						// TODO TEMP HACK
-						isValid = true;
-						item[0].parentElement.parentElement.classList.remove('bg-danger')
+	<!-- ****If pattern check fails ****-->
+				if(!res) { 
+					errMessage = "Please match pattern " + item[0].getAttribute("pattern");
+					item.parent().parent().addClass('bg-danger');
+					item.parent().parent().children('#helptext').html(errMessage); 
+					item.parent().parent().children('#helptext').show();
+				} else { // could be errors due to the rest item[0].validity.patternMismatch will STILL be true.
+					if( item[0].validity.tooShort){
+							errMessage = "Min length is " + item[0].minLength;
+					} else if ( item[0].validity.tooLong){
+							errMessage = "Max length is " + item[0].maxLength;
+					} else if ( item[0].validity.rangeOverflow) {
+							errMessage = "Max value is " + item[0].max;
+					} else if( item[0].validity.rangeUnderflow) {
+							errMessage = "Min value is " + item[0].min;
+					} else if( item[0].validity.patternMismatch) {
+							errMessage = ""; // forcefully blank this out AND remove error bg
+							
 					}
-					//subnet-439f7769,subnet-fdaf50a5
-				} else  -->
-				item[0].parentElement.parentElement.classList.add('bg-danger');
-			} else {				
-				item[0].parentElement.parentElement.classList.remove('bg-danger');
-				updateRfcJsonValues();		
+					if (errMessage === "") {
+						// forcefully ignore
+						item.parent().parent().removeClass('bg-danger');
+						item.parent().parent().children('#helptext').hide();	
+					} else {
+						item.parent().parent().addClass('bg-danger');
+						item.parent().parent().children('#helptext').html(errMessage);
+						item.parent().parent().children('#helptext').show();
+					}
+				}
+			} else { // passes all checks
+				item.parent().parent().removeClass('bg-danger');
+				item.parent().parent().children('#helptext').hide();
+				updateRfcJsonValues();	
 			}
+			
 		} catch (err){
 			console.log('Could not apply bg-danger to the row');
+			console.log(err);
 		}
-			
 }
-
-function validateArrays(inboundItem){ // keep in mind that the item here represents another element that shares the name BUT we need to find the element with the same ID
+<!-- ***** Function to validate the array field type ***** -->
+function validateArrays(inboundItem){ 
 	var item = document.getElementById(inboundItem.name);
 	var valueOfItem = item.value;
 	var items = valueOfItem.split(',');
 	var minItems = item.getAttribute("minItems");
-	var maxItems = item.getAttribute("maxItems");	
-	console.log(item);
-	console.log('validating item name ' + item.name + ' with length = ' + items.length + ' against min = ' + item.getAttribute("minItems") + ' max = ' + item.getAttribute("maxItems") );
-	if (!minItems) minItems = -1; // no minimum
-	if (!maxItems) maxItems = Infinity; // no maximum really
+	var maxItems = item.getAttribute("maxItems");
+	var errMessage = item.validationMessage;
+	if(item.getAttribute("pattern")){
+		for(var i=0; items.length>i ; i++){
+			var re = new RegExp(item.getAttribute("pattern"));
+			if (!re.test(items[i])) {
+					errMessage = "Please match pattern " + item[0].getAttribute("pattern");
+					items[i].parentElement.parentElement.classList.add('bg-danger');
+					items[i].parentElement.parentElement.querySelector("#helptext").innerHTML=errMessage;
+					items[i].parentElement.parentElement.querySelector("#helptext").style.display = 'block';
+					return false;
+				} else {
+					items[i].parentElement.parentElement.classList.remove('bg-danger');
+					item[i].parentElement.parentElement.querySelector("#helptext").style.display = 'none';
+					return true;
+				}
+		}
+	}
+	if (!minItems) minItems = -1; <!-- **** if no minimum value **** -->
+	if (!maxItems) maxItems = Infinity; <!-- **** if no maximum value  *** -->
 	
 	if ( minItems > items.length || items.length > maxItems){
-		console.log(item.name + ' is not between min=' + minItems + ' and max=' + maxItems);
 		item.parentElement.parentElement.classList.add('bg-danger');
+		errMessage = "Total items must be between min " + minItems + " and max " + maxItems;
+		item.parentElement.parentElement.querySelector("#helptext").innerHTML=errMessage;
+		item.parentElement.parentElement.querySelector("#helptext").style.display = 'block';	
 		return false;
 	} else {
 		item.parentElement.parentElement.classList.remove('bg-danger');
+		item.parentElement.parentElement.querySelector("#helptext").style.display = 'none';
 		return true;
 	}
 }
+<!-- ***** Function to validate all the fields	***** -->
+function validateAll(){
+	var allItems = document.querySelectorAll("div.parameters, div.properties");
+	var isValid = true;
+	for (var i = 0; allItems.length > i; i++) {
+		var inputVar = allItems[i].querySelectorAll('input, textarea, select, radio');
+		if (inputVar.length >0 ) {		
+			isValid = inputVar[0].checkValidity();
+			if(!isValid) {
+				inputVar[0].parentElement.parentElement.classList.add('bg-danger');
+				return false;			
+			} else {
+<!-- 				inputVar[0].parentElement.parentElement.classList.remove('bg-danger'); -->
+			}
+		}
+		if(inputVar[0].parentElement.parentElement.className.includes('bg-danger')){
+			alert("Please clear the error caused by the field =  "+inputVar[0].name);
+			return false;
+		}
+	}
+	if(document.getElementById("timeDIV").className.includes("bg-danger")){
+		alert("The Time format is invalid");
+		return false;
+	}
+	return isValid;
+}
 	
+<!-- ****** Function to add rows during Run-time in Tags field ***** -->
+function addRows(){
+	document.getElementById("tagsContainer").parentElement.classList.add("bg-aws-color");
+	<!--  Find the key for each row = total existing rows + 1 since before adding a row, the total is less by 1 -->
+	var totalRows = 0;
+	var keypairs = document.querySelectorAll("tr[id^='keypair-']");
+<!-- 	Get total rows -->
+	if(keypairs) totalRows = keypairs.length;
+	if(totalRows > 6) { alert('Sorry, we currently have a limit of 7 tags only'); return null;}
+	var currentRow = totalRows + 1;
+	var tr1String = "";
+	tr1String = '<tr id="keypair-' 
+			+ currentRow + 
+			'"> <td><label for="value-' 
+			+ currentRow + 
+			'" class="col-form-label">Value *</label> <input name="value-' 
+			+ currentRow + 
+			'" id="value-' 
+			+ currentRow + 
+			'" type="text" placeholder="Value" pattern="^[a-zA-Z0-9\\s_./=+-]{1,255}$" minLength="1" maxLength="255" class="form-control input-md" onchange="updateTagsField();"/><label for="key-' 
+			+ currentRow + 
+			'" class="col-form-label">Key *</label> <input name="key-' 
+			+ currentRow + 
+			'" id="key-' 
+			+ currentRow + 
+			'" type="text" placeholder="Key" pattern="^[a-zA-Z0-9\\s_./=+-]{1,255}$"  minLength="1" maxLength="255" class="form-control input-md" onchange="updateTagsField();" /></td></tr>';
+			<!-- Start the table -->
+			tr1String += '<tr id="actions-row-' + currentRow + '"> <td>';
+			if (totalRows == 0){
+				<!--  only add the delete button -->
+				tr1String += '<button id="delete_row-' + currentRow + '" class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>';
+			} else {
+	        	tr1String += '<button id="move_row_up-' + currentRow + '" class="btn btn-default" ><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>'
+				tr1String += '<button id="move_row_down-' + currentRow + '" class="btn btn-default" disabled="true"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>'
+				tr1String += '<button id="delete_row-' + currentRow + '" class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>';		
+			}
+			<!--  End the table -->
+			tr1String += '</td></tr>';
+			
+		document.getElementById("tagsContainer").querySelector("table tbody")
+	  		.insertAdjacentHTML('beforeend',tr1String );
+<!-- 	  	 Get the previous row and enable its down arrow -->
+	  	if (document.getElementById("move_row_down-" + totalRows)) document.getElementById("move_row_down-" + totalRows).disabled=false;
+<!-- 	  	Attach delete eventlistener -->
+	  	document.querySelector('#delete_row-'+ currentRow).onclick = 
+	  		function(e) { 
+				e.preventDefault();
+	  			var node1 = this.parentElement.parentElement; <!--  gives the tr the button is in -->
+<!-- 		 need to disable the down arrow of previous row			  			 -->
+	  			var node2 = node1.previousElementSibling;  <!-- gives you the tr the key-value are in	 --> 
+	  			var node3 = node2.previousElementSibling;  <!-- gives you the tr the previous actions buttons are in  -->			
+	  			node1.remove();  <!-- remove self -->
+	  			node2.remove(); <!-- remove the keypair for this action button  -->
+	  			var move_down_button = node3.querySelector("[id^='move_row_down-']");
+	  			if (move_down_button) move_down_button.disabled="true"; // disable the down button 	
+	  			updateTagsField();
+	  		}
+<!-- 	Attach up row eventlistener -->
+	  	if(document.querySelector('#move_row_up-'+ currentRow)) { 
+	  		document.querySelector('#move_row_up-'+ currentRow).onclick = 
+	  			function(e) {
+					e.preventDefault();
+					var parentNode = document.getElementById("tagsContainer").querySelector("table tbody");
+					var node3 = document.querySelector('#actions-row-'+ totalRows);
+					var node1 = node3.previousElementSibling;
+					var node2 = node3.nextElementSibling;
+					parentNode.insertBefore(node2, node1);
+					parentNode.insertBefore(node3, node1);
+					updateTagsField();
+	  			}
+	  	}
+<!-- 	Attach down row eventlistener -->
+	  	if(document.querySelector('#move_row_down-'+ currentRow)) { 
+	  		document.querySelector('#move_row_down-'+ currentRow).onclick = 
+	  			function(e) { 
+					e.preventDefault();
+					var parentNode = document.getElementById("tagsContainer").querySelector("table tbody");
+					var node3 = document.querySelector('#actions-row-'+ currentRow);
+					var node1 = node3.previousElementSibling;
+					var node2 = node3.nextElementSibling;
+					parentNode.insertBefore(node1, node2);
+					parentNode.insertBefore(node2, node3);
+					updateTagsField();
+	  			}
+	  	}
+}
+	
+<!-- **** Function to add the Key Value for the Tags Field	***** -->
+function updateTagsField(){
+	  var keypairs = document.querySelectorAll("tr[id^='keypair-']");
+	  var totalRows = 0;
+	  if(keypairs) {totalRows = keypairs.length;}
+	  if (totalRows > 0 ){
+		  var finalArray= '{ "tmpArr" : [';
+		  for (var i = 0; totalRows > i; i++) {
+			 var key = keypairs[i].querySelector('input[name^=key]');
+			 if (key) {key = (key.value) ? key.value : "";}
+			 var val = keypairs[i].querySelector('input[name^=value]');
+			 if (val) {val = (val.value) ? val.value : "";}
+			 finalArray += '{ "Key":"' + key + '" , "Value":"' + val + '" }'
+			 if (i != (keypairs.length -1)) finalArray += ',';
+		  };
+		  finalArray += ']}';
+		  var tmp = {"Tags" : JSON.parse(finalArray) };
+		document.getElementById("HiddenTags").value = finalArray;
+	  }
+	  updateRfcJsonValues();	
+}
+	<!-- ***** The main function to create the dynamic fields *****	 -->
 function buildHtmlTable(params) {
-	   
       var bodyDiv = document.getElementById('bodyDiv');
+<!-- 	Try block for removing the dynamically created form, which will not be their for the first time. -->
 		try {
-			$snowJQ("dynForm").remove();
+			$snowJQ("dynForm").remove(); <!-- If the form is created, remove it -->
 		}
 		catch(err) {
 			console.log('Nothing to remove ' + err.message);
 		}
+<!-- 	Create the main Form formX-->
 		var formX = document.createElement("form");
 		formX.setAttribute("id", "dynForm");
+<!--    Create DIV for Start Time -->
 		var startTimeContainer = document.createElement("div");
 		startTimeContainer.setAttribute("class", "container");
 		startTimeContainer.setAttribute("id", "startTimeContainer");
@@ -617,19 +716,17 @@ function buildHtmlTable(params) {
 	  					<input type="text" class="form-control"  name="startDate"/><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>\
 					</div>\
 			</div>\
-		  <div class="col-sm-2">\
+		  <div class="col-sm-2" id="timeDIV">\
 					<div class="input-group">\
-						<input class="form-control" id="time" name="time" placeholder="00:00" type="text" maxlength="5"/>\
+						<input class="form-control" id="time" name="time" placeholder="00:00" type="time" maxlength="5"/>\
 					</div>\
+			  <div class="text-danger" style="display: none" id="helptext">Invalid Time </div>\  
 		  </div>\
 		  <div class="col-sm-4">\
 					<div class="input-group">\
-						<select class="form-control selectpicker" id="timezones" name="timezones" placeholder="Timezones" />\
+						<select class="form-control" id="timezones" name="timezones" placeholder="Timezones" />\
 					</div>\
-		  </div>\
-		  <label class="control-label col-sm-2 requiredField" for="date">\
-					<span style="display:flex; align-items:center;height: 40px;" class="col-sm-1 pull-right glyphicon glyphicon-info-sign" data-toggle="tooltip" title="The start date must be at least 10 minutes after the time of RFC submission."></span>\
-		  </label>\
+					<span style="display:flex; align-items:left;top:-25px;" class="col-sm-1 pull-right glyphicon glyphicon-info-sign" data-toggle="tooltip" title="The start date must be at least 10 minutes after the time of RFC submission."></span>\</div>\
 		  </div>\
 	</div>\
 	<div><input type="hidden" name="requestedStartTime" id="requestedStartTime"/></div>\
@@ -637,17 +734,14 @@ function buildHtmlTable(params) {
 	
 		startTimeContainer.appendChild(startTimeContainerRowDiv);
 		formX.appendChild(startTimeContainer);
-
+<!-- ***** Description container rfcDescriptionContainer ***** -->
 		var rfcDescriptionContainer = document.createElement("div");
 		rfcDescriptionContainer.setAttribute("class", "container");
 		rfcDescriptionContainer.setAttribute("id", "rfcDescriptionContainer");
 		var rfcDescriptionContainerRow = document.createElement("div");
 		rfcDescriptionContainerRow.setAttribute("class", "row");
-		rfcDescriptionContainerRow.innerHTML = '
-      <div class="row heading">\
-         <div class="col-sm-5">
-            <h2>RFC description</h2>
-         </div>\
+		rfcDescriptionContainerRow.innerHTML = '<div class="row heading">\
+         <div class="col-sm-5"><h2>RFC description</h2></div>\
          <div class="col-sm-4">\
             <div class="switch-wrap">\
                <label class="col-sm-4" for="md-switch-on">Basic</label>\
@@ -664,67 +758,62 @@ function buildHtmlTable(params) {
       <div class="form-group requiredID properties">\
          <label class="col-sm-4 col-form-label" for="Subject">Subject*</label>\
          <div class="col-sm-7">\
-            <input type="text" class="form-control" rows="5" name="Subject" id="Subject"  onchange="updateRfcJsonValues()"/>\
+            <input type="text" class="form-control" rows="5" paramType="text" name="Subject" id="Subject"  onchange="updateRfcJsonValues()"/>\
          </div>\
       </div>\
-	   
       <div class="form-group bg-info optionalID properties collapse">\
          <label class="col-sm-4 col-form-label" for="description">Description</label>\
          <div class="col-sm-7">\
-            <textarea class="form-control" rows="5" name="description" id="advncDescription" onchange="updateRfcJsonValues()"/>\
+            <textarea class="form-control" rows="5" paramType="text" name="description" id="advncDescription" onchange="updateRfcJsonValues()"/>\
          </div>\
       </div>\
       <div class="form-group bg-info optionalID properties collapse">\
          <label class="col-sm-4 col-form-label" for="worstCasesScenario">Worst-case scenario</label>\
          <div class="col-sm-7">\
-            <textarea class="form-control" rows="5" name="worstCasesScenario" id="worstCasesScenario" onchange="updateRfcJsonValues()"/>\
+            <textarea class="form-control" rows="5" paramType="text" name="worstCasesScenario" id="worstCasesScenario" onchange="updateRfcJsonValues()"/>\
          </div>\
       </div>\
       <div class="form-group bg-info optionalID properties collapse">\
          <label class="col-sm-4 col-form-label" for="implementationPlan">Implementation plan</label>\
          <div class="col-sm-7">\
-            <textarea class="form-control" rows="5" name="implementationPlan" id="implementationPlan" onchange="updateRfcJsonValues()"/>\
+            <textarea class="form-control" rows="5" paramType="text" name="implementationPlan" id="implementationPlan" onchange="updateRfcJsonValues()"/>\
          </div>\
       </div>\
       <div class="form-group bg-info optionalID properties collapse">\
          <label class="col-sm-4 col-form-label" for="rollbackPlan">Rollback plan</label>\
          <div class="col-sm-7">\
-            <textarea class="form-control" rows="5" name="rollbackPlan" id="rollbackPlan" onchange="updateRfcJsonValues()"/>\
+            <textarea class="form-control" rows="5" paramType="text" name="rollbackPlan" id="rollbackPlan" onchange="updateRfcJsonValues()"/>\
          </div>\
       </div>\
       <div class="form-group bg-info optionalID properties collapse">\
          <label class="col-sm-4 col-form-label" for="expectedOutcome">Expected outcome</label>\
          <div class="col-sm-7">\
-            <textarea class="form-control" rows="5" name="expectedOutcome" id="expectedOutcome"  onchange="updateRfcJsonValues()"/>\
+            <textarea class="form-control" rows="5" paramType="text" name="expectedOutcome" id="expectedOutcome"  onchange="updateRfcJsonValues()"/>\
          </div>\
-      </div>
-      ';
+      </div>';
 		rfcDescriptionContainer.appendChild(rfcDescriptionContainerRow);
 		formX.appendChild(rfcDescriptionContainer);		
+<!-- *****	Resource Information container resourceInformationContainer **** -->
 		var resourceInformationContainer = document.createElement("div");
 		resourceInformationContainer.setAttribute("class", "container");
 		resourceInformationContainer.setAttribute("id", "resourceInformationContainer");
 		var resourceInformationContainerRow = document.createElement("div");
 		resourceInformationContainerRow.setAttribute("class", "row");
-		resourceInformationContainerRow.innerHTML='
-      <h2>Resource information</h2>
-      <hr />
-      ';
+		resourceInformationContainerRow.innerHTML='<h2>Resource information</h2><hr />';
 		resourceInformationContainer.appendChild(resourceInformationContainerRow);
-	   
-	   var parameterContainer= document.createElement("div");
+<!-- ***	Parameters Container parameterContainer  *****  -->
+	    var parameterContainer= document.createElement("div");
 		parameterContainer.setAttribute("class", "container");
 		parameterContainer.setAttribute("id", "parameterContainer");
 		var parameterContainerRow = document.createElement("div");
 		parameterContainerRow.setAttribute("class", "row");
-		parameterContainerRow.innerHTML='
-      <h3>Parameters</h3>
-      <hr />
-      ';
+		parameterContainerRow.innerHTML='<h3>Parameters</h3><hr />';
 		parameterContainer.appendChild(parameterContainerRow);
+<!-- ****	Loop the params map to create the field ***** -->
 		for (var i = 0; Object.keys(params).length > i; i++) {
 			var tmp = params[Object.keys(params)[i]];
 			var inputType;
+<!-- ****	Switch case for the data type while creating fields  **** -->
 			switch (tmp.paramType) {
 				case "string":
 					if (tmp.snowParamType === "String" ){
@@ -734,10 +823,12 @@ function buildHtmlTable(params) {
 					} 			 
 					break;
 				case "array":
-					if(tmp.snowParamType=== "Reference"){
+					if(tmp.snowParamType === "Reference"){
 					   inputType = "select";
-					} else{
+					} else if(tmp.paramName === "Tags"){
 					   inputType = "select-multiple"
+					}else{
+						inputType = "List";
 					}
 					break;
 				case "number":
@@ -749,14 +840,11 @@ function buildHtmlTable(params) {
 				case "boolean":
 					inputType = "boolean";
 					break;
-				<!-- case "array":
-					inputType = "List"
-					break; -->
 				default:
 					inputType = "text"
 
 			}
-	   
+<!-- **** The Parent Div of the field  ***** -->
 			var divX = document.createElement("div");
 			var collapseOrNot = (tmp.mandatory != "true") ? "collapse" : "";
 			var optionalOrRequiredID = (tmp.mandatory != "true") ? "optionalID" : "requiredID";
@@ -773,18 +861,16 @@ function buildHtmlTable(params) {
 			if (tmp.minimum) additionalTypes += 'min="' + tmp.minimum + '" ';
 			if (tmp.maximum) additionalTypes += 'max="' + tmp.maximum + '" ';
 			if (tmp.pattern) additionalTypes += 'pattern="' + tmp.pattern + '" ';
-			
-			// the following is not required if we return the params the same order that AWS sends them
 			if(tmp.paramName === "StackTemplateId"){
 				divX.setAttribute("class","form-group bg-info optionalID properties collapse");
 			 }
-			
+<!-- ***** Create field for data type text and number  ***** -->
 			if (inputType === 'text' || inputType === 'number') {             
 				if(tmp.pattern){
 				str += '<div class="col-sm-7" >';
 			    str += '<input type="' 
 					+ inputType + 
-					'" class="form-control" name="' 
+					'" step="0.01" class="form-control" name="' 
 					+ tmp.paramName + 
 					'" id="' 
 					+ tmp.paramName + 
@@ -794,14 +880,14 @@ function buildHtmlTable(params) {
 					+ tmp.minimum + 
 					'" max="' 
 					+ tmp.maximum + 
-					'" onchange="validate($snowJQ(this))" 
-					pattern="' + tmp.pattern + '" /></div>';
+					'" onchange="validate($snowJQ(this))" pattern="' + tmp.pattern + '" paramType="' + tmp.paramType + '" 
+					maxlength="' + tmp.maxLength + '" minlength="' + tmp.minLength + '"/></div>';
 					}
 				else{
 					str += '<div class="col-sm-7" >';
 					str += '<input type="' 
 					+ inputType + 
-					'" class="form-control" name="' 
+					'" step="0.01" class="form-control" name="' 
 					+ tmp.paramName + 
 					'" id="' 
 					+ tmp.paramName + 
@@ -811,156 +897,169 @@ function buildHtmlTable(params) {
 					+ tmp.minimum + 
 					'" max="' 
 					+ tmp.maximum + 
-					'" onchange="validate($snowJQ(this))" /></div>';}
+					'" onchange="validate($snowJQ(this))" paramType="' + tmp.paramType + '" /></div>';}
 	}
-	
+<!-- ***** Create field for the boolean data type  ***** -->
 			if (inputType === 'boolean') {            
 				if(tmp.snowParamType == 'True/False'){
 					var checkedStr = ((tmp.default === true) ? true: false);
-					str += '<div class="col-sm-7"><div class="radio"><label><input id="' + tmp.paramName + '" type="radio" name="' + tmp.paramName + '" value="true" checked="'+checkedStr+'"  onchange="updateRfcJsonValues()">true</input></label></div>';
-					str += '<div class="radio">
-							<label>
-							   <input type="radio" name="' + tmp.paramName + '" value="false" checked="'+checkedStr+'">false</input>
-							</label>
-						 </div>
-					  </div>';
+					str += '<div class="col-sm-7"><div class="radio"><label><input id="' + tmp.paramName + '" type="radio" paramType="' + tmp.paramType + '" name="' + tmp.paramName + '" value="true" checked="'+checkedStr+'"  onchange="updateRfcJsonValues()">true</input></label></div>';
+					str += '<div class="radio"><label><input type="radio" paramType="' + tmp.paramType + '" name="' + tmp.paramName + '" value="false" checked="'+checkedStr+'">false</input></label></div></div>';
 				}
 			}
+<!-- ***** Create field for the Tags Field	**** -->
 			if (inputType === 'select-multiple'){
-				str += '<div class="col-sm-7">' ;
-			    str += '<input type="' 
-					+ inputType + 
-					'" class="form-control select-multiple" name="' 
-					+ tmp.paramName + 
-					'" id="' 
-					+ tmp.paramName + 
-					'" placeholder="' 
-					+ tmp.default + 
-					'"  min="' 
-					+ tmp.minimum + 
-					'" max="' 
-					+ tmp.maximum + 
-					'" onchange="validate($snowJQ(this)); updateRfcJsonValues()" /></div>';
+				str += '<div class="container" id="tagsContainer" name="tagsContainer">';
+				str +=   '<div class="row" id="tagsTableRow" name="tagsTableRow">';
+				str += 		'<div class="col-md-4 col-md-offset-2 column">';
+				str += 			'<table class="table bg-aws-color" id="keypair-table">';
+				str += 				'<tbody>';
+				str +=                '<tr><td><input type="hidden" id="HiddenTags" class="hidden-row"></input></td></tr>';
+				str += 				'</tbody>';
+				str += 			'</table>';
+				str += 		'</div>';
+				str += 	'</div>';
+				str += 	'<button id="add_row" type="button" class="btn btn-default pull-left" onclick="addRows()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>';
+				str += '</div><div class="col-sm-8 col-md-offset-4 text-danger" style="display: none" id="helptext"/>';
 			}
-	
+<!-- ***** Create field for the Drop-down Field ***** -->
 			if (inputType === 'select'){
-				 if(tmp.snowParamType !== "Reference"){
+				 if(tmp.snowParamType !== "Reference") {
 					 if(tmp.paramName === "StackTemplateId"){
-						 str += '<div class="col-sm-7"><div class="radio">
-									<label>
-									   <input id="' + tmp.paramName + '" name="' + tmp.paramName + '" type="radio" value="' + tmp.num + '" checked="checked">'+tmp.num+'</input>
-									</label>
-								 </div>
-							  </div>
-							  ';
+						 str += '<div class="col-sm-7"><div class="radio"><label><input id="' + tmp.paramName + '" paramType="' + tmp.paramType + '" name="' + tmp.paramName + '" type="radio" value="' + tmp.num + '" checked="checked">'+tmp.num+'</input></label></div></div>';
 					  } else {
 						var options = tmp.num.split(',');
 						var optionStr = '<option value="" selected="true" disabled="true">None</option>';
 						options.forEach( (option) => 
 						optionStr+= '<option value="' + option + '">' + option + '</option>' );
-						str += '<div class="col-sm-7" id="'+ tmp.paramName +'"><select class="form-control" id="'+ tmp.paramName +'" name="'+ tmp.paramName +'">'+ optionStr +'</select></div>';    
+						str += '<div class="col-sm-7" id="'+ tmp.paramName +'"><select class="form-control" id="'+ tmp.paramName +'"  paramType="' + tmp.paramType + '" name="'+ tmp.paramName +'">'+ optionStr +'</select></div>';    
 					  }
-				}else{
-				str += '
-				 <div class="col-sm-4">
-					 <input id="' + tmp.paramName + '" name="' + tmp.paramName + '" type="text" class="form-control  select-multiple" readonly="true" minItems="' + tmp.minItems + '" maxItems="' + tmp.maxItems + '"></input>					
-				  </div> ';
+				} else {
+				//var addThis = (tmp.paramType === "array") ? "select-multiple" : "";
+				str += '<div class="col-sm-4"><input id="' + tmp.paramName + '"  paramType="' + tmp.paramType + '" name="' + tmp.paramName + '" type="' + tmp.paramType + '" class="form-control" readonly="true" minItems="' + tmp.minItems + '" maxItems="' + tmp.maxItems + '"></input></div> ';
 				var commonGA;
+<!-- *** SNOW Ajax calls depending upon the param name **** -->
 				if (tmp.paramName == 'VpcId') {
-				commonGA = new GlideAjax('AMSGetResources');
+				commonGA = new GlideAjax('AMS_GetResources');
 				commonGA.addParam('sysparm_name', 'getVpcs');
 				}
 				if (tmp.paramName == 'StackIds' || tmp.paramName == 'StackId') {
-				commonGA = new GlideAjax('AMSGetResources');
+				commonGA = new GlideAjax('AMS_GetResources');
 				commonGA.addParam('sysparm_name', 'getStacks');
 				}
 				if (tmp.paramName == 'AmiId') {
-				commonGA = new GlideAjax('AMSGetResources');
+				commonGA = new GlideAjax('AMS_GetResources');
 				commonGA.addParam('sysparm_name', 'getAmis');
 				}
 				if (tmp.paramName.includes("Subnet")) {
-				commonGA = new GlideAjax('AMSGetResources');
+				commonGA = new GlideAjax('AMS_GetResources');
 				commonGA.addParam('sysparm_name', 'getSubnets');
 				}
 			   commonGA.getXMLWait();
 			   var responseXML = commonGA.getAnswer();
 			   var options = responseXML.split(',');
-			   var paramName=tmp.paramName;
+			   	
+			   var paramName = tmp.paramName;
 			   var optionStr = '<option value="" selected="true">' + 'none' + '</option>';
 			   options.forEach( (option) =>
-			   optionStr += '<option value="' + option + '" >' + option + '</option>' );
-
-			   str += '<div class="col-sm-2"><select class="form-control" onchange="addIds(this, this.value); updateRfcJsonValues(); validateArrays(this);" name="' + tmp.paramName +'"> ' 
+					   optionStr += '<option value="' + option + '" >' + option + '</option>' );
+			   
+			   str += '<div class="col-sm-2"><select class="form-control" onchange="addIds(this, this.value); updateRfcJsonValues(); validateArrays(this);" name="' + tmp.paramName +'" id="' + tmp.paramName +'-select"> ' 
 			   + optionStr + '</select></div>';
-				str += '<button type="button" onclick="clearAll(this.name)" name="' + tmp.paramName +'" class="btn btn-default">Clear All</button>';
+				str += '<button type="button" onclick="clearAll(this.name);updateRfcJsonValues()" name="' + tmp.paramName +'" class="btn btn-default">Clear All</button><div class="col-sm-8 col-md-offset-4 text-danger" style="display: none" id="helptext"/>';
 				 }
 			}
-			
+<!-- **** Create field for Drop-Down with multiple selection	**** -->
 			if(inputType === 'List'){
 				if (tmp.paramName === 'SubnetIds') {
-				   str += '
-				 <div class="col-sm-4">
-					 <div>
-						<label>
-						   <input id="' + tmp.paramName + '" name="' + tmp.paramName + '" type="text" value="' + tmp.num + '" class="form-control"  onchange="validate($snowJQ(this))"></input>
-						</label>
-					 </div>
-				  </div> ';
-			   var commonGA = new GlideAjax('AMSGetResources');
-			   commonGA.addParam('sysparm_name', 'getSubnets');
-			   commonGA.getXMLWait();
-			   var responseXML = commonGA.getAnswer();
-			   var options = responseXML.split(',');
-			   var optionStr = '<option value="" selected="true">' + 'none' + '</option>';
-			   options.forEach( (option) =>
-			   optionStr += '<option value="' + option + '">' + option + '</option>' );
-			   str += '<div class="col-sm-2" id="' 
-				   + tmp.paramName + 
-				   '" ><select class="form-control" id="' 
-				   + tmp.paramName + 
-				   '" name="' 
-				   + tmp.paramName + 
-				   '"> ' 
-			   + optionStr + 
-			   '</select></div>';
-			   }
-		 }
-		 str += '
-      <span style="display:flex; align-items:center;height: 40px;" class="col-sm-1 pull-right glyphicon glyphicon-info-sign" data-toggle="tooltip" title="' + tmp.description + '" />
-      ';
+				   str += '<div class="col-sm-4"><div><label><input id="' + tmp.paramName + '"  paramType="' + tmp.paramType + '" name="' + tmp.paramName + '" type="text" value="' + tmp.num + '" class="form-control"  onchange="validate($snowJQ(this))"></input></label></div></div> ';
+				   var commonGA = new GlideAjax('AMS_GetResources');
+				   commonGA.addParam('sysparm_name', 'getSubnets');
+				   commonGA.getXMLWait();
+				   var responseXML = commonGA.getAnswer();
+				   var options = responseXML.split(',');
+				   var optionStr = '<option value="" selected="true">' + 'none' + '</option>';
+				   options.forEach( (option) =>
+				   optionStr += '<option value="' + option + '">' + option + '</option>' );
+				   str += '<div class="col-sm-2" id="' 
+					   + tmp.paramName + 
+					   '" ><select class="form-control" id="' 
+					   + tmp.paramName + 
+					   '"  paramType="' + tmp.paramType + '" name="' 
+					   + tmp.paramName + 
+					   '"> ' 
+					   + optionStr + 
+					   '</select></div>';
+			   } else {
+						if(tmp.pattern){
+							str += '<div class="col-sm-7" >';
+							str += '<input type="' 
+								+ inputType + 
+								'" class="form-control" name="' 
+								+ tmp.paramName + 
+								'" id="' 
+								+ tmp.paramName + 
+								'" value="' 
+								+ tmp.default + 
+								'"  min="' 
+								+ tmp.minimum + 
+								'" max="' 
+								+ tmp.maximum + 
+								'" onchange="validateArrays(this);updateRfcJsonValues();" 
+								pattern="' + tmp.pattern + '" paramType="' + tmp.paramType + '" 
+								minItems="' + tmp.minItems + '" maxItems="' + tmp.maxItems + '" /></div>';
+						} else {
+								str += '<div class="col-sm-7" >';
+								str += '<input type="text" class="form-control" name="' 
+								+ tmp.paramName + 
+								'" id="' 
+								+ tmp.paramName + 
+								'" value="' 
+								+ tmp.default + 
+								'"  min="' 
+								+ tmp.minimum + 
+								'" max="' 
+								+ tmp.maximum + 
+								'" onchange="validateArrays(this);updateRfcJsonValues();" 
+								paramType="' + tmp.paramType + '" 
+								minItems="' + tmp.minItems + '" maxItems="' + tmp.maxItems + '"/></div>';
+							}
+				}
+			}
+			 
+			str += '<span style="display:flex; align-items:center;height: 40px;" class="col-sm-1 pull-right glyphicon glyphicon-info-sign" data-toggle="tooltip" title="' + tmp.description + '" /><div class="col-sm-8 col-md-offset-4 text-danger" style="display: none" id="helptext"/>';
 			divX.innerHTML = str;
-		 if(tmp.paramName === 'Description' ||tmp.paramName === 'StackTemplateId'){
-	
+
+			if(tmp.paramName === 'Description' ||tmp.paramName === 'StackTemplateId'){
 				resourceInformationContainer.appendChild(divX);
-		 }else{
-			parameterContainer.appendChild(divX);
-		 }
+			 }else{
+				parameterContainer.appendChild(divX);
+			 }
 		}
-		
+<!-- ****	RFC JSON Field DIV  *****-->
 		var rfcJsonContainer = document.createElement("div");
-		rfcJsonContainer.setAttribute("class", "container");
+		rfcJsonContainer.setAttribute("class", "container optionalID collapse");
 		rfcJsonContainer.setAttribute("id", "rfcJsonContainer");
 		var rfcJsonContainerRow = document.createElement("div");
 		rfcJsonContainerRow.setAttribute("class", "row");
 		rfcJsonContainerRow.innerHTML='<h2>RFC JSON</h2><hr/>\
 		<div class="row">\
-			<div class="col-sm-12">\
-				<textarea class="form-control" rows="5" name="rfcJson"  id="rfcJson" readonly="true"></textarea>\
+			<div class="col-sm-12 optionalID collapse" >\
+				<textarea class="form-control" rows="5" name="rfcJson" id="rfcJson" readonly="true" ></textarea>\
 			</div>\
 		</div>\
 		';
-		rfcJsonContainerRow.appendChild(rfcJsonContainer);	
-	
-		formX.appendChild(resourceInformationContainer);
-		formX.appendChild(parameterContainer);
-		formX.appendChild(rfcJsonContainerRow);
-		bodyDiv.appendChild(formX);
+		rfcJsonContainer.appendChild(rfcJsonContainerRow);	
+		formX.appendChild(resourceInformationContainer);<!--  Add the Resource Container to the main Form -->
+		formX.appendChild(parameterContainer); <!-- Next Add the parameter container to the main Form -->
+		formX.appendChild(rfcJsonContainer); <!-- Next Add the RFC JSON to the main Form -->
+		bodyDiv.appendChild(formX); <!-- Add the main form to the html body -->
 		prepareDateTimePicker(); 
+		prepareSelectPickers();
 		updateRfcJsonValues();
-		
 	}
-   </script>
-   <div id="bodyDiv" style="text-align: left; padding:25px;margin:25px;" />
+   </script>   
+	 <div id="bodyDiv" style="text-align: left; padding:25px;margin:25px;" />
 </j:jelly>]]></xml>
     </sys_ui_macro>
 </record_update>

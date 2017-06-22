@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<database>
-    <element label="Rfc Change Type Categories" max_length="40" name="x_109369_ams_rfc_change_type_categories" type="collection">
-        <element display="true" label="Category" max_length="40" name="u_rfc_change_type_categories_category" type="string"/>
-    </element>
-</database>

@@ -8,92 +8,38 @@
         <field>u_rfcs_aws_approval_status</field>
         <global>false</global>
         <messages/>
-        <name>Get_UI_Macro_Values</name>
+        <name>AMS_GetUIMacroValues</name>
         <order/>
         <script><![CDATA[function onSubmit() {
-
-	var isValid = validateAllInputs();
-	console.log('onSubmit isValid = ' + isValid);
-	if(!isValid) {
-		g_form.addErrorMessage("Please enter data for all required fields");
+	var checkEmptyFields = validateAllRequiredInputs();
+	//Check Required fields validation
+	if(!checkEmptyFields.isValid) 
+	{
+		g_form.addErrorMessage("Please enter the value for "+checkEmptyFields.fieldName);
 		return false;
-	} else {
-		var changetypeid=g_form.getValue('u_rfcs_change_type_id');
+	} 
+	else 
+	{
+		//validate all the input values
+		var allFieldsValid = validateAll();
+		if (!allFieldsValid) {
+			g_form.addErrorMessage("The RFC submission has one or more errors. Please check all fields marked with red and ensure all required fields are filled out");
+			return false;
+		}
+		//Fetch ChangeTypeID
+		var changetypeid = g_form.getValue('u_rfcs_change_type_id');
 		var rfcJson =  getValues();
 		rfcJson["changeTypeId"] = changetypeid;
-		console.log('Get_UI_Macro_Values >> rfcJson = ' + JSON.stringify(rfcJson, null, 2));
+		//console.log('Get_UI_Macro_Values >> rfcJson = ' + JSON.stringify(rfcJson, null, 2));
+		
+		//Assing rfcJson values to the subject,description,execution parameters field
 		g_form.setValue('u_rfcs_execution_parameters',JSON.stringify(rfcJson));
 		g_form.setValue('u_rfcs_subject',rfcJson.Subject);
-		if(rfcJson.description!= undefined)
-		g_form.setValue('u_rfcs_rfcdescription',rfcJson.description);
+		if(rfcJson.description != undefined)
+			g_form.setValue('u_rfcs_rfcdescription',rfcJson.description);
 	}
-	
 }
-//	var fields=getValues();	
-// 	if(fields.Subject==undefined || fields.Subject==null || fields.Subject==''){
-// 		g_form.addErrorMessage("Subject is mandatory");
-// 		return false;
-// 	} else {
-// 		g_form.setValue('u_rfcs_subject',fields.Subject);
-// 	}
-// 	if(fields.Description == undefined || fields.Description==null || fields.Description==''){
-// 		g_form.addErrorMessage("Description is mandatory");
-// 		return false;
-// 	} else {
-// 		g_form.setValue('u_rfcs_rfcdescription',fields.Description);	
-// 	}
-// 	var allFields=fields.basicexecutionParameters;
-// 	Object.keys(allFields).forEach(function(key) {
-// 		g_form.addInfoMessage("Key Name =========  "+key);
-// 		g_form.addInfoMessage("Key Value =========  "+allFields[key]);
-// 	});
-	
-// 	var advncFields=fields.advancedexecutionParameters;
-// 	Object.keys(advncFields).forEach(function(key) {
-// 		g_form.addInfoMessage("Key Name =========  "+key);
-// 		g_form.addInfoMessage("Key Value =========  "+advncFields[key]);
-// 	});
-// 	return false;
-	//g_form.setValue('u_rfcs_execution_parameters',);
-	//return false;
-//console.log('Inside Get_UI_Macro_Values.....');
-	//console.log( JSON.stringify(fields, null, 2) );	
-	//var basicFields=fields.basicexecutionParameters;
-	//console.log( JSON.stringify(basicFields, null, 2) );
-	//var advncFields=fields.advancedexecutionParameters;
-	//console.log( JSON.stringify(advncFields, null, 2) );
-	//var isMandatoryFields=false;
-	
-// 	for(var key in basicFields){
-// 		//console.log('Checking .. ' + i + ' field = ' + key);		
-//  		if(basicFields[key]==undefined || basicFields[key]==null || basicFields[key]==''){
-// 			g_form.addErrorMessage("All the Required fields are mandatory. Please check field " + basicFields[i]);
-// 			isMandatoryFields=true;
-// 			break;
-// 		}
-// 	}
-// 	if(fields.Subject==undefined || fields.Subject==null || fields.Subject==''){
-// 		isMandatoryFields=true;
-// 		g_form.addErrorMessage("Subject is mandatory");
-// 	}
-// 	if(fields.Description == undefined || fields.Description==null || fields.Description==''){
-// 		isMandatoryFields=true;
-// 		g_form.addErrorMessage("Description is mandatory");
-// 	}
-// 	if(isMandatoryFields){
-// 		return false;
-// 	}
-	//var basic=JSON.stringify(basicFields);
-	//var advanced =JSON.stringify(advncFields);
-	
-//	var rfcJson = 
-// 	{
-// 		"basicexecutionParameters": basic,
-// 		"advancedexecutionParameters": advanced,
-// 		"changeTypeId": changetypeid,
-// 		"Subject" : fields.Subject,
-// 		"Description": fields.Description
-//	};]]></script>
+]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-05-18 10:44:07</sys_created_on>
@@ -101,16 +47,16 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>2201987ddbb6f200ef73d8c0cf96196c</sys_id>
-        <sys_mod_count>90</sys_mod_count>
-        <sys_name>Get_UI_Macro_Values</sys_name>
+        <sys_mod_count>109</sys_mod_count>
+        <sys_name>AMS_GetUIMacroValues</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_client_2201987ddbb6f200ef73d8c0cf96196c</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-05-30 02:08:42</sys_updated_on>
+        <sys_updated_by>madhav</sys_updated_by>
+        <sys_updated_on>2017-06-07 13:29:25</sys_updated_on>
         <table>x_109369_ams_rfcs</table>
         <type>onSubmit</type>
         <ui_type>0</ui_type>

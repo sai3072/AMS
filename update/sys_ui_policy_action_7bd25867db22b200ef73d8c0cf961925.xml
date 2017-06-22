@@ -19,7 +19,7 @@
         <sys_updated_by>saikrishna</sys_updated_by>
         <sys_updated_on>2017-05-11 11:01:59</sys_updated_on>
         <table>x_109369_ams_rfcs</table>
-        <ui_policy display_value="AMS POC Operation">23b2d467db22b200ef73d8c0cf961990</ui_policy>
+        <ui_policy display_value="AMS_ShowOperation">23b2d467db22b200ef73d8c0cf961990</ui_policy>
         <visible>true</visible>
     </sys_ui_policy_action>
 </record_update>

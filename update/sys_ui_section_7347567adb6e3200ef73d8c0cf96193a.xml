@@ -435,6 +435,104 @@
             <sys_user/>
             <type/>
         </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfcs_parent_name</element>
+            <position>31</position>
+            <sys_created_by>madhav</sys_created_by>
+            <sys_created_on>2017-05-31 08:01:30</sys_created_on>
+            <sys_id>37992e75db8bb200ef73d8c0cf9619c7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfc_form" sys_domain="global" view="Default view">7347567adb6e3200ef73d8c0cf96193a</sys_ui_section>
+            <sys_updated_by>madhav</sys_updated_by>
+            <sys_updated_on>2017-05-31 08:01:30</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfcs_form_minimumvalue</element>
+            <position>32</position>
+            <sys_created_by>madhav</sys_created_by>
+            <sys_created_on>2017-05-31 10:49:20</sys_created_on>
+            <sys_id>4a00133ddbcbb200ef73d8c0cf96194f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfc_form" sys_domain="global" view="Default view">7347567adb6e3200ef73d8c0cf96193a</sys_ui_section>
+            <sys_updated_by>madhav</sys_updated_by>
+            <sys_updated_on>2017-05-31 10:49:20</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfcs_form_maximumvalue</element>
+            <position>33</position>
+            <sys_created_by>madhav</sys_created_by>
+            <sys_created_on>2017-05-31 10:49:20</sys_created_on>
+            <sys_id>4a00133ddbcbb200ef73d8c0cf96195b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfc_form" sys_domain="global" view="Default view">7347567adb6e3200ef73d8c0cf96193a</sys_ui_section>
+            <sys_updated_by>madhav</sys_updated_by>
+            <sys_updated_on>2017-05-31 10:49:20</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfcs_form_minimumitems</element>
+            <position>34</position>
+            <sys_created_by>madhav</sys_created_by>
+            <sys_created_on>2017-05-31 10:49:21</sys_created_on>
+            <sys_id>d200133ddbcbb200ef73d8c0cf961967</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfc_form" sys_domain="global" view="Default view">7347567adb6e3200ef73d8c0cf96193a</sys_ui_section>
+            <sys_updated_by>madhav</sys_updated_by>
+            <sys_updated_on>2017-05-31 10:49:21</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfcs_form_maximumitems</element>
+            <position>35</position>
+            <sys_created_by>madhav</sys_created_by>
+            <sys_created_on>2017-05-31 10:49:21</sys_created_on>
+            <sys_id>9a00133ddbcbb200ef73d8c0cf961972</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfc_form" sys_domain="global" view="Default view">7347567adb6e3200ef73d8c0cf96193a</sys_ui_section>
+            <sys_updated_by>madhav</sys_updated_by>
+            <sys_updated_on>2017-05-31 10:49:21</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfcs_form_maximumlength</element>
+            <position>36</position>
+            <sys_created_by>madhav</sys_created_by>
+            <sys_created_on>2017-05-31 10:49:21</sys_created_on>
+            <sys_id>d200133ddbcbb200ef73d8c0cf96197e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfc_form" sys_domain="global" view="Default view">7347567adb6e3200ef73d8c0cf96193a</sys_ui_section>
+            <sys_updated_by>madhav</sys_updated_by>
+            <sys_updated_on>2017-05-31 10:49:21</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfcs_form_minimumlength</element>
+            <position>37</position>
+            <sys_created_by>madhav</sys_created_by>
+            <sys_created_on>2017-05-31 10:49:22</sys_created_on>
+            <sys_id>ae00133ddbcbb200ef73d8c0cf961989</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfc_form" sys_domain="global" view="Default view">7347567adb6e3200ef73d8c0cf96193a</sys_ui_section>
+            <sys_updated_by>madhav</sys_updated_by>
+            <sys_updated_on>2017-05-31 10:49:22</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption/>
             <header>false</header>

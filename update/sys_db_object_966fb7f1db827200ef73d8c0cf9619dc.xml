@@ -8,7 +8,7 @@
         <configuration_access>false</configuration_access>
         <create_access>false</create_access>
         <create_access_controls>true</create_access_controls>
-        <delete_access>false</delete_access>
+        <delete_access>true</delete_access>
         <extension_model/>
         <is_extendable>false</is_extendable>
         <label>VPCs</label>
@@ -23,15 +23,15 @@
         <sys_created_on>2017-04-11 21:16:46</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>966fb7f1db827200ef73d8c0cf9619dc</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>VPCs</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_db_object_966fb7f1db827200ef73d8c0cf9619dc</sys_update_name>
-        <sys_updated_by>Venu</sys_updated_by>
-        <sys_updated_on>2017-04-11 21:16:46</sys_updated_on>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-06-07 10:43:31</sys_updated_on>
         <update_access>false</update_access>
         <user_role display_value="x_109369_ams.vpcs_user" name="x_109369_ams.vpcs_user">29200406db827200ef73d8c0cf96197a</user_role>
         <ws_access>true</ws_access>

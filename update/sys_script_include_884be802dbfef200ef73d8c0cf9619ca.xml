@@ -3,73 +3,84 @@
     <sys_script_include action="INSERT_OR_UPDATE">
         <access>package_private</access>
         <active>true</active>
-        <api_name>x_109369_ams.AMSGetResources</api_name>
+        <api_name>x_109369_ams.AMS_GetResources</api_name>
         <client_callable>true</client_callable>
-        <description>to get resources and store it in the variable</description>
-        <name>AMSGetResources</name>
-        <script><![CDATA[var AMSGetResources = Class.create();
-AMSGetResources.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
-getVpcs: function() {
-		var gr = new GlideRecord('x_109369_ams_vpcs');
-		gr.query();
-		var map=[];
-		while(gr.next()){
-			
-			//map=map+gr.u_vpc_id+",";
-			map.push(gr.u_vpc_id.toString());
-			
-		}
-		return map.toString();
-	},
-	getStacks: function() {
-		var gr = new GlideRecord('x_109369_ams_stacks');
-		gr.query();
-		var map=[];
-		while(gr.next()){
-			//map=map+gr.u_stack_id+",";
-			map.push(gr.u_stack_id.toString());
-			
-		}
-		return map.toString();
-	},
-	getAmis: function() {
-		var gr = new GlideRecord('x_109369_ams_amis');
-		gr.query();
-		var map=[];
-		while(gr.next()){
-			//map=map+gr.u_ami_id+",";
-			map.push(gr.u_ami_id.toString());
-			
-		}
-		return map.toString();
-	},
-	getSubnets: function() {
-		var gr = new GlideRecord('x_109369_ams_subnets');
-		gr.query();
-		var map=[];
-		while(gr.next()){
-			//map=map+gr.u_subnet_id+",";		
-			map.push(gr.u_subnet_id.toString());
-		}
+        <description>To get resources and store it in the variable as options/choice  to corresponding fields in RFC Form.</description>
+        <name>AMS_GetResources</name>
+        <script><![CDATA[var AMS_GetResources = Class.create();
+AMS_GetResources.prototype = Object.extendsObject(global.AbstractAjaxProcessor,
+		{
+			getVpcs : function() {
+				// Glide Record to VPCs Table
+				var gr = new GlideRecord('x_109369_ams_vpcs');
+				// fetch all records from vpc table
+				gr.query();
+				var map = [];
+				while (gr.next()) 
+				{
+					// Pushing available Vpcs to corresponding field
+					map.push(gr.u_vpc_id.toString());
+				}
+				return map.toString();
+			},
 
-		return map.toString();
-	},
-    
-	type: 'AMSGetResources'
-});]]></script>
+			getStacks : function() {
+				// Glide Record to Stacks Table
+				var gr = new GlideRecord('x_109369_ams_stacks');
+				// fetch all records from Stacks table
+				gr.query();
+				var map = [];
+				while (gr.next())
+				{
+					// Pushing available Stacks to corresponding field
+					map.push(gr.u_stack_id.toString());
+				}
+				return map.toString();
+			},
+
+			getAmis : function() {
+				// Glide Record to Amis Table
+				var gr = new GlideRecord('x_109369_ams_amis');
+				// fetch all records from Amis table
+				gr.query();
+				var map = [];
+				while (gr.next())
+				{
+					// Pushing available Amis to corresponding field
+					map.push(gr.u_ami_id.toString());
+				}
+				return map.toString();
+			},
+
+			getSubnets : function() {
+				// Glide Record to Subnets Table
+				var gr = new GlideRecord('x_109369_ams_subnets');
+				// fetch all records from Subnets table
+				gr.query();
+				var map = [];
+				while (gr.next())
+				{
+					// Pushing available subnets to corresponding Field
+					map.push(gr.u_subnet_id.toString());
+				}
+				return map.toString();
+			},
+
+			type : 'AMS_GetResources'
+		});]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-05-19 07:16:20</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>884be802dbfef200ef73d8c0cf9619ca</sys_id>
-        <sys_mod_count>11</sys_mod_count>
-        <sys_name>AMSGetResources</sys_name>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_name>AMS_GetResources</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_include_884be802dbfef200ef73d8c0cf9619ca</sys_update_name>
-        <sys_updated_by>madhav</sys_updated_by>
-        <sys_updated_on>2017-05-26 14:17:52</sys_updated_on>
+        <sys_updated_by>saikrishna</sys_updated_by>
+        <sys_updated_on>2017-06-05 12:05:22</sys_updated_on>
     </sys_script_include>
 </record_update>

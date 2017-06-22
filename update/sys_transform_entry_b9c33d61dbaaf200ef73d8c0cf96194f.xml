@@ -6,7 +6,7 @@
         <coalesce_case_sensitive>false</coalesce_case_sensitive>
         <coalesce_empty_fields>false</coalesce_empty_fields>
         <date_format>yyyy-MM-dd HH:mm:ss</date_format>
-        <map display_value="AMS RFC POC Change Type Versions">b5937961dbaaf200ef73d8c0cf961980</map>
+        <map display_value="AMS_RFCChangeTypeVersions">b5937961dbaaf200ef73d8c0cf961980</map>
         <reference_value_field/>
         <source_field>u_rfc_change_type_version_approvalcondition_aws_approval</source_field>
         <source_script><![CDATA[answer = (function transformEntry(source) {

@@ -3,194 +3,208 @@
     <sys_ui_section caption="" section_id="7b6540fcdb5ab600ef73d8c0cf961967" sys_domain="global" table="x_109369_ams_rfcs" version="3" view="Create_a_request_for_change">
         <sys_ui_annotation action="INSERT_OR_UPDATE">
             <is_plain_text>false</is_plain_text>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>70df31a5dbcb320067b1d190cf96190c</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>6357b466db833600ef73d8c0cf9619a2</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <text>Please search and select category to create Rfc</text>
             <type display_value="Info Box Blue">753f88a80f930000b12e6903cfe01206</type>
         </sys_ui_annotation>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>70df31a5dbcb320067b1d190cf96190c</element>
+            <element>6357b466db833600ef73d8c0cf9619a2</element>
             <position>0</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>78df31a5dbcb320067b1d190cf96190c</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>6b57b466db833600ef73d8c0cf9619a2</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type>annotation</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.begin_split</element>
             <position>1</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>30df31a5dbcb320067b1d190cf96190d</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>ef57b466db833600ef73d8c0cf9619a2</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_rfcs_category</element>
             <position>2</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>b0df31a5dbcb320067b1d190cf96190d</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>6357b466db833600ef73d8c0cf9619a3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_rfcs_subcategory</element>
             <position>3</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>34df31a5dbcb320067b1d190cf96190d</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>e357b466db833600ef73d8c0cf9619a3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_rfcs_items</element>
             <position>4</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>b4df31a5dbcb320067b1d190cf96190d</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>6757b466db833600ef73d8c0cf9619a3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_rfcs_operation</element>
             <position>5</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>38df31a5dbcb320067b1d190cf96190d</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>e757b466db833600ef73d8c0cf9619a3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_rfcs_change_type_id</element>
             <position>6</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>b8df31a5dbcb320067b1d190cf96190d</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>6b57b466db833600ef73d8c0cf9619a3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
             <position>7</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>3cdf31a5dbcb320067b1d190cf96190d</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>eb57b466db833600ef73d8c0cf9619a3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_rfc_operation_description</element>
             <position>8</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>bcdf31a5dbcb320067b1d190cf96190d</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>6f57b466db833600ef73d8c0cf9619a3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
             <position>9</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>30df31a5dbcb320067b1d190cf96190e</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>ef57b466db833600ef73d8c0cf9619a3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>x_109369_ams_AMS_Get_Section.xml</element>
+            <element>x_109369_ams_AMS_CreateDynamicFieldsForRFC.xml</element>
             <position>10</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>b0df31a5dbcb320067b1d190cf96190e</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>6357b466db833600ef73d8c0cf9619a4</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter display_value="AMS_Sections">d7ba47c7dba67200ef73d8c0cf9619cb</sys_ui_formatter>
+            <sys_ui_formatter display_value="AMS_RFCFormDynamicField">d7ba47c7dba67200ef73d8c0cf9619cb</sys_ui_formatter>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
-            <sys_user/>
-            <type>formatter</type>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>x_109369_ams_AMSrfcform.xml</element>
-            <position>11</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>f4df31a5dbcb320067b1d190cf96190e</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter display_value="AMSNisos">cf61dee7db767200ef73d8c0cf961941</sys_ui_formatter>
-            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type>formatter</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_rfcs_execution_parameters</element>
-            <position>12</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-05-30 10:20:25</sys_created_on>
-            <sys_id>3cdf31a5dbcb320067b1d190cf96190e</sys_id>
+            <position>11</position>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>a757b466db833600ef73d8c0cf9619a4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-05-30 10:20:25</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfcs_subject</element>
+            <position>12</position>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>2b57b466db833600ef73d8c0cf9619a4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfcs_rfcdescription</element>
+            <position>13</position>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-02 07:37:47</sys_created_on>
+            <sys_id>ab57b466db833600ef73d8c0cf9619a4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="bf6540fcdb5ab600ef73d8c0cf961964">7b6540fcdb5ab600ef73d8c0cf961967</sys_ui_section>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-02 07:37:47</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

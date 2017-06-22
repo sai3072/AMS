@@ -19,7 +19,7 @@
         <sys_updated_by>sahitya</sys_updated_by>
         <sys_updated_on>2017-04-14 10:04:18</sys_updated_on>
         <table>x_109369_ams_case</table>
-        <ui_policy display_value="on reply check">bfc7dcbedb8eb200ef73d8c0cf9619ee</ui_policy>
+        <ui_policy display_value="AMS_ShowFieldsOnReplyCheck">bfc7dcbedb8eb200ef73d8c0cf9619ee</ui_policy>
         <visible>true</visible>
     </sys_ui_policy_action>
 </record_update>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update sys_domain="global" table="sys_ui_action">
     <sys_ui_action action="INSERT_OR_UPDATE">
-        <action_name/>
+        <action_name>ams_close_case</action_name>
         <active>true</active>
-        <client>false</client>
+        <client>true</client>
         <comments/>
-        <condition>current.u_case_status!='resolved'&amp;&amp;!current.isNewRecord()</condition>
+        <condition>current.u_case_state!='resolved'&amp;&amp;!current.isNewRecord()&amp;&amp;current.u_case_state!=''</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -19,15 +19,36 @@
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
         <name>Close case</name>
-        <onclick/>
+        <onclick>removeMandatory()</onclick>
         <order>100</order>
-        <script><![CDATA[var resolvedCase=new AMSResourceFetch();
-resolvedCase.resolveCase(current.u_case_id.toString());
+        <script><![CDATA[function removeMandatory(){
+	g_form.setMandatory('u_case_reply',false);
+	gsftSubmit(null, g_form.getFormElement(), 'ams_close_case');
+}
 
+
+if(typeof window == 'undefined')  
+ closeCase(); // call Server code  
+
+function closeCase()
+{
+	current.u_case_reply_check=false;
+	current.update();
+	var resolvedCase=new AMS_CaseFetch();
+resolvedCase.resolveCase(current.u_case_id.toString());
 if(resolvedCase){
 	gs.addInfoMessage("Case Resolved Sucessfully");
+	resolvedCase.getCommunicationsAndInsert(current.u_case_id.toString());
 }
-resolvedCase.getCommunicationsAndInsert(current.u_case_id.toString());]]></script>
+	else
+	gs.addInfoMessage("Case not Resolved");	
+}
+
+
+
+
+
+]]></script>
         <show_insert>true</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -39,7 +60,7 @@ resolvedCase.getCommunicationsAndInsert(current.u_case_id.toString());]]></scrip
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>fcf120aadbc6b200ef73d8c0cf9619d0</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>20</sys_mod_count>
         <sys_name>Close case</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -47,8 +68,8 @@ resolvedCase.getCommunicationsAndInsert(current.u_case_id.toString());]]></scrip
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_ui_action_fcf120aadbc6b200ef73d8c0cf9619d0</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-04-17 19:47:48</sys_updated_on>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-06-01 12:30:36</sys_updated_on>
         <table>x_109369_ams_case</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>

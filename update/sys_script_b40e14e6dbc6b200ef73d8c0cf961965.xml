@@ -19,7 +19,7 @@
         <filter_condition/>
         <is_rest>false</is_rest>
         <message/>
-        <name>AMS CreateCase for Service Request</name>
+        <name>AMS_CreateCaseforServiceRequest</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -29,27 +29,29 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-
-	var create=new AMSCaseFetch();//Get AMS resource object
-	var ccemails;
-	if(current.u_case_cc_emails=='')	//Check empty value for cc_emails
-		 ccemails='';
-	else
-		 ccemails=[current.u_case_cc_emails.toString()];
-	//API call to create case 
-	var caseId=create.createCaseAndInsert(current.u_case_category.toString(),ccemails,current.u_case_details.toString(),current.u_case_type.toString(),current.u_case_service_code.toString(),'low',current.u_case_subject.toString());
 	
-	if(caseId!=false)
+	//Get AMS resource object
+	var create = new AMS_CaseFetch();
+	var ccemails;
+	//Check empty value for cc_emails
+	if(current.u_case_cc_emails == '')
+		ccemails = '';
+	else
+		ccemails = [current.u_case_cc_emails.toString()];
+	//API call to create case
+	var caseId = create.createCaseAndInsert(current.u_case_category.toString(),ccemails,current.u_case_details.toString(),current.u_case_type.toString(),current.u_case_service_code.toString(),'low',current.u_case_subject.toString());
+	
+	if(caseId != false)
 		{
-			current.u_case_id=caseId;
-	gs.addInfoMessage('Service Request successfully created');
-			current.update();
-		}
+		current.u_case_id = caseId;
+		gs.addInfoMessage('Service Request successfully created');
+		current.update();
+	}
 	else
 		{
-			current.setAbortAction(true);
+		current.setAbortAction(true);
 		gs.addInfoMessage('Service Request creation Failed');
-		}
+	}
 })(current, previous);
 ]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -59,16 +61,16 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>b40e14e6dbc6b200ef73d8c0cf961965</sys_id>
-        <sys_mod_count>11</sys_mod_count>
-        <sys_name>AMS CreateCase for Service Request</sys_name>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>AMS_CreateCaseforServiceRequest</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_b40e14e6dbc6b200ef73d8c0cf961965</sys_update_name>
-        <sys_updated_by>saikrishna</sys_updated_by>
-        <sys_updated_on>2017-05-17 09:30:40</sys_updated_on>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-06-02 06:45:25</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

@@ -5,6 +5,5 @@
             <choice/>
         </element>
         <element default="technical" label="Type" max_length="40" name="u_incidents_type" read_only="true" type="string"/>
-        <element label="State" max_length="40" name="u_incident_state" read_only="true" type="string"/>
     </element>
 </database>

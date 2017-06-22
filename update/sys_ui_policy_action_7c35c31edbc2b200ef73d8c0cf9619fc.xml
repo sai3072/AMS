@@ -19,7 +19,7 @@
         <sys_updated_by>madhav</sys_updated_by>
         <sys_updated_on>2017-04-13 06:16:35</sys_updated_on>
         <table>x_109369_ams_incidents</table>
-        <ui_policy display_value="AMS Show Category on Priority">03e4031edbc2b200ef73d8c0cf9619db</ui_policy>
+        <ui_policy display_value="AMS_ShowCategoryonPriority">03e4031edbc2b200ef73d8c0cf9619db</ui_policy>
         <visible>true</visible>
     </sys_ui_policy_action>
 </record_update>

@@ -4,26 +4,31 @@
         <active>true</active>
         <condition/>
         <conditional>false</conditional>
-        <name>RFC POC Managed Services Change type SubCategories</name>
+        <name>AMS_ChangeTypeSubCategories</name>
         <run_as display_value="">c68d2407db213200ef73d8c0cf96195b</run_as>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
         <run_dayofweek>1</run_dayofweek>
-        <run_period/>
+        <run_period>1970-01-01 00:05:00</run_period>
         <run_start>2017-04-12 14:13:31</run_start>
         <run_time>1970-01-01 08:15:00</run_time>
         <run_type>on_demand</run_type>
-        <script><![CDATA[var grCategory = new GlideRecord('x_109369_ams_rfc_categories');
+        <script><![CDATA[//Fetch Categories from Categories table
+var grCategory = new GlideRecord('x_109369_ams_rfc_categories');
 grCategory.query();
 while(grCategory.next())
-{
-	var amslistSubCategories = new RfcPOC();
+	{ 
+	//Call AMS_RfcFetch Script
+	var amslistSubCategories = new AMS_RfcFetch();
 	//Call getRfcListChangeTypeItemsAndInsert API
 	var amslistSubCategoriesInsert = amslistSubCategories.getRfcListChangeTypeSubcategoriesAndInsert(grCategory.	u_rfc_categories_category.toString());
-	if(!amslistSubCategoriesInsert){
-	if ('true' == gs.getProperty('debug.AMSRestCalls'))// No SubCategories Found
+	
+	if(!amslistSubCategoriesInsert)
+	{
+		// No SubCategories Found
+	if ('true' == gs.getProperty('debug.AMSRestCalls'))
 		gs.info("Debug >>>AMS SubCategories are not inserted");	
-}
+	}
 	
 }]]></script>
         <sys_class_name>sysauto_script</sys_class_name>
@@ -31,15 +36,15 @@ while(grCategory.next())
         <sys_created_on>2017-05-05 08:04:45</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>f501f42ddbe6f200ef73d8c0cf9619a9</sys_id>
-        <sys_mod_count>1</sys_mod_count>
-        <sys_name>RFC POC Managed Services Change type SubCategories</sys_name>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>AMS_ChangeTypeSubCategories</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sysauto_script_f501f42ddbe6f200ef73d8c0cf9619a9</sys_update_name>
-        <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-05-05 11:48:47</sys_updated_on>
+        <sys_updated_by>madhav</sys_updated_by>
+        <sys_updated_on>2017-06-09 08:43:13</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>

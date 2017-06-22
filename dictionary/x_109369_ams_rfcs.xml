@@ -21,6 +21,7 @@
         <element label="ID" max_length="40" name="u_rfcs_id" read_only="true" type="string"/>
         <element label="Items" max_length="40" name="u_rfcs_items" read_only="true" reference_qual="javascript:getItems()" type="string" use_reference_qualifier="advanced"/>
         <element dependent="u_rfcs_item" dependent_on_field="u_rfcs_item" label="Operation" max_length="40" name="u_rfcs_operation" read_only="true" reference_qual="javascript:getOperations()" type="string" use_dependent_field="true" use_reference_qualifier="advanced"/>
+        <element label="Request Failure Reason" max_length="200" name="u_rfcs_request_failure_reason" read_only="true" type="string"/>
         <element label="Description" max_length="1000" name="u_rfcs_rfcdescription" read_only="true" type="string"/>
         <element label="Scheduled" max_length="40" name="u_rfcs_scheduled_date" type="glide_date_time"/>
         <element choice="1" label="Status" max_length="40" name="u_rfcs_status" read_only="true" type="choice">
@@ -38,6 +39,5 @@
         <element dependent="u_rfcs_category" dependent_on_field="u_rfcs_category" label="Subcategory" max_length="40" name="u_rfcs_subcategory" read_only="true" type="string" use_dependent_field="true"/>
         <element label="Subject" max_length="2000" name="u_rfcs_subject" read_only="true" type="string"/>
         <element label="Operation Description" max_length="4000" name="u_rfc_operation_description" read_only="true" type="string"/>
-        <element label="Subnet Id" max_length="32" name="u_subnet_id" reference="x_109369_ams_subnets" type="reference"/>
     </element>
 </database>

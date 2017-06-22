@@ -6,7 +6,7 @@
         <coalesce_case_sensitive>false</coalesce_case_sensitive>
         <coalesce_empty_fields>false</coalesce_empty_fields>
         <date_format>yyyy-MM-dd HH:mm:ss</date_format>
-        <map display_value="AMS  AMIs Transform Map">428d0acadbc67200ef73d8c0cf96192d</map>
+        <map display_value="AMS _AMIsTransformMap">428d0acadbc67200ef73d8c0cf96192d</map>
         <reference_value_field/>
         <source_field>u_ami_id</source_field>
         <source_script><![CDATA[answer = (function transformEntry(source) {

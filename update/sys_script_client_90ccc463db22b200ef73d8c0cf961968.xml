@@ -15,7 +15,8 @@
 	  // g_form.setDisplay('u_rfcs_operation',false);
       return;
    }
-	var ga = new GlideAjax("getSubcategoriespoc");
+	hideUIMacro();
+	var ga = new GlideAjax("AMS_GetSubcategories");
 	ga.addParam("sysparm_name",'getOperation');
 	ga.addParam("sysparm_category",g_form.getDisplayBox('u_rfcs_category').value);
 	ga.addParam("sysparm_subcategory",g_form.getValue('u_rfcs_subcategory'));
@@ -45,7 +46,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>90ccc463db22b200ef73d8c0cf961968</sys_id>
-        <sys_mod_count>23</sys_mod_count>
+        <sys_mod_count>28</sys_mod_count>
         <sys_name>clientscript operations add option</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -53,11 +54,11 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_client_90ccc463db22b200ef73d8c0cf961968</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-05-25 06:02:07</sys_updated_on>
+        <sys_updated_by>madhav</sys_updated_by>
+        <sys_updated_on>2017-06-01 07:45:28</sys_updated_on>
         <table>x_109369_ams_rfcs</table>
         <type>onChange</type>
         <ui_type>0</ui_type>
-        <view/>
+        <view>Create_a_request_for_change</view>
     </sys_script_client>
 </record_update>

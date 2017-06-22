@@ -2,7 +2,7 @@
 <record_update table="sys_index">
     <sys_index action="INSERT_OR_UPDATE">
         <col_name_string>u_rfc_change_type_version_changetypeid</col_name_string>
-        <index_col_name element="u_rfc_change_type_version_changetypeid" name="x_109369_ams_rfc_change_type_version">abd59fe0db1ab600ef73d8c0cf961910</index_col_name>
+        <index_col_name>abd59fe0db1ab600ef73d8c0cf961910</index_col_name>
         <logical_table_name>x_109369_ams_rfc_change_type_version</logical_table_name>
         <sys_class_name>sys_index</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
@@ -18,7 +18,7 @@
         <sys_update_name>sys_index_x_109369_ams_rfc_change_type_version_u_rfc_change_type_version_changetypeid</sys_update_name>
         <sys_updated_by>sahitya</sys_updated_by>
         <sys_updated_on>2017-04-20 10:33:47</sys_updated_on>
-        <table display_value="Rfc Change Type Version" name="x_109369_ams_rfc_change_type_version">d9655be0db1ab600ef73d8c0cf96190f</table>
+        <table/>
         <unique_index>false</unique_index>
     </sys_index>
 </record_update>
