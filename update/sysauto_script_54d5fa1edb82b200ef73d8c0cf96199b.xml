@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sysauto_script">
     <sysauto_script action="INSERT_OR_UPDATE">
-        <active>true</active>
+        <active>false</active>
         <condition/>
         <conditional>false</conditional>
-        <name>AMS_FetchRFCsAndCorrespondence</name>
+        <name>AMS_FetchRFCsAndCorrespondenceMasterScript</name>
         <run_as display_value="">e75da407db213200ef73d8c0cf961959</run_as>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
@@ -65,17 +65,17 @@ else{
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-13 05:13:23</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_id>54d5fa1edb82b200ef73d8c0cf96199b</sys_id>
-        <sys_mod_count>15</sys_mod_count>
-        <sys_name>AMS_FetchRFCsAndCorrespondence</sys_name>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>AMS_FetchRFCsAndCorrespondenceMasterScript</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sysauto_script_54d5fa1edb82b200ef73d8c0cf96199b</sys_update_name>
-        <sys_updated_by>madhav</sys_updated_by>
-        <sys_updated_on>2017-06-09 08:43:14</sys_updated_on>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-06-23 08:48:11</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>

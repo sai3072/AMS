@@ -6,32 +6,32 @@
         <coalesce_case_sensitive>false</coalesce_case_sensitive>
         <coalesce_empty_fields>false</coalesce_empty_fields>
         <date_format>yyyy-MM-dd HH:mm:ss</date_format>
-        <map display_value="AMS_ServiceRequestsTransformMap">81e7d2c2db0a7200ef73d8c0cf9619c2</map>
+        <map display_value="AMS_RFC">47385f4edb8a7200ef73d8c0cf961914</map>
         <reference_value_field/>
-        <source_field>sys_import_state</source_field>
+        <source_field>u_rfc_requested_start</source_field>
         <source_script><![CDATA[answer = (function transformEntry(source) {
 
 	// Add your code here
 	return ""; // return the value to be put into the target field
 
 })(source);]]></source_script>
-        <source_table>x_109369_ams_import_set_service_requests</source_table>
+        <source_table>x_109369_ams_import_set_rfcs</source_table>
         <sys_class_name>sys_transform_entry</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-04-17 17:26:26</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
-        <sys_id>57e40a3bdb8e3600ef73d8c0cf961965</sys_id>
+        <sys_created_on>2017-06-22 18:28:37</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>e02c0285db6f320067b1d190cf961912</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>sys_import_state</sys_name>
+        <sys_name>u_rfc_requested_start</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
-        <sys_update_name>sys_transform_entry_57e40a3bdb8e3600ef73d8c0cf961965</sys_update_name>
+        <sys_update_name>sys_transform_entry_e02c0285db6f320067b1d190cf961912</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-04-17 17:26:26</sys_updated_on>
-        <target_field>u_service_request_state</target_field>
-        <target_table>x_109369_ams_service_requests</target_table>
+        <sys_updated_on>2017-06-22 18:28:37</sys_updated_on>
+        <target_field>u_rfcs_requested_start</target_field>
+        <target_table>x_109369_ams_rfcs</target_table>
         <use_source_script>false</use_source_script>
     </sys_transform_entry>
 </record_update>

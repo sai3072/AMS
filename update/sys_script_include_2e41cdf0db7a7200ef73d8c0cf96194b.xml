@@ -37,6 +37,7 @@ AMS_GetRFCFormFields.prototype =  Object.extendsObject(global.AbstractAjaxProces
 			singleField["minItems"] = rfcFormGR.u_rfcs_form_minimumitems.toString();
 			singleField["maxItems"] = rfcFormGR.u_rfcs_form_maximumitems.toString();
 			singleField["pattern"] = rfcFormGR.u_rfcs_form_pattern.toString();
+			singleField["parentName"] = rfcFormGR.u_rfcs_parent_name.toString();
 			//check for aws param type and assign aws param type if not null
 			singleField["awsParamType"] = (rfcFormGR.u_rfcs_form_aws_param_type) ? rfcFormGR.u_rfcs_form_aws_param_type.toString() : "";
 			fields[rfcFormGR.u_rfcs_form_parameter_name.toString()] = singleField;
@@ -50,16 +51,16 @@ AMS_GetRFCFormFields.prototype =  Object.extendsObject(global.AbstractAjaxProces
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-05-15 12:03:55</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_id>2e41cdf0db7a7200ef73d8c0cf96194b</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>23</sys_mod_count>
         <sys_name>AMS_GetRFCFormFields</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_include_2e41cdf0db7a7200ef73d8c0cf96194b</sys_update_name>
-        <sys_updated_by>saikrishna</sys_updated_by>
-        <sys_updated_on>2017-06-05 12:09:30</sys_updated_on>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-06-23 06:12:38</sys_updated_on>
     </sys_script_include>
 </record_update>

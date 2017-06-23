@@ -31,16 +31,16 @@
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
 	//save sysid to caseId
 	current.u_case_id = current.sys_id;
-	
+	current.u_case_time_created = new GlideDateTime().getDisplayValue();
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-04-27 09:37:24</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>a03973badb12fa00ef73d8c0cf9619a8</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>AMS_CaseIdUpdate</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -48,8 +48,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_a03973badb12fa00ef73d8c0cf9619a8</sys_update_name>
-        <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-06-05 11:01:23</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-23 05:29:25</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>

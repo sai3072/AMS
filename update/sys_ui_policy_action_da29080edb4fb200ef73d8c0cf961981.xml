@@ -19,7 +19,7 @@
         <sys_updated_by>madhav</sys_updated_by>
         <sys_updated_on>2017-05-31 14:59:18</sys_updated_on>
         <table>x_109369_ams_rfcs</table>
-        <ui_policy display_value="AMS show request failure reason when aws create staus is failure">dfd8440edb4fb200ef73d8c0cf96199b</ui_policy>
+        <ui_policy display_value="AMS_ShowRequestFailureReasonWhenAwsCreateStatusisFailure">dfd8440edb4fb200ef73d8c0cf96199b</ui_policy>
         <visible>true</visible>
     </sys_ui_policy_action>
 </record_update>

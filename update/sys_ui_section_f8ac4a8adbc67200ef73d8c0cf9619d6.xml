@@ -152,6 +152,34 @@
             <sys_user/>
             <type/>
         </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfcs_last_modified_date</element>
+            <position>10</position>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-22 15:00:33</sys_created_on>
+            <sys_id>208c9941db2f320067b1d190cf96198c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="Default view">f8ac4a8adbc67200ef73d8c0cf9619d6</sys_ui_section>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 15:00:33</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_rfcs_requested_start</element>
+            <position>11</position>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-22 15:00:34</sys_created_on>
+            <sys_id>fc8c9941db2f320067b1d190cf961996</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_109369_ams_rfcs" sys_domain="global" view="Default view">f8ac4a8adbc67200ef73d8c0cf9619d6</sys_ui_section>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-22 15:00:34</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption/>
             <header>false</header>
@@ -164,7 +192,7 @@
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>f8ac4a8adbc67200ef73d8c0cf9619d6</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>2</sys_mod_count>
             <sys_name>x_109369_ams_rfcs</sys_name>
             <sys_overrides/>
             <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -173,7 +201,7 @@
             <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
             <sys_update_name>sys_ui_section_f8ac4a8adbc67200ef73d8c0cf9619d6</sys_update_name>
             <sys_updated_by>sahitya</sys_updated_by>
-            <sys_updated_on>2017-04-12 07:30:34</sys_updated_on>
+            <sys_updated_on>2017-06-22 15:00:34</sys_updated_on>
             <sys_user/>
             <title>true</title>
             <view display_value="Default view" name="NULL">Default view</view>

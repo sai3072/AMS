@@ -23,9 +23,9 @@
         <order>100</order>
         <script><![CDATA[//make reply check to true and update rfc
 current.u_case_reply_check = true;
+current.u_case_reply='';
 current.update();
-action.setRedirectURL(current);
-]]></script>
+action.setRedirectURL(current);]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -33,11 +33,11 @@ action.setRedirectURL(current);
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-04-13 10:11:16</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>7fba3f52db86b200ef73d8c0cf96191f</sys_id>
-        <sys_mod_count>49</sys_mod_count>
+        <sys_mod_count>50</sys_mod_count>
         <sys_name>Reply</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -45,10 +45,10 @@ action.setRedirectURL(current);
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_ui_action_7fba3f52db86b200ef73d8c0cf96191f</sys_update_name>
-        <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-06-02 10:06:30</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-23 06:21:15</sys_updated_on>
         <table>x_109369_ams_case</table>
-        <ui11_compatible>true</ui11_compatible>
-        <ui16_compatible>true</ui16_compatible>
+        <ui11_compatible>false</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
     </sys_ui_action>
 </record_update>

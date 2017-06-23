@@ -4,7 +4,7 @@
         <access>package_private</access>
         <active>true</active>
         <api_name>x_109369_ams.AMS_RfcFetch</api_name>
-        <client_callable>true</client_callable>
+        <client_callable>false</client_callable>
         <description>Handles Rfc related Operations like create,Update,Cancel</description>
         <name>AMS_RfcFetch</name>
         <script><![CDATA[var nextToken = "";
@@ -59,7 +59,10 @@ var body = {}; // initialize the request body
 						rfcGR.u_rfc_status = record.Status.Id;
 						rfcGR.u_rfc_scheduled = record.CreatedTime;
 						rfcGR.u_rfc_created_date = record.CreatedTime;
+						rfcGR.u_rfc_last_modified_date = record.LastModifiedTime;
+						rfcGR.u_rfc_requested_start = record.RequestedExecutionTimeRange.StartTime+' - '+record.RequestedExecutionTimeRange.EndTime;	
 						//Capture the request id in the field
+							
 						rfcGR.u_rfc_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];
 						rfcGR.insert();
 					}
@@ -104,6 +107,8 @@ var body = {}; // initialize the request body
 						rfcGR.u_rfc_execution_output = record.ExecutionOutput;
 						rfcGR.u_rfc_aws_approval_status = record.ApprovalState.AwsApprovalStatus.Id;
 						rfcGR.u_rfc_customer_approval_status = record.ApprovalState.CustomerApprovalStatus.Id;
+						rfcGR.u_rfc_last_modified_date = record.LastModifiedTime;
+						rfcGR.u_rfc_requested_start = record.RequestedExecutionTimeRange.StartTime+' - '+record.RequestedExecutionTimeRange.EndTime;
 						rfcGR.u_rfc_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];
 						//insert the record into table
 						rfcGR.insert();
@@ -128,10 +133,12 @@ var body = {}; // initialize the request body
 						// raise a request
 						var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'ListRfcCorrespondences', body);
 						var jsonBody = JSON.stringify(parsedResponseBody);
-						
+						gs.info('AMS_RfcFetch >>>> getCorrespondence. jsonBody = ' + jsonBody);
+					
 						// Check forCorrespondenceEntries in Response body
 						if (jsonBody.indexOf('CorrespondenceEntries') > -1)
 							{
+							gs.info('AMS_RfcFetch >>>> getCorrespondence. parsedResponseBody.CorrespondenceEntries.length = ' + parsedResponseBody.CorrespondenceEntries.length);
 							var record = '';
 							for (var count = 0; count < parsedResponseBody.CorrespondenceEntries.length; count++){
 								record = parsedResponseBody.CorrespondenceEntries[count];
@@ -144,6 +151,7 @@ var body = {}; // initialize the request body
 							// check for nexttoken in respose
 							if (undefined != nextToken)
 								{
+								gs.info('AMS_RfcFetch >>>> getCorrespondence. nextToken = ' + nextToken);	
 								//call the function with nextToken to get next records
 								this.getCorrespondenceForRfcAndInsert(rfcId, nextToken);
 							}
@@ -156,6 +164,7 @@ var body = {}; // initialize the request body
 							rfcCorrespondenseGR.u_rfc_amazon_request_id = parsedResponseBody.requestId["x-amzn-RequestId"];
 							//insert the record into table
 							rfcCorrespondenseGR.insert();
+							gs.info('AMS_RfcFetch >>>> getCorrespondence. rfcCorrespondenseGR.insert() called for ' + rfcId);	
 							return true;
 						}
 						
@@ -183,36 +192,66 @@ var body = {}; // initialize the request body
 								var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'SubmitRfc', body);
 							},
 							
+		                // function to approve Rfc
+						approveRfc : function(rfcid)
+						{
+							body = {RfcId : rfcid};
+								// raise a request by calling getParsedResponseBody
+								var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'ApproveRfc', body);
+							},
+		              // function to reject Rfc
+		              rejectRfc : function(rfcid)
+						{
+							body = {RfcId : rfcid};
+								// raise a request by calling getParsedResponseBody
+								var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'RejectRfc', body);
+							},
+		
 							// function to create Rfc
 							createRfc : function(description, expectedOutcome, implementationPlan, requestedStartTime, requestedEndTime, rollbackPlan, title, worstCaseScenario, changeTypeId, changeTypeVersion, executionParameters)
 							{
 								//if changetypeId or changeTypeVersion or title is null then direclty return
-								if (!changeTypeId || !changeTypeVersion || !title)
+								if (!changeTypeId || !changeTypeVersion || !title )
 									{
 									if (logger)
 										gs.error('AMS_RfcFetch >>>> createRfc. changeTypeId ,changeTypeVersion, title is required');
 									return false;
 								}
-								//set the default values as null
-								if(!description)description = '';
+									//set the default values as null
+									if(!description)description = '';
 									if(!expectedOutcome)expectedOutcome = '';
 									if(!implementationPlan)implementationPlan = '';
 									if(!rollbackPlan)rollbackPlan = '';
 									if(!executionParameters)executionParameters = '';
 									//create the body to raise the request
 								body = {
-									Description : description,
-									ExpectedOutcome : expectedOutcome,
-									ImplementationPlan : implementationPlan,
-									RequestedStartTime : requestedStartTime,
-									RequestedEndTime : requestedEndTime,
-									RollbackPlan : rollbackPlan,
 									Title : title,
-									WorstCaseScenario : worstCaseScenario,
 									ChangeTypeId : changeTypeId,
-									ChangeTypeVersion : changeTypeVersion,
-									ExecutionParameters : executionParameters
+									ChangeTypeVersion : changeTypeVersion									
 								};
+								if (requestedStartTime) body["RequestedStartTime"] = requestedStartTime;
+								if (requestedEndTime) body["RequestedEndTime"] = requestedEndTime;
+								if (description) body["Description"] = description;
+								if (expectedOutcome) body["ExpectedOutcome"] = expectedOutcome;
+								if (implementationPlan) body["ImplementationPlan"] = implementationPlan;
+								if (rollbackPlan) body["RollbackPlan"] = rollbackPlan;
+								if (worstCaseScenario) body["WorstCaseScenario"] = worstCaseScenario;
+								if (executionParameters) body["ExecutionParameters"] = executionParameters;
+								gs.info("------------------ body " + JSON.stringify (body) );
+								
+// 								body = {
+// 									Description : description,
+// 									ExpectedOutcome : expectedOutcome,
+// 									ImplementationPlan : implementationPlan,
+// 									RequestedStartTime : requestedStartTime,
+// 									RequestedEndTime : requestedEndTime,
+// 									RollbackPlan : rollbackPlan,
+// 									Title : title,
+// 									WorstCaseScenario : worstCaseScenario,
+// 									ChangeTypeId : changeTypeId,
+// 									ChangeTypeVersion : changeTypeVersion,
+// 									ExecutionParameters : executionParameters
+// 								};
 								
 								//raise the request to create rfc
 								var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService, 'CreateRfc', body);
@@ -400,15 +439,6 @@ var body = {}; // initialize the request body
 								else return false;
 								},
 							
-							//Function to List Change type Version Summaries
-							listChangeTypeVersionSummariesAndInsert:function(changeTypeId)
-							{
-								body = {"Filters": [ {"Attribute": "ChangeTypeId","Value": changeTypeId}],"maxResults": maxResults,"nextToken": nextToken};
-									// raise a request
-									var parsedResponseBody = this.amsUtil.getParsedResponseBody(this.changeService,'ListChangeTypeVersionSummaries',body);
-									var jsonBody = JSON.stringify(parsedResponseBody);
-								},
-								
 								//Function to get Change Type Version and Insert
 								getChangeTypeVersionAndInsert:function(changeTypeId,locale,version)
 								{
@@ -442,8 +472,8 @@ var body = {}; // initialize the request body
 											changeTypeVersionsGR.u_rfc_change_type_version_expectedexecutiondurationinminutes = record.ExpectedExecutionDurationInMinutes;
 											changeTypeVersionsGR.u_rfc_change_type_version_version = record.Version;
 											changeTypeVersionsGR.u_rfc_change_type_version_approvalcondition = JSON.stringify(record.ApprovalCondition);
-											changeTypeVersionsGR.u_rfc_change_type_version_approvalcondition_aws_approval = record.ApprovalCondition.CustomerApproval.Id;
-											changeTypeVersionsGR.u_rfc_change_type_version_approvalcondition_customer_approval = record.ApprovalCondition.AwsApproval.Id;
+											changeTypeVersionsGR.u_rfc_change_type_version_approvalcondition_aws_approval = record.ApprovalCondition.AwsApproval.Id;
+											changeTypeVersionsGR.u_rfc_change_type_version_approvalcondition_customer_approval = record.ApprovalCondition.CustomerApproval.Id;
 											changeTypeVersionsGR.u_rfc_change_type_version_automationstatus = record.AutomationStatus.Id;
 											changeTypeVersionsGR.insert();
 											return true;
@@ -498,9 +528,9 @@ var body = {}; // initialize the request body
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-05-17 09:25:05</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_id>2776329ddbfab200ef73d8c0cf9619eb</sys_id>
-        <sys_mod_count>45</sys_mod_count>
+        <sys_mod_count>46</sys_mod_count>
         <sys_name>AMS_RfcFetch</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy>read</sys_policy>
@@ -508,6 +538,6 @@ var body = {}; // initialize the request body
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_include_2776329ddbfab200ef73d8c0cf9619eb</sys_update_name>
         <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-06-07 07:50:24</sys_updated_on>
+        <sys_updated_on>2017-06-23 06:12:07</sys_updated_on>
     </sys_script_include>
 </record_update>

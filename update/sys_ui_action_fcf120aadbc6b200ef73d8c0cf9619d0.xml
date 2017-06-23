@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update sys_domain="global" table="sys_ui_action">
     <sys_ui_action action="INSERT_OR_UPDATE">
-        <action_name>ams_close_case</action_name>
+        <action_name>ams_close_case_test</action_name>
         <active>true</active>
         <client>true</client>
-        <comments/>
-        <condition>current.u_case_state!='resolved'&amp;&amp;!current.isNewRecord()&amp;&amp;current.u_case_state!=''</condition>
+        <comments>To close the case</comments>
+        <condition>current.u_case_state!='resolved' &amp;&amp; !current.isNewRecord() &amp;&amp; current.u_case_state!=''</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -22,26 +22,72 @@
         <onclick>removeMandatory()</onclick>
         <order>100</order>
         <script><![CDATA[function removeMandatory(){
+	g_form.addInfoMessage('Communicating with AWS. This could take 10-20 secs. Please wait..');
 	g_form.setMandatory('u_case_reply',false);
-	gsftSubmit(null, g_form.getFormElement(), 'ams_close_case');
+	g_form.setMandatory('u_case_reply_check',false);
+	try {
+		if(g_form.getValue('u_case_id')!='') {
+			var caseId = g_form.getValue('u_case_id');
+			var ga = new GlideAjax('AmsRefresh_UI_Action');  
+			ga.addParam('sysparm_name','resolveCase');
+			ga.addParam('caseId', caseId);
+			ga.getXML(resolveCase);
+		}
+	} catch (e) {
+        alert("error: " + e.message);
+    }
+	//gsftSubmit(null, g_form.getFormElement(), 'ams_close_case');
+}
+
+function resolveCase(response) {
+    var answer = response.responseXML.documentElement.getAttribute("answer");
+	//alert('resolveCase ' + answer);
+	//g_form.setValue('u_case_reply_check', false);
+	g_form.clearMessages();
+	if(answer) {
+		//call the getCommunicationsAndInsert api if reslove case is sucessfull
+		g_form.addInfoMessage("Case Resolved Sucessfully. Please wait, updating communications...");
+		//need to initialize again
+		var ga2 = new GlideAjax('AmsRefresh_UI_Action');
+		ga2.addParam('sysparm_name','updateCommunications');
+		ga2.addParam('caseId', g_form.getValue('u_case_id')); 
+		ga2.getXML(updateCommunications);	
+		//gsftSubmit(null, g_form.getFormElement(), 'ams_close_case');
+	} else {
+		g_form.addErrorMessage("An error occurred. Case was not resolved");	
+	}
+		
+}
+
+function updateCommunications(response) {
+   //alert('hello inside' + JSON.stringify(response) );	
+   var answer = response.responseXML.documentElement.getAttribute("answer");
+   g_form.addInfoMessage("Updated communications...");
+   //alert('updateCommunications status ' + answer);
+   if(answer){
+	   g_form.clearMessages();
+	   g_form.addInfoMessage("All updates received from AWS. Refreshing page now..");
+	   g_form.save();
+	  // gsftSubmit(null, g_form.getFormElement(), 'ams_close_case');
+   } else {
+	   g_form.addErrorMessage("An error occurred. Communications could not be retrieved..");
+   }
 }
 
 
-if(typeof window == 'undefined')  
- closeCase(); // call Server code  
-
-function closeCase()
+if(typeof window == 'undefined'){
+	// call Server code
+	reloadForm(); 
+}
+	
+function reloadForm()
 {
-	current.u_case_reply_check=false;
+	gs.addInfoMessage("reached here....");
+	current.u_case_reply_check = false;
+	current.u_case_reply = '';
+//	current.u_case_state = 'resolved';
 	current.update();
-	var resolvedCase=new AMS_CaseFetch();
-resolvedCase.resolveCase(current.u_case_id.toString());
-if(resolvedCase){
-	gs.addInfoMessage("Case Resolved Sucessfully");
-	resolvedCase.getCommunicationsAndInsert(current.u_case_id.toString());
-}
-	else
-	gs.addInfoMessage("Case not Resolved");	
+	action.setRedirectURL(current);		
 }
 
 
@@ -56,11 +102,11 @@ if(resolvedCase){
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-13 13:02:30</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>fcf120aadbc6b200ef73d8c0cf9619d0</sys_id>
-        <sys_mod_count>20</sys_mod_count>
+        <sys_mod_count>21</sys_mod_count>
         <sys_name>Close case</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -68,8 +114,8 @@ if(resolvedCase){
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_ui_action_fcf120aadbc6b200ef73d8c0cf9619d0</sys_update_name>
-        <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-06-01 12:30:36</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-23 06:15:29</sys_updated_on>
         <table>x_109369_ams_case</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element label="Changetype version" max_length="40" name="x_109369_ams_changetype_version" type="collection">
-        <element label="Approval Condition" max_length="100" name="u_rfc_change_type_version_approvalcondition" type="string"/>
+        <element label="Approval Condition" max_length="200" name="u_rfc_change_type_version_approvalcondition" type="string"/>
         <element label="Automation Status" max_length="32" name="u_rfc_change_type_version_automationstatus" reference="x_109369_ams_rfc_change_type_automation_status" type="reference"/>
         <element label="AwsApproval" max_length="40" name="u_rfc_change_type_version_awsapproval" type="string"/>
         <element label="ChangeTypeId" max_length="100" name="u_rfc_change_type_version_changetypeid" type="string"/>

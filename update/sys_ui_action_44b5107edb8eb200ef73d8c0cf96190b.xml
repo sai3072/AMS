@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update sys_domain="global" table="sys_ui_action">
     <sys_ui_action action="INSERT_OR_UPDATE">
-        <action_name>case_reply_submit</action_name>
+        <action_name>case_reply_submit_case</action_name>
         <active>true</active>
-        <client>false</client>
+        <client>true</client>
         <comments/>
         <condition>current.u_case_reply_check==true</condition>
         <form_action>true</form_action>
@@ -19,27 +19,76 @@
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
         <name>Submit</name>
-        <onclick>showFields()</onclick>
+        <onclick>runClientCode()</onclick>
         <order>300</order>
-        <script><![CDATA[if(current.u_case_id!=''){
-	var addReply= new AMS_CaseFetch();
-	var response=addReply.addCommunicationToCase(current.u_case_id.toString(),current.u_case_cc_emails.toString(),current.u_case_reply.toString());
-	if(response){
-		addReply.getCommunicationsAndInsert(current.u_case_id.toString());
-		//call getDescribeCasesAndInsert api only when case is resolved to get status
-		if(current.u_case_state=='resolved'){
-			addReply.getDescribeCasesAndInsert('','',[current.u_case_id.toString()],'','','');
+        <script><![CDATA[function runClientCode(){
+    g_form.addInfoMessage('Communicating with AWS. This could take 10-20 secs. Please wait..');
+	
+	try {
+		if(g_form.getValue('u_case_id')!='') {
+			var caseId = g_form.getValue('u_case_id');
+			var ccEmailAddresses = g_form.getValue('u_case_cc_emails');
+			var communicationBody = g_form.getValue('u_case_reply');
+			if (communicationBody.length == 0 ) {
+				g_form.clearMessages();
+				g_form.addErrorMessage('Please enter your reply');
+				return;
+			}
+			var ga = new GlideAjax('AmsRefresh_UI_Action');  
+			ga.addParam('sysparm_name','addCommunicationToCase');
+			ga.addParam('caseId', caseId);
+			ga.addParam('ccEmailAddresses', ccEmailAddresses);
+			ga.addParam('communicationBody', communicationBody);
+			ga.getXML(addCommunicationToCase);
+		} else
+		{
+			g_form.addErrorMessage('No CaseId found');			
 		}
-		gs.addInfoMessage("Reply is Submitted");
+			
+	} catch (e) {
+        alert("error: " + e.message);
+    }
+}	
+function addCommunicationToCase(response) {
+   var answer = response.responseXML.documentElement.getAttribute("answer"); 
+	if(answer){
+	   g_form.clearMessages();
+	   g_form.addInfoMessage('Updated case with your reply.. Please wait, refreshing data from AWS..');
+	   var ga = new GlideAjax('AmsRefresh_UI_Action');  
+	   ga.addParam('sysparm_name','updateCase');
+	   var caseId = g_form.getValue('u_case_id');	
+	   ga.addParam('caseIdList', caseId);
+	   ga.getXML(updateCase);
+		g_form.save();
+	   gsftSubmit(null, g_form.getFormElement(), 'case_reply_submit');
+	} else {
+		g_form.clearMessages();
+		g_form.addErrorMessage('Sorry, an error occurred while adding your reply..');
+		action.setRedirectURL(current);
 	}
-	current.u_case_reply_check=false;
-	current.u_case_reply='';
-	current.update();
-	action.setRedirectURL(current);
 }
-else
-	{
-	gs.addErrorMessage('No CaseId found');
+
+
+function updateCase(response) {
+   var answer = response.responseXML.documentElement.getAttribute("answer");
+	if(answer){
+		g_form.clearMessages();
+		g_form.addInfoMessage('Updated case in AWS. Refreshing the page....');
+	} else {
+		g_form.clearMessages();
+		g_form.addErrorMessage('Sorry, an error occurred while updating your case..');
+	}
+	action.setRedirectURL(current);	
+}
+
+if (typeof window == 'undefined') {
+	reloadForm();
+}
+
+function reloadForm() {//this function will be run server side
+	current.u_case_reply_check = false;
+	current.u_case_reply = '';
+	current.update();
 	action.setRedirectURL(current);
 }]]></script>
         <show_insert>false</show_insert>
@@ -49,11 +98,11 @@ else
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-14 06:46:19</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>44b5107edb8eb200ef73d8c0cf96190b</sys_id>
-        <sys_mod_count>24</sys_mod_count>
+        <sys_mod_count>25</sys_mod_count>
         <sys_name>Submit</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -61,8 +110,8 @@ else
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_ui_action_44b5107edb8eb200ef73d8c0cf96190b</sys_update_name>
-        <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-06-01 12:29:17</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-23 06:06:01</sys_updated_on>
         <table>x_109369_ams_case</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

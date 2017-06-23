@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sysauto_script">
     <sysauto_script action="INSERT_OR_UPDATE">
-        <active>true</active>
+        <active>false</active>
         <condition/>
         <conditional>false</conditional>
-        <name>AMS_FetchCasesAndCommunications</name>
+        <name>AMS_FetchCasesAndCommunicationsMasterScript</name>
         <run_as display_value="">e75da407db213200ef73d8c0cf961959</run_as>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
@@ -15,44 +15,43 @@
         <run_type>on_demand</run_type>
         <script><![CDATA[// Call AMS_CaseFetch script
 var amsGetCaseApi = new AMS_CaseFetch();
-var getCaseInsert = amsGetCaseApi.getDescribeCasesAndInsert();
-if(!getCaseInsert)
+	var getCaseInsert = amsGetCaseApi.getDescribeCasesAndInsert();
+	if(!getCaseInsert)
 	{
-	if ('true' == gs.getProperty('debug.AMSRestCalls'))// No cases Found
-		gs.info("Debug >>>AMS Cases are not inserted");
-}
-else
-	{
+		if ('true' == gs.getProperty('debug.AMSRestCalls'))// No cases Found
+			gs.info("Debug >>>AMS Cases are not inserted");	
+    }
+else{
 	//Get Cases from Case table
-	var grCaseId = new GlideRecord('x_109369_ams_case');
-	grCaseId.query();
-	while(grCaseId.next())
-		{
-		// Call AMS_CaseFetch script
-		var amsDescribeCommunicationsApi = new AMS_CaseFetch();
-		//Call getCommunicationsAndInsert API
-		var getCaseCommunicationsInsert = amsDescribeCommunicationsApi.getCommunicationsAndInsert(grCaseId.u_case_id.toString());
-		if(!getCaseCommunicationsInsert)
-			{
-			if ('true' == gs.getProperty('debug.AMSRestCalls'))// No CaseId Found
-				gs.info("Debug >>>AMS DescribeCommunications :" + grCaseId.	u_case_id + " was not inserted");
-		}
+var grCaseId = new GlideRecord('x_109369_ams_case');
+grCaseId.query();
+while(grCaseId.next())
+{
+	// Call AMS_CaseFetch script
+	var amsDescribeCommunicationsApi = new AMS_CaseFetch();
+	//Call getCommunicationsAndInsert API
+	var getCaseCommunicationsInsert = amsDescribeCommunicationsApi.getCommunicationsAndInsert(grCaseId.u_case_id.toString());
+	if(!getCaseCommunicationsInsert)
+	{
+		if ('true' == gs.getProperty('debug.AMSRestCalls'))// No CaseId Found
+			gs.info("Debug >>>AMS DescribeCommunications :" + grCaseId.	u_case_id + " was not inserted");	
 	}
+}
 }]]></script>
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>priyanka</sys_created_by>
         <sys_created_on>2017-04-13 05:16:09</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_id>2437fe5edb82b200ef73d8c0cf96191e</sys_id>
-        <sys_mod_count>17</sys_mod_count>
-        <sys_name>AMS_FetchCasesAndCommunications</sys_name>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>AMS_FetchCasesAndCommunicationsMasterScript</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sysauto_script_2437fe5edb82b200ef73d8c0cf96191e</sys_update_name>
-        <sys_updated_by>madhav</sys_updated_by>
-        <sys_updated_on>2017-06-09 08:43:14</sys_updated_on>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-06-23 08:47:27</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>

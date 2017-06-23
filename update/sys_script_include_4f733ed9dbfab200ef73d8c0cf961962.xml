@@ -7,14 +7,15 @@
         <client_callable>false</client_callable>
         <description>Handles Case related operations which includes Create case ,update case,Case Correspondence.</description>
         <name>AMS_CaseFetch</name>
-        <script><![CDATA[var nextToken = "";
-// initialize the request body
-var body = {};
+        <script><![CDATA[	var nextToken = "";
+	// initialize the request body
+	var body = {};
 	// get the property value of Nexttoken Maxresults
 	var maxResults = parseInt(gs.getProperty('x_109369_ams.NextToken.AMSMaxResults'));
 	// get the property value of AMSRestCalls(Boolean Value)
 	var logger = gs.getProperty('x_109369_ams.debug.AMSRestCalls');
 	var totalResults = 0;
+	
 	var AMS_CaseFetch = Class.create();
 	AMS_CaseFetch.prototype = {
 		initialize : function()
@@ -31,7 +32,7 @@ var body = {};
 			this.provisioningService = 'amsskms';
 			// intialize Correspondence
 			this.totalCorrespondence = '';
-		},
+		},		 
 		
 		// function to get Cases
 		getDescribeCasesAndInsert : function(afterTime, beforeTime, caseIdList, displayId, includeCommunications, includeResolvedCases, language, nextToken)
@@ -70,7 +71,8 @@ var body = {};
 			var jsonBody = JSON.stringify(parsedResponseBody);
 			
 			// Check for Cases in Response
-			if (jsonBody.indexOf('cases') > -1)
+			if(jsonBody){
+				if (jsonBody.indexOf('cases') > -1)
 				{
 				var record = '';
 				for (var count = 0; count < parsedResponseBody.cases.length; count++)
@@ -114,10 +116,15 @@ var body = {};
 				}
 				
 				return true;
+			}			
+				else {
+					return false;
+				}
+			} else {
+				return false;
 			}
-			
-			else return false;
-			},
+
+		},
 		
 		// function to get Communication for a case
 		getCommunicationsAndInsert : function(caseId, nextToken)
@@ -247,7 +254,7 @@ var body = {};
 				},
 			
 			//Function to Create case
-			createCaseAndInsert:function(categoryCode,ccEmailAddresses,communicationBody,issueType,serviceCode,severityCode,subject)
+			createCaseAndInsert: function(categoryCode, ccEmailAddresses, communicationBody, issueType, serviceCode, severityCode, subject)
 			{
 				
 				if (!categoryCode)
@@ -294,13 +301,12 @@ var body = {};
 				var jsonBody = JSON.stringify(parsedResponseBody);
 				
 				// Check for Caseid in Response body
-				if (jsonBody.indexOf('caseId') > -1)
-					{
+				if (jsonBody && jsonBody.indexOf('caseId') > -1){
 					return parsedResponseBody.caseId;
+				} else {
+					return false;
 				}
-				
-				else return false;
-				},
+		},
 			
 			//Function to Add Communication to a case
 			addCommunicationToCase:function(caseId,ccEmailAddresses,communicationBody)
@@ -343,9 +349,9 @@ var body = {};
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>sahitya</sys_created_by>
         <sys_created_on>2017-05-17 09:11:57</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_id>4f733ed9dbfab200ef73d8c0cf961962</sys_id>
-        <sys_mod_count>23</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_name>AMS_CaseFetch</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy>read</sys_policy>
@@ -353,6 +359,6 @@ var body = {};
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_include_4f733ed9dbfab200ef73d8c0cf961962</sys_update_name>
         <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-06-05 10:27:26</sys_updated_on>
+        <sys_updated_on>2017-06-23 06:15:34</sys_updated_on>
     </sys_script_include>
 </record_update>

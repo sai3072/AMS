@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sysauto_script">
     <sysauto_script action="INSERT_OR_UPDATE">
-        <active>true</active>
+        <active>false</active>
         <condition/>
         <conditional>false</conditional>
         <name>AMS_ListRfcCorrespondences</name>
@@ -12,7 +12,7 @@
         <run_period>1970-01-01 00:05:00</run_period>
         <run_start>2017-04-08 23:43:38</run_start>
         <run_time>1970-01-01 20:00:00</run_time>
-        <run_type>on_demand</run_type>
+        <run_type>daily</run_type>
         <script><![CDATA[//Fetch RFCId from RFC table
 var grRfcId = new GlideRecord('x_109369_ams_rfcs');
 grRfcId.addQuery('u_rfcs_status!=Success^u_rfcs_status!=Failure');
@@ -37,17 +37,17 @@ var amsListRfcCorrespondenceApi = new AMS_RfcFetch();
         <sys_class_name>sysauto_script</sys_class_name>
         <sys_created_by>saikrishna</sys_created_by>
         <sys_created_on>2017-04-12 14:12:55</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_id>eeb8ef8adbca7200ef73d8c0cf961948</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>23</sys_mod_count>
         <sys_name>AMS_ListRfcCorrespondences</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sysauto_script_eeb8ef8adbca7200ef73d8c0cf961948</sys_update_name>
-        <sys_updated_by>saikrishna</sys_updated_by>
-        <sys_updated_on>2017-06-13 10:46:58</sys_updated_on>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-06-23 08:57:06</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>

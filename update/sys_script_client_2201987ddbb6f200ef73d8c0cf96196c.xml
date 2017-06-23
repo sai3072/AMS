@@ -15,8 +15,13 @@
 	//Check Required fields validation
 	if(!checkEmptyFields.isValid) 
 	{
-		g_form.addErrorMessage("Please enter the value for "+checkEmptyFields.fieldName);
+		g_form.clearMessages();
+		//if (checkEmptyFields.fieldName != undefined) {
+		//g_form.addErrorMessage("Please enter the value for "+checkEmptyFields.fieldName);
+			g_form.addErrorMessage("Please check all fields marked with red and ensure all required fields are filled out or that your entries are valid.");
+		//}
 		return false;
+		
 	} 
 	else 
 	{
@@ -43,11 +48,11 @@
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-05-18 10:44:07</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>2201987ddbb6f200ef73d8c0cf96196c</sys_id>
-        <sys_mod_count>109</sys_mod_count>
+        <sys_mod_count>110</sys_mod_count>
         <sys_name>AMS_GetUIMacroValues</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -55,8 +60,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_client_2201987ddbb6f200ef73d8c0cf96196c</sys_update_name>
-        <sys_updated_by>madhav</sys_updated_by>
-        <sys_updated_on>2017-06-07 13:29:25</sys_updated_on>
+        <sys_updated_by>dasthagiri</sys_updated_by>
+        <sys_updated_on>2017-06-23 05:59:53</sys_updated_on>
         <table>x_109369_ams_rfcs</table>
         <type>onSubmit</type>
         <ui_type>0</ui_type>

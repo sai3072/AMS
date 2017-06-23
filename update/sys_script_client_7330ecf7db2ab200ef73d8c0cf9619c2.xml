@@ -42,18 +42,28 @@
 		
 		//if changetypeid is not null call the getFieldsToCreateDynamicForm in uimacro
 		if(parsedReponse.changeTypeId){
+			g_form.clearMessages();
 			getFieldsToCreateDynamicForm(parsedReponse.changeTypeId);
+		} else if(!parsedReponse.classificationChangeTypeId){
+			g_form.clearMessages();
+			g_form.addErrorMessage("Sorry, but all the data has not yet been loaded from AWS. Please try again later... ");
+			//alert('Could not find a changetypeid ' + JSON.stringify(parsedReponse) );
+		}
+		else{
+			g_form.clearMessages();
+			g_form.addErrorMessage("You do not have permission to create an RFC with this CTI");
+
 		}
 	}
 }]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>madhav</sys_created_by>
         <sys_created_on>2017-05-12 06:38:19</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
+        <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>7330ecf7db2ab200ef73d8c0cf9619c2</sys_id>
-        <sys_mod_count>34</sys_mod_count>
+        <sys_mod_count>35</sys_mod_count>
         <sys_name>AMS_GetFieldsOnChangeTypeId</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -61,8 +71,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_client_7330ecf7db2ab200ef73d8c0cf9619c2</sys_update_name>
-        <sys_updated_by>sahitya</sys_updated_by>
-        <sys_updated_on>2017-06-05 11:23:18</sys_updated_on>
+        <sys_updated_by>dasthagiri</sys_updated_by>
+        <sys_updated_on>2017-06-23 06:09:25</sys_updated_on>
         <table>x_109369_ams_rfcs</table>
         <type>onChange</type>
         <ui_type>0</ui_type>
