@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element extends="task" label="Case" max_length="40" name="x_109369_ams_case" type="collection">
-        <element choice="1" label="Category" mandatory="true" max_length="40" name="u_case_category" type="string">
+        <element choice="1" label="Category" max_length="40" name="u_case_category" type="string">
             <choice>
                 <element label="Service Access" value="service-access"/>
                 <element label="apis" sequence="0" value="apis"/>

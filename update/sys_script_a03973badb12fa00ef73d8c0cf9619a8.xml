@@ -8,7 +8,7 @@
         <action_query>false</action_query>
         <action_update>false</action_update>
         <active>true</active>
-        <add_message>false</add_message>
+        <add_message>true</add_message>
         <advanced>true</advanced>
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
@@ -18,7 +18,7 @@
         <execute_function>false</execute_function>
         <filter_condition/>
         <is_rest>false</is_rest>
-        <message/>
+        <message><![CDATA[<p>Created case and submitted to AWS. Please select case to view latest updates.</p>]]></message>
         <name>AMS_CaseIdUpdate</name>
         <order>100</order>
         <priority>100</priority>
@@ -40,7 +40,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>a03973badb12fa00ef73d8c0cf9619a8</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>AMS_CaseIdUpdate</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -48,8 +48,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_a03973badb12fa00ef73d8c0cf9619a8</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-06-23 05:29:25</sys_updated_on>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-06-23 11:05:10</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>

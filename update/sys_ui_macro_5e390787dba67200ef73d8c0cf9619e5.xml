@@ -12,15 +12,15 @@
         <sys_created_on>2017-05-10 11:06:39</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>5e390787dba67200ef73d8c0cf9619e5</sys_id>
-        <sys_mod_count>1541</sys_mod_count>
+        <sys_mod_count>1542</sys_mod_count>
         <sys_name>AMS_CreateDynamicFieldsForRFC</sys_name>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_ui_macro_5e390787dba67200ef73d8c0cf9619e5</sys_update_name>
-        <sys_updated_by>dasthagiri</sys_updated_by>
-        <sys_updated_on>2017-06-23 06:21:56</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-23 12:33:35</sys_updated_on>
         <xml><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <j:jelly xmlns:j="jelly:core" xmlns:g="glide" xmlns:g2="null" xmlns:j2="null" trim="false">
 <g:requires name="scripts/lib/jquery_includes.js"/>
@@ -293,9 +293,13 @@ function validateAllRequiredInputs(){
   //var requiredIDs = document.querySelectorAll(".requiredID");
   //var requiredIDs = document.querySelectorAll('[required="required"]');
   var requiredIDs = document.querySelectorAll("div.parameters, div.properties");
-  console.log('requiredIDs = ' + requiredIDs.length);
+  console.log('allIDs = ' + requiredIDs.length);
   var emptyFieldMap={};
   emptyFieldMap["isValid"] = false; 	
+  if(requiredIDs.length == 0) {
+	// The form hasn't been built yet.
+	return emptyFieldMap;
+  } 	
   var totalInvalidCount = 0;
   for (var i = 0; requiredIDs.length > i; i++) {
     var inputVar = requiredIDs[i].querySelectorAll('input, textarea, select, radio');
@@ -786,7 +790,7 @@ function validateArrays(inboundItem){
 }
 <!-- ***** Function to validate all the fields  ***** -->
 function validateAll(){
-  var allItems = document.querySelectorAll("div.parameters, div.properties");
+  <!--  var allItems = document.querySelectorAll("div.parameters, div.properties");
   var isValid = true;
   for (var i = 0; allItems.length > i; i++) {
     var inputVar = allItems[i].querySelectorAll('input, textarea, select, radio');
@@ -796,24 +800,24 @@ function validateAll(){
         inputVar[0].parentElement.parentElement.classList.add('bg-danger');
         return false;     
       } else {
-<!--        inputVar[0].parentElement.parentElement.classList.remove('bg-danger'); -->
       }
     }
     if(inputVar[0].parentElement.parentElement.className.includes('bg-danger')){
      // alert("Please clear the error caused by the field =  "+inputVar[0].name);
      // return false;
     }
-  }
+  } -->
   var tagz = document.getElementById("HiddenTags");
 <!--  Try block for checking the value in HiddenTags -->
       try{
-          if (tagz.value) {
+		if(tagz){
+			if (tagz.value) {
             var tmpArr = (JSON.parse(tagz.value)).tmpArr;
             for(var i=0;tmpArr.length>i;i++){
               if(Object.keys(tmpArr[i]).length>0){
               Object.keys(tmpArr[i]).forEach(function(key) {
                 if(!tmpArr[i][key]){
-                  alert("Please give value for "+ key +" in Tags");
+					//alert("Please give value for "+ key +" in Tags");
                     isValid= false;
                     return isValid;
                   }
@@ -824,6 +828,8 @@ function validateAll(){
               }
             }
           }
+		}
+          
       }catch(err){
         console.log("Error = "+err.message);
       } 
@@ -939,9 +945,9 @@ function updateTagsField(){
       };
       finalArray += ']}';
       var tmp = {"Tags" : JSON.parse(finalArray) };
-    document.getElementById("HiddenTags").value = finalArray;
+      document.getElementById("HiddenTags").value = finalArray;
     }else{
-      document.getElementById("HiddenTags").value = '{ "tmpArr" : []}';
+      document.getElementById("HiddenTags").value = '{ "tmpArr" : [{}]}';
     }
     updateRfcJsonValues();  
 }

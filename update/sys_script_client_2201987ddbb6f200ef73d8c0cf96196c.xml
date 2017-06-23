@@ -11,23 +11,59 @@
         <name>AMS_GetUIMacroValues</name>
         <order/>
         <script><![CDATA[function onSubmit() {
+	//Type appropriate comment here, and begin script below
+	var category = g_form.getDisplayBox('u_rfcs_category').value;
+	var subCategory =  g_form.getValue('u_rfcs_subcategory');
+	var item = g_form.getValue('u_rfcs_items');
+	var operation = g_form.getValue('u_rfcs_operation');
+	if(category == '' || category == "-- None --" || category == undefined){
+		g_form.clearMessages();
+		g_form.addErrorMessage("Please check all fields marked with red and ensure all required fields are filled out");
+		g_form.showErrorBox('u_rfcs_category','Category selection is required');
+		
+		return false;
+	}
+	else if(subCategory == '' || subCategory == "-- None --" || subCategory == undefined){
+		g_form.clearMessages();
+		g_form.addErrorMessage("Please check all fields marked with red and ensure all required fields are filled out");
+		g_form.showErrorBox('u_rfcs_subcategory','Subcategory selection is required');
+		return false;
+	}
+	else if(item == ''  || item == "-- None --" || item == undefined){
+		g_form.clearMessages();
+		g_form.addErrorMessage("Please check all fields marked with red and ensure all required fields are filled out");
+		g_form.showErrorBox('u_rfcs_items','Item selection is required');
+		return false;
+	}
+	else if(operation == ''  || operation == "-- None --" || operation == undefined ){
+		g_form.clearMessages();
+		g_form.addErrorMessage("Please check all fields marked with red and ensure all required fields are filled out");
+		g_form.showErrorBox('u_rfcs_operation','Operation selection is required');
+		return false;
+	} else {
+		g_form.clearMessages();		
+	}
+	
+	
 	var checkEmptyFields = validateAllRequiredInputs();
+	g_form.addInfoMessage(JSON.stringify(checkEmptyFields));
 	//Check Required fields validation
 	if(!checkEmptyFields.isValid) 
 	{
 		g_form.clearMessages();
 		//if (checkEmptyFields.fieldName != undefined) {
 		//g_form.addErrorMessage("Please enter the value for "+checkEmptyFields.fieldName);
-			g_form.addErrorMessage("Please check all fields marked with red and ensure all required fields are filled out or that your entries are valid.");
+			g_form.addErrorMessage("Please check all fields marked with red and ensure all required fields are filled out and that your entries are valid.");
 		//}
 		return false;
 		
 	} 
-	else 
-	{
+	 
+	
 		//validate all the input values
 		var allFieldsValid = validateAll();
 		if (!allFieldsValid) {
+			g_form.clearMessages();
 			g_form.addErrorMessage("The RFC submission has one or more errors. Please check all fields marked with red and ensure all required fields are filled out");
 			return false;
 		}
@@ -42,7 +78,7 @@
 		g_form.setValue('u_rfcs_subject',rfcJson.Subject);
 		if(rfcJson.description != undefined)
 			g_form.setValue('u_rfcs_rfcdescription',rfcJson.description);
-	}
+	
 }
 ]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
@@ -52,7 +88,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>2201987ddbb6f200ef73d8c0cf96196c</sys_id>
-        <sys_mod_count>110</sys_mod_count>
+        <sys_mod_count>111</sys_mod_count>
         <sys_name>AMS_GetUIMacroValues</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -60,8 +96,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_script_client_2201987ddbb6f200ef73d8c0cf96196c</sys_update_name>
-        <sys_updated_by>dasthagiri</sys_updated_by>
-        <sys_updated_on>2017-06-23 05:59:53</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-23 12:24:51</sys_updated_on>
         <table>x_109369_ams_rfcs</table>
         <type>onSubmit</type>
         <ui_type>0</ui_type>

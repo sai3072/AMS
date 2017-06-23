@@ -4,62 +4,92 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>u_case_created_date</element>
-            <list_id display_value="x_109369_ams_incidents" element="NULL" name="x_109369_ams_incidents" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">9c17cf02db8a7200ef73d8c0cf961993</list_id>
+            <list_id display_value="x_109369_ams_incidents" element="NULL" name="x_109369_ams_incidents" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">6a7ce19ddbe3720067b1d190cf961930</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
             <sum>false</sum>
-            <sys_created_by>priyanka</sys_created_by>
-            <sys_created_on>2017-04-25 06:03:27</sys_created_on>
-            <sys_id>53553cdadb5a7a00ef73d8c0cf9619a9</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-23 10:48:48</sys_created_on>
+            <sys_id>ee7ce19ddbe3720067b1d190cf961930</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>priyanka</sys_updated_by>
-            <sys_updated_on>2017-04-25 06:03:27</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-23 10:48:48</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>u_case_subject</element>
-            <list_id display_value="x_109369_ams_incidents" element="NULL" name="x_109369_ams_incidents" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">9c17cf02db8a7200ef73d8c0cf961993</list_id>
+            <list_id display_value="x_109369_ams_incidents" element="NULL" name="x_109369_ams_incidents" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">6a7ce19ddbe3720067b1d190cf961930</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
             <sum>false</sum>
-            <sys_created_by>priyanka</sys_created_by>
-            <sys_created_on>2017-04-25 06:03:27</sys_created_on>
-            <sys_id>d3553cdadb5a7a00ef73d8c0cf9619a9</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-23 10:48:48</sys_created_on>
+            <sys_id>627ce19ddbe3720067b1d190cf961931</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>priyanka</sys_updated_by>
-            <sys_updated_on>2017-04-25 06:03:27</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-23 10:48:48</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>u_case_priority</element>
-            <list_id display_value="x_109369_ams_incidents" element="NULL" name="x_109369_ams_incidents" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">9c17cf02db8a7200ef73d8c0cf961993</list_id>
+            <element>u_case_type</element>
+            <list_id display_value="x_109369_ams_incidents" element="NULL" name="x_109369_ams_incidents" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">6a7ce19ddbe3720067b1d190cf961930</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
             <sum>false</sum>
-            <sys_created_by>priyanka</sys_created_by>
-            <sys_created_on>2017-04-25 06:03:27</sys_created_on>
-            <sys_id>57553cdadb5a7a00ef73d8c0cf9619a9</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-23 10:48:48</sys_created_on>
+            <sys_id>e27ce19ddbe3720067b1d190cf961931</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>priyanka</sys_updated_by>
-            <sys_updated_on>2017-04-25 06:03:27</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-23 10:48:48</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>u_case_status</element>
-            <list_id display_value="x_109369_ams_incidents" element="NULL" name="x_109369_ams_incidents" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">9c17cf02db8a7200ef73d8c0cf961993</list_id>
+            <element>u_case_priority</element>
+            <list_id display_value="x_109369_ams_incidents" element="NULL" name="x_109369_ams_incidents" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">6a7ce19ddbe3720067b1d190cf961930</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>3</position>
             <sum>false</sum>
-            <sys_created_by>priyanka</sys_created_by>
-            <sys_created_on>2017-04-25 06:03:27</sys_created_on>
-            <sys_id>d7553cdadb5a7a00ef73d8c0cf9619a9</sys_id>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-23 10:48:48</sys_created_on>
+            <sys_id>667ce19ddbe3720067b1d190cf961931</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>priyanka</sys_updated_by>
-            <sys_updated_on>2017-04-25 06:03:27</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-23 10:48:48</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_case_status</element>
+            <list_id display_value="x_109369_ams_incidents" element="NULL" name="x_109369_ams_incidents" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">6a7ce19ddbe3720067b1d190cf961930</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-23 10:48:48</sys_created_on>
+            <sys_id>e67ce19ddbe3720067b1d190cf961931</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-23 10:48:48</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>u_case_id</element>
+            <list_id display_value="x_109369_ams_incidents" element="NULL" name="x_109369_ams_incidents" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">6a7ce19ddbe3720067b1d190cf961930</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-23 10:48:48</sys_created_on>
+            <sys_id>6a7ce19ddbe3720067b1d190cf961931</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-23 10:48:48</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -72,12 +102,12 @@
             <relationship/>
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
-            <sys_created_by>priyanka</sys_created_by>
-            <sys_created_on>2017-04-25 06:03:27</sys_created_on>
-            <sys_customer_update>false</sys_customer_update>
+            <sys_created_by>sahitya</sys_created_by>
+            <sys_created_on>2017-06-23 10:48:48</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>9c17cf02db8a7200ef73d8c0cf961993</sys_id>
+            <sys_id>6a7ce19ddbe3720067b1d190cf961930</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>x_109369_ams_incidents</sys_name>
             <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -85,8 +115,8 @@
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
             <sys_update_name>sys_ui_list_x_109369_ams_incidents_null</sys_update_name>
-            <sys_updated_by>priyanka</sys_updated_by>
-            <sys_updated_on>2017-04-25 06:03:27</sys_updated_on>
+            <sys_updated_by>sahitya</sys_updated_by>
+            <sys_updated_on>2017-06-23 10:48:48</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

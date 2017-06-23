@@ -4,32 +4,17 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>u_case_severity_levels_code</element>
-            <list_id display_value="x_109369_ams_case_severity_levels" element="NULL" name="x_109369_ams_case_severity_levels" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1b23b892db0bf200ef73d8c0cf961932</list_id>
+            <list_id display_value="x_109369_ams_case_severity_levels" element="NULL" name="x_109369_ams_case_severity_levels" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">082c695ddbe3720067b1d190cf961933</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
             <sum>false</sum>
             <sys_created_by>sahitya</sys_created_by>
-            <sys_created_on>2017-06-01 12:40:59</sys_created_on>
-            <sys_id>9323b892db0bf200ef73d8c0cf961933</sys_id>
+            <sys_created_on>2017-06-23 10:47:16</sys_created_on>
+            <sys_id>142c695ddbe3720067b1d190cf961934</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>sahitya</sys_updated_by>
-            <sys_updated_on>2017-06-01 12:40:59</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>u_case_severity_levels_name</element>
-            <list_id display_value="x_109369_ams_case_severity_levels" element="NULL" name="x_109369_ams_case_severity_levels" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">1b23b892db0bf200ef73d8c0cf961932</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>1</position>
-            <sum>false</sum>
-            <sys_created_by>sahitya</sys_created_by>
-            <sys_created_on>2017-06-01 12:40:59</sys_created_on>
-            <sys_id>1b23b892db0bf200ef73d8c0cf961933</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>sahitya</sys_updated_by>
-            <sys_updated_on>2017-06-01 12:40:59</sys_updated_on>
+            <sys_updated_on>2017-06-23 10:47:16</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -43,11 +28,11 @@
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
             <sys_created_by>sahitya</sys_created_by>
-            <sys_created_on>2017-06-01 12:40:59</sys_created_on>
-            <sys_customer_update>false</sys_customer_update>
+            <sys_created_on>2017-06-23 10:47:16</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>1b23b892db0bf200ef73d8c0cf961932</sys_id>
+            <sys_id>082c695ddbe3720067b1d190cf961933</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>x_109369_ams_case_severity_levels</sys_name>
             <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -56,7 +41,7 @@
             <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
             <sys_update_name>sys_ui_list_x_109369_ams_case_severity_levels_null</sys_update_name>
             <sys_updated_by>sahitya</sys_updated_by>
-            <sys_updated_on>2017-06-01 12:40:59</sys_updated_on>
+            <sys_updated_on>2017-06-23 10:47:16</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

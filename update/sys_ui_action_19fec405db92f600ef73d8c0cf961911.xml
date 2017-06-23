@@ -5,7 +5,7 @@
         <active>true</active>
         <client>true</client>
         <comments>To retrive latest updates</comments>
-        <condition>current.u_case_id!=''</condition>
+        <condition>current.u_case_id!=''&amp;&amp;current.u_case_id!=current.sys_id</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -87,7 +87,7 @@ function reloadForm() {//this function will be run server side
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>19fec405db92f600ef73d8c0cf961911</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>Refresh</sys_name>
         <sys_overrides/>
         <sys_package display_value="AMS" source="x_109369_ams">5b693bf9db427200ef73d8c0cf961927</sys_package>
@@ -95,8 +95,8 @@ function reloadForm() {//this function will be run server side
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="AMS">5b693bf9db427200ef73d8c0cf961927</sys_scope>
         <sys_update_name>sys_ui_action_19fec405db92f600ef73d8c0cf961911</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-06-23 06:04:39</sys_updated_on>
+        <sys_updated_by>sahitya</sys_updated_by>
+        <sys_updated_on>2017-06-23 10:44:20</sys_updated_on>
         <table>x_109369_ams_case</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>
